@@ -1,1 +1,2 @@
-# Trucksi
+# SAMPLE
+Sample Projects
