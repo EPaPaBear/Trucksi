@@ -162,9 +162,16 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ADMIN','admin',1),('user','USER','user',2);
+INSERT INTO `user` VALUES ('admin','ADMIN','admin',1),('user','USER','user',2),('truck','TRUCK','truck',3);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+LOCK TABLES `truck` WRITE;
+/*!40000 ALTER TABLE `truck` DISABLE KEYS */;
+INSERT INTO `truck` VALUES (1,8,'aaaaa',9),(2,3,'aaaa',1);
+/*!40000 ALTER TABLE `truck` ENABLE KEYS */;
+UNLOCK TABLES; 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

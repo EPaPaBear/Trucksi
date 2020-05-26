@@ -16,7 +16,7 @@ import it.contrader.main.ConnectionSingleton;
 public class LoginDAO {
 
 	private final String QUERY_LOGIN = "SELECT * FROM user WHERE username = ? AND password = ?";
-
+	
 	
 	public String login (String username, String password) {
 
@@ -26,7 +26,7 @@ public class LoginDAO {
 			
 			statement.setString(1, username);
 			statement.setString(2, password);
-
+			
 			String usertype = null;
 			
 			ResultSet resultSet;
