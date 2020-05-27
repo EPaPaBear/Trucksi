@@ -37,10 +37,6 @@ public class HomeController implements Controller {
 				MainDispatcher.getInstance().callView("HomeUser", request);
 				break;
 			
-			case "TRUCK": 
-				MainDispatcher.getInstance().callView("HomeTruck", request);
-				break;
-			
 			default:
 				 MainDispatcher.getInstance().callView("Login", null);
 				 break;
