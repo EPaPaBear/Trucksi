@@ -14,7 +14,7 @@ public class TruckUpdateView extends AbstractView {
 	private String licensePlate;
 	private int peopleBooking;
 	private final String mode = "UPDATE";
-
+ private String userType = MainDispatcher.getInstance().getUserType();
 	public TruckUpdateView() {
 	}
 
@@ -35,18 +35,25 @@ public class TruckUpdateView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-		try {
-			System.out.println("Inserisci id del truck:");
-			id = Integer.parseInt(getInput());
-			System.out.println("Inserisci il numero massimo di passeggeri:");
-			howManyPeople = Integer.parseInt(getInput());
-			System.out.println("Inserisci la targa del veicolo:");
-			licensePlate = getInput();
-			System.out.println("Inserisci il numero dei passeggeri già a bordo:");
-			peopleBooking = Integer.parseInt(getInput());
-		} catch (Exception e) {
+		
+		if ((String) userType == "ADMIN") {
+			try {
+				
+				System.out.println("Inserisci id del truck:");
+				id = Integer.parseInt(getInput());
+				System.out.println("Inserisci il numero massimo di passeggeri:");
+				howManyPeople = Integer.parseInt(getInput());
+				System.out.println("Inserisci la targa del veicolo:");
+				licensePlate = getInput();
+				System.out.println("Inserisci il numero dei passeggeri già a bordo:");
+				peopleBooking = Integer.parseInt(getInput());
+			} catch (Exception e) {
 
+			}
+		}else {
+	    	System.out.println("Non puoi modificare come utente USER");
 		}
+	
 	}
 
 
@@ -56,11 +63,18 @@ public class TruckUpdateView extends AbstractView {
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("id", id);
-		request.put("howmanypeople", howManyPeople);
-		request.put("licenseplate", licensePlate);
-		request.put("peoplebooking", peopleBooking);
-		request.put("mode", mode);
+		String admin = "ADMIN";
+		System.out.println(userType + " " + admin);
+		if (userType.equals(admin)) {
+			request.put("id", id);
+			request.put("howmanypeople", howManyPeople);
+			request.put("licenseplate", licensePlate);
+			request.put("peoplebooking", peopleBooking);
+			request.put("mode", mode);
+		}else {
+			request.put("mode", "TRUCKLIST");
+		}
+		
 		MainDispatcher.getInstance().callAction("Truck", "doControl", request);
 	}
 

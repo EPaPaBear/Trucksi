@@ -18,8 +18,8 @@ public class HomeUserView extends AbstractView{
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("NESSUNA OPZIONE DISPONIBILE!");
-		System.out.println("[U]tenti [T]ruck [H]ystorytravel  [E]sci");
+		
+		System.out.println("[T]ruck [H]ystorytravel T[R]avel  [E]sci");
 		choice = this.getInput();
 
 	}

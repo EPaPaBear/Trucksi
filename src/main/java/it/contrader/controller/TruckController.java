@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import java.util.List;
 
+import it.contrader.dao.LoginDAO;
 import it.contrader.dto.TruckDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.TruckService;
@@ -132,7 +133,9 @@ public class TruckController implements Controller {
 				break;
 				
 			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "TruckUpdate", null);
+			
+				MainDispatcher.getInstance().callView(sub_package + "TruckUpdate", null);	
+				
 				break;
 				
 			case "C":
@@ -148,6 +151,7 @@ public class TruckController implements Controller {
 				break;
 			
 			case "T":
+				
 				request.put("mode", "TRUCKLIST");
 				MainDispatcher.getInstance().callAction("Truck", "doControl", request);
 				break;
