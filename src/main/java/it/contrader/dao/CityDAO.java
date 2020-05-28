@@ -15,9 +15,9 @@ import it.contrader.model.Truck;
 public class CityDAO implements DAO<City>{
 	
 	private final String QUERY_ALL = "SELECT * FROM city";
-	private final String QUERY_CREATE = "INSERT INTO city (name) VALUES (?)";
+	private final String QUERY_CREATE = "INSERT INTO city (cityname) VALUES (?)";
 	private final String QUERY_READ = "SELECT * FROM city WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE city SET name=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE city SET cityname=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM city WHERE id=?";
 	
 	public CityDAO() {
