@@ -13,7 +13,9 @@ public class TravelDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+	public void setIdusername(int idusername) {
+		this.idusername = idusername;
+	}
 	public int getIdtruck() {
 		return idtruck;
 	}

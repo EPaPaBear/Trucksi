@@ -113,7 +113,7 @@ public class TravelDao implements DAO<Travel>{
 					PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 					preparedStatement.setInt(1, htToUpdate.getIdusername());
 					preparedStatement.setInt(2, htToUpdate.getIdtruck());
-	// to redo				preparedStatement.setIdcity(3,htToUpdate.getIdcity());
+             		preparedStatement.setInt(3,htToUpdate.getIdcity());
 					preparedStatement.setInt(4,  htToUpdate.getIdhistory());
 					int a = preparedStatement.executeUpdate();
 					if (a > 0)
