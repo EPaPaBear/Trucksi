@@ -19,10 +19,10 @@ public class HystorytravelController implements Controller {
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
 		int id;
-		int idtravel;
+	/*	int idtravel;
 		int idcity;
 		Date hour;
-		int travelindex;
+		int travelindex; */
 		
 		switch (mode) {
 			

@@ -42,7 +42,7 @@ public class TruckUpdateView extends AbstractView {
 			howManyPeople = Integer.parseInt(getInput());
 			System.out.println("Inserisci la targa del veicolo:");
 			licensePlate = getInput();
-			System.out.println("Inserisci il numero dei passeggeri già abbordo:");
+			System.out.println("Inserisci il numero dei passeggeri già a bordo:");
 			peopleBooking = Integer.parseInt(getInput());
 		} catch (Exception e) {
 

@@ -146,7 +146,12 @@ public class TruckController implements Controller {
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
-				
+			
+			case "T":
+				request.put("mode", "TRUCKLIST");
+				MainDispatcher.getInstance().callAction("Truck", "doControl", request);
+				break;
+			
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
 			}

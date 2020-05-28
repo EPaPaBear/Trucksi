@@ -125,6 +125,10 @@ public class CityController implements Controller {
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
+			case "T":
+				request.put("mode", "CITYLIST");
+				MainDispatcher.getInstance().callAction("City", "doControl", request);
+				break;
 				
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
