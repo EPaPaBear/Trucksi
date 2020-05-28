@@ -137,7 +137,7 @@ public class TruckController implements Controller {
 				break;
 
 			case "B":
-				MainDispatcher.getInstance().callView("HomeTruck", null);
+				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
 				
 			default:
