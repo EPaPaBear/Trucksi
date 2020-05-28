@@ -17,9 +17,9 @@ public class HystorytravelView extends AbstractView {
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n------------------- Gestione HystoryTravel ----------------\n");
-		System.out.println("ID\tIDtravel\tIDcity\thour\tTravelIndex");
-		System.out.println("----------------------------------------------------\n");
+		System.out.println("\n------------------- Management HystoryTravel ----------------\n");
+		System.out.println("ID \t IDtravel \t IDcity \t hour \t TravelIndex \t");
+		System.out.println("---------------------------------------------------------------\n");
 	
 		@SuppressWarnings("unchecked")
 		List<HystorytravelDTO> htDTOList = (List<HystorytravelDTO>) request.get("hystorytravel");
@@ -30,8 +30,8 @@ public class HystorytravelView extends AbstractView {
 
 	@Override
 	public void showOptions() {
-		System.out.println("          Scegli l'operazione da effettuare:");
-		System.out.println("[L]eggi [I]nserisci [M]odifica [C]ancella [B]ack [E]sci");
+		System.out.println("          \r\n" + "Choose the operation to perform:");
+		System.out.println("[R]ead [I]nsert [M]odify [D]elete [B]ack [E]xit");
 
 		this.choice = getInput();
 		

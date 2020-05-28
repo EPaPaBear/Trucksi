@@ -33,17 +33,19 @@ public class HystorytravelInsertView extends AbstractView {
 
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci idtravel:");
+		System.out.println("Insert idtravel:");
 		this.idtravel = Integer.parseInt(getInput());
-		System.out.println("Inserisci idcity:");
+		System.out.println("Insert idcity:");
 		this.idcity =  Integer.parseInt(getInput());
-		 System.out.println("ore (01-24):");
+		 System.out.println("Month (01-12):");
 	        int h = Integer.parseInt(getInput());
-	        System.out.println("minuti (00-59):");
+	        System.out.println("Day (01-31):");
 	        int m = Integer.parseInt(getInput());
+	        System.out.println("Year (YYYY):");
+	        int y = Integer.parseInt(getInput());
 	        String data;
-	        data = Integer.toString(h) + ":" + Integer.toString(m);  
-	        System.out.println("Orario : " + data); 
+	        data = Integer.toString(h) + "-" + Integer.toString(m) + "-" + Integer.toString(y) ;  
+	        System.out.println("Date : " + data); 
 	        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
 	      
 	        try {

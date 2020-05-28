@@ -24,7 +24,7 @@ public class HystorytravelDeleteView extends AbstractView {
 
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci idtravel:");
+		System.out.println("Insert idtravel:");
 		id = Integer.parseInt(getInput());
 		
 	}

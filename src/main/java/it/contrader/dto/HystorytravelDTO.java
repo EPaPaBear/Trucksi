@@ -9,6 +9,28 @@ public class HystorytravelDTO {
 	private Date hour;
 	private int travelindex;
 	
+	public HystorytravelDTO() {
+		
+	}
+	
+	public HystorytravelDTO(int id, int idtravel, int idcity, Date hour, int travelindex) {
+		this.id = id;
+		this.idtravel = idtravel;
+		this.idcity = idcity;
+		this.hour = hour;
+		this.travelindex = travelindex;
+	}
+	
+	public HystorytravelDTO( int idtravel, int idcity, Date hour, int travelindex) {
+		
+		this.idtravel = idtravel;
+		this.idcity = idcity;
+		this.hour = hour;
+		this.travelindex = travelindex;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

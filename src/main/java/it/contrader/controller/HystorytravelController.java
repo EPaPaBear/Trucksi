@@ -19,20 +19,37 @@ public class HystorytravelController implements Controller {
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
 		int id;
-	/*	int idtravel;
+		int idtravel;
 		int idcity;
 		Date hour;
-		int travelindex; */
+		int travelindex; 
 		
 		switch (mode) {
 			
 		case "READ":
 			id = Integer.parseInt(request.get("id").toString());
 			HystorytravelDTO htDTO = hystorytravelService.read(id);
+			if(htDTO.getId()==0) {
+				System.out.println("ID non trovato");
+				request.put("mode", "HYSTORYTRAVELLIST"); 
+	        	MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);
+			}else {
 			request.put("hystorytravel", htDTO);
 			MainDispatcher.getInstance().callView(sub_package + "HystorytravelRead", request);
+			}
 			break;
-		
+		case "INSERT":
+			 
+			 idtravel = Integer.parseInt(request.get("idtravel").toString());
+		     idcity =  Integer.parseInt(request.get("idcity").toString());
+			 hour =  (Date)request.get(("hour").toString());
+			 travelindex = Integer.parseInt(request.get("travelindex").toString());
+			 HystorytravelDTO htDTOi = new HystorytravelDTO(idtravel, idcity,hour,travelindex);
+			 hystorytravelService.insert(htDTOi);
+			 request = new Request();
+			 request.put("mode", "mode");
+			 MainDispatcher.getInstance().callView(sub_package + "HystorytravelInsert", request);
+			 break;
 		case "DELETE":
 			id = Integer.parseInt(request.get("id").toString());
 			//Qui chiama il service
@@ -48,7 +65,7 @@ public class HystorytravelController implements Controller {
 			break;
 		case "GETCHOICE":
 			switch (choice.toUpperCase()) {
-			case "L":
+			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "HystorytravelRead", null);
 				break;
 				
@@ -60,7 +77,7 @@ public class HystorytravelController implements Controller {
 				MainDispatcher.getInstance().callView(sub_package + "HystorytravelUpdate", null);
 				break;
 				
-			case "C":
+			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "HystorytravelDelete", null);
 				break;
 				
