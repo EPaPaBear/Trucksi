@@ -14,7 +14,7 @@ public class TruckUpdateView extends AbstractView {
 	private String licensePlate;
 	private int peopleBooking;
 	private final String mode = "UPDATE";
- private String userType = MainDispatcher.getInstance().getUserType();
+	private String userType = MainDispatcher.getInstance().getUserType();
 	public TruckUpdateView() {
 	}
 
@@ -36,7 +36,7 @@ public class TruckUpdateView extends AbstractView {
 	@Override
 	public void showOptions() {
 		
-		if ((String) userType == "ADMIN") {
+		if (userType.equals("ADMIN")) {
 			try {
 				
 				System.out.println("Inserisci id del truck:");
@@ -63,9 +63,7 @@ public class TruckUpdateView extends AbstractView {
 	@Override
 	public void submit() {
 		request = new Request();
-		String admin = "ADMIN";
-		System.out.println(userType + " " + admin);
-		if (userType.equals(admin)) {
+		if (userType.equals("ADMIN")) {
 			request.put("id", id);
 			request.put("howmanypeople", howManyPeople);
 			request.put("licenseplate", licensePlate);
