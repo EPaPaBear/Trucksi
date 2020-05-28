@@ -25,7 +25,7 @@ public class UserUpdateView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Modifica andata a buon fine.\n");
+			System.out.println("Changes successfully.\n");
 			MainDispatcher.getInstance().callView("User", null);
 		}
 	}
@@ -36,13 +36,13 @@ public class UserUpdateView extends AbstractView {
 	@Override
 	public void showOptions() {
 		try {
-			System.out.println("Inserisci id dell'utente:");
+			System.out.println("Insert user id:");
 			id = Integer.parseInt(getInput());
-			System.out.println("Inserisci username dell'utente:");
+			System.out.println("Insert user username:");
 			username = getInput();
-			System.out.println("Inserisci password dell'utente:");
+			System.out.println("Insert user password:");
 			password = getInput();
-			System.out.println("Inserisci tipo dell'utente:");
+			System.out.println("Insert user type:");
 			usertype = getInput();
 		} catch (Exception e) {
 

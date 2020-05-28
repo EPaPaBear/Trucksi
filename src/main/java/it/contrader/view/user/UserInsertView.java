@@ -22,7 +22,7 @@ public class UserInsertView extends AbstractView{
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Inserimento andato a buon fine.\n");
+			System.out.println("Chages successfully.\n");
 			MainDispatcher.getInstance().callView("User", null);
 		}
 	}
@@ -32,11 +32,11 @@ public class UserInsertView extends AbstractView{
 	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Inserisci username dell'utente:");
+			System.out.println("Insert user ID:");
 			username = getInput();
-			System.out.println("Inserisci password dell'utente:");
+			System.out.println("Insert user password:");
 			password = getInput();
-			System.out.println("Inserisci tipo dell'utente:");
+			System.out.println("Insert user type:");
 			usertype = getInput();
 	}
 

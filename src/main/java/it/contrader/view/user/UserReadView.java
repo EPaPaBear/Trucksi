@@ -44,7 +44,7 @@ public class UserReadView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci l'ID dell'utente:");
+		System.out.println("Insert user ID:");
 		id = Integer.parseInt(getInput());
 	}
 

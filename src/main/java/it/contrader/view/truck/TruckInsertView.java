@@ -22,7 +22,7 @@ public class TruckInsertView extends AbstractView{
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Inserimento andato a buon fine.\n");
+			System.out.println("Change successfull.\n");
 			request = new Request();
 			request.put("mode", "TRUCKLIST");
 			MainDispatcher.getInstance().callAction("Truck", "doControl", request);
@@ -34,11 +34,11 @@ public class TruckInsertView extends AbstractView{
 	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Inserisci il numero massimo di passeggeri:");
+			System.out.println("Insert truck ID::");
 			howManyPeople = Integer.parseInt(getInput());
-			System.out.println("Inserisci la targa del veicolo:");
+			System.out.println("Enter vehicle plate:");
 			licensePlate = getInput();
-			System.out.println("Inserisci il numero dei passeggeri già abbordo:");
+			System.out.println("Enter number of passengers on board:");
 			peopleBooking = Integer.parseInt(getInput());
 	}
 

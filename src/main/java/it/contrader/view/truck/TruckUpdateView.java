@@ -25,7 +25,7 @@ public class TruckUpdateView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Modifica andata a buon fine.\n");
+			System.out.println("Change successfull.\n");
 			MainDispatcher.getInstance().callView("Truck", null);
 		}
 	}
@@ -39,19 +39,19 @@ public class TruckUpdateView extends AbstractView {
 		if (userType.equals("ADMIN")) {
 			try {
 				
-				System.out.println("Inserisci id del truck:");
+				System.out.println("Insert truck ID:");
 				id = Integer.parseInt(getInput());
-				System.out.println("Inserisci il numero massimo di passeggeri:");
+				System.out.println("Insert passenger number:");
 				howManyPeople = Integer.parseInt(getInput());
-				System.out.println("Inserisci la targa del veicolo:");
+				System.out.println("Enter vehicle plate:");
 				licensePlate = getInput();
-				System.out.println("Inserisci il numero dei passeggeri già a bordo:");
+				System.out.println("Enter number of passengers on board:");
 				peopleBooking = Integer.parseInt(getInput());
 			} catch (Exception e) {
 
 			}
 		}else {
-	    	System.out.println("Non puoi modificare come utente USER");
+	    	System.out.println("You cannot edit as a USER");
 		}
 	
 	}
