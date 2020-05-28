@@ -57,8 +57,15 @@ public class TruckController implements Controller {
 		case "READ":
 			id = Integer.parseInt(request.get("id").toString());
 			TruckDTO truckDTO = truckService.read(id);
-			request.put("truck", truckDTO);
-			MainDispatcher.getInstance().callView(sub_package + "TruckRead", request);
+			if(truckDTO.getId()==0) {
+				System.out.println("ID non trovato");
+				request.put("mode", "TRUCKLIST"); 
+	        	MainDispatcher.getInstance().callAction("Truck", "doControl", request);
+			}else {
+				request.put("truck", truckDTO);
+				MainDispatcher.getInstance().callView(sub_package + "TruckRead", request);
+				
+			}
 			break;
 		
 		// Arriva qui dalla TruckInsertView. Estrae i parametri da inserire e chiama il service per inserire uno user con questi parametri

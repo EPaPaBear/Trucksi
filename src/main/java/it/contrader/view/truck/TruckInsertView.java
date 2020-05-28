@@ -23,7 +23,9 @@ public class TruckInsertView extends AbstractView{
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Inserimento andato a buon fine.\n");
-			MainDispatcher.getInstance().callView("Truck", null);
+			request = new Request();
+			request.put("mode", "TRUCKLIST");
+			MainDispatcher.getInstance().callAction("Truck", "doControl", request);
 		}
 	}
 
