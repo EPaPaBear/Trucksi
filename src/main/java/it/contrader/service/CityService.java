@@ -19,7 +19,7 @@ public class CityService extends AbstractService<City, CityDTO> {
 
 	//Istanzio DAO  e Converter specifici.
 		public CityService(){
-			this.dao = (DAO<City>) new CityDAO();
+			this.dao = new CityDAO();
 			this.converter = new CityConverter();
 		}
 }

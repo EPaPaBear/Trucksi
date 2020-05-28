@@ -10,8 +10,9 @@ import java.util.List;
 
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.City;
+import it.contrader.model.Truck;
 
-public class CityDAO {
+public class CityDAO implements DAO<City>{
 	
 	private final String QUERY_ALL = "SELECT * FROM city";
 	private final String QUERY_CREATE = "INSERT INTO city (name) VALUES (?)";
