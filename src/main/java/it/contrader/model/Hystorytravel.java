@@ -24,10 +24,13 @@ public class Hystorytravel {
 		this.travelindex = travelindex;
 	}
 	public Hystorytravel(int id, int idtravel, int idcity, Date hour, int travelindex) {
-		this.idtravel = idtravel;
+		this( idtravel, idcity, hour, travelindex);
+		this.id = id;
+	/*	this.idtravel = idtravel;
 		this.idcity = idcity;
 		this.hour = hour;
 		this.travelindex = travelindex;
+	*/
 	}
 	public int getId() {
 		return id;
