@@ -60,3 +60,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-06-12 13:10:18
+ALTER TABLE `sampledb`.`hystorytravel` 
+CHANGE COLUMN `hour` `hour` DATE NULL DEFAULT NULL ;

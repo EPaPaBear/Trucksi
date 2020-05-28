@@ -1,30 +1,28 @@
 package it.contrader.view.hystorytravel;
 
 import it.contrader.controller.Request;
+import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
-public class HystoryTravelDeleteView extends AbstractView {
-	private Request request;
-
+public class HystorytravelRead  extends AbstractView {
 	private int id;
-	private final String mode = "DELETE";
-	
-	public HystoryTravelDeleteView() {
-		
+	private Request request;
+	private final String mode = "READ";
+	public HystorytravelRead() {
 	}
 	@Override
 	public void showResults(Request request) {
-		if (request!=null) {
-			System.out.println("Cancellazione andata a buon fine.\n");
-			MainDispatcher.getInstance().callView("Hystorytravel", null);
+		if (request != null) {
+			UserDTO user = (UserDTO) request.get("user");
+			System.out.println(user);
+			MainDispatcher.getInstance().callView("User", null);
 		}
-		
 	}
 
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci idtravel:");
+		System.out.println("Inserisci l'ID dell'hystorytravel:");
 		id = Integer.parseInt(getInput());
 		
 	}

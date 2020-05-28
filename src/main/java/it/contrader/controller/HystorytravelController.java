@@ -43,7 +43,7 @@ public class HystorytravelController implements Controller {
 			break;
 		case "HYSTORYTRAVELLIST":
 			List<HystorytravelDTO> hystorytravelsDTO = hystorytravelService.getAll();
-			request.put("HistorytravelsDTO", hystorytravelsDTO);
+			request.put("hystorytravel", hystorytravelsDTO);
 			MainDispatcher.getInstance().callView("Hystorytravel", request);
 			break;
 		case "GETCHOICE":

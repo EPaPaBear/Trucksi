@@ -9,14 +9,14 @@ import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
-public class HystoryTravelInsertView extends AbstractView {
+public class HystorytravelInsertView extends AbstractView {
 	private Request request;
 	private int idtravel;
 	private int idcity;
 	private Date hour;
 	private int travelindex;
 	
-	public HystoryTravelInsertView() {
+	public HystorytravelInsertView() {
 		
 	}
 	

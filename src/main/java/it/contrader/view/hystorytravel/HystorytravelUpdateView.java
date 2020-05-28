@@ -8,7 +8,7 @@ import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
-public class HystoryTravelUpdateView extends AbstractView {
+public class HystorytravelUpdateView extends AbstractView {
 	private int id;
 	private int idtravel;
 	private int idcity;
@@ -16,7 +16,7 @@ public class HystoryTravelUpdateView extends AbstractView {
 	private int travelindex;
 	private final String mode = "UPDATE";
 
-	public HystoryTravelUpdateView() {
+	public HystorytravelUpdateView() {
 		
 	}
 	@Override
