@@ -97,8 +97,8 @@ public class CityDAO implements DAO<City>{
 
 				// Update the city
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setInt(1, cityToUpdate.getId());
-				preparedStatement.setString(2, cityToUpdate.getcityname());
+				preparedStatement.setString(1, cityToUpdate.getcityname());
+				preparedStatement.setInt(2, cityToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

@@ -123,7 +123,7 @@ public class CityController implements Controller {
 				break;
 
 			case "B":
-				MainDispatcher.getInstance().callView("HomeCity", null);
+				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
 				
 			default:

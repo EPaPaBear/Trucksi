@@ -1,5 +1,7 @@
 package it.contrader.view.city;
 
+import org.junit.runner.Result;
+
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
@@ -22,7 +24,7 @@ public class CityInsertView extends AbstractView{
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Inserimento andato a buon fine.\n");
-			MainDispatcher.getInstance().callView("City", null);
+			listAll("City", "CITYLIST");
 		}
 	}
 
@@ -45,4 +47,5 @@ public class CityInsertView extends AbstractView{
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("City", "doControl", request);
 	}
+	
 }
