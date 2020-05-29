@@ -11,7 +11,7 @@ public class HomeUserView extends AbstractView{
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n Benvenuto in SAMPLE PROJECT "+request.get("username").toString() + "\n");
+		System.out.println("\n Welcome in Trucksi "+request.get("username").toString() + "\n");
     	
 	}
 
@@ -19,7 +19,7 @@ public class HomeUserView extends AbstractView{
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
 		
-		System.out.println("[T]ruck [H]ystorytravel [C]ity T[R]avel  [E]sci");
+		System.out.println("[T]ruck [H]ystorytravel [C]ity T[R]avel  [E]xit");
 		choice = this.getInput();
 
 	}
