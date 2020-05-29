@@ -10,7 +10,7 @@ public class CityView extends AbstractView{
 
 	private Request request;
 	private String choice;
-
+	private String userType = MainDispatcher.getInstance().getUserType();
 	public CityView() {
 		
 	}
@@ -21,7 +21,7 @@ public class CityView extends AbstractView{
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			System.out.println("\n------------------- Gestione città ----------------\n");
+			System.out.println("\n------------------- City management ----------------\n");
 			System.out.println("ID\tCITY NAMES");
 			System.out.println("----------------------------------------------------\n");
 			
@@ -39,9 +39,13 @@ public class CityView extends AbstractView{
 	 */
 	@Override
 	public void showOptions() {
-		System.out.println("          Scegli l'operazione da effettuare:");
-		System.out.println("[L]eggi [I]nserisci [M]odifica mostra[T]utti [C]ancella [B]ack [E]sci");
-
+		System.out.println("          Choose an operation:");
+		if(userType.equals("ADMIN")) {
+			System.out.println("[R]ead [I]nsert [M]odify list[A]ll [D]elete [B]ack [E]sci");
+		}
+		else if (userType.equals("USER")){
+			System.out.println("[R]ead [I]nsert list[A]ll [B]ack [E]sci");
+		}
 		this.choice = getInput();
 
 		
@@ -52,9 +56,34 @@ public class CityView extends AbstractView{
 	 */ 
 	@Override
 	public void submit() {
+//	TODO: pezzo da cancellare
+//		if(userType.equals("ADMIN")) {
+//			request = new Request();
+//			request.put("choice", choice);
+//			request.put("mode", "GETCHOICE");
+//			MainDispatcher.getInstance().callAction("City", "doControl", this.request);	
+//		}
+//		else if (userType.equals("USER")){
+//			request = new Request();
+//			request.put("choice", choice);
+//			request.put("mode", "GETCHOICEUSER");
+//			MainDispatcher.getInstance().callAction("City", "doControl", this.request);	
+//			
+//		}
+		if(userType.equals("ADMIN")) {
+
+		}
+		else if (userType.equals("USER")){
+			if(this.choice.equals("r") || this.choice.equals("i") || this.choice.equals("a") || this.choice.equals("b") || this.choice.equals("e")) {
+				
+			}
+			else {
+				this.choice = "ERROR";
+			}
+		}
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "GETCHOICE");
-		MainDispatcher.getInstance().callAction("City", "doControl", this.request);
+		MainDispatcher.getInstance().callAction("City", "doControl", this.request);	
 	}
 }

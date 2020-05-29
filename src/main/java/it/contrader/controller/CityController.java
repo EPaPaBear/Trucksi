@@ -114,7 +114,7 @@ public class CityController implements Controller {
 				MainDispatcher.getInstance().callView(sub_package + "CityUpdate", null);
 				break;
 				
-			case "C":
+			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "CityDelete", null);
 				break;
 				
@@ -125,13 +125,16 @@ public class CityController implements Controller {
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
-			case "T":
+				
+			case "A":
 				request.put("mode", "CITYLIST");
 				MainDispatcher.getInstance().callAction("City", "doControl", request);
 				break;
 				
 			default:
-				MainDispatcher.getInstance().callView("Login", null);
+				System.out.println("No operation matches");
+				request.put("mode", "CITYLIST");
+				MainDispatcher.getInstance().callAction("City", "doControl", request);
 			}
 			
 		default:

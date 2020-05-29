@@ -10,7 +10,8 @@ public class CityUpdateView extends AbstractView{
 	private int id;
 	private String cityname;
 	private final String mode = "UPDATE";
-
+	
+	
 	public CityUpdateView() {
 	}
 
@@ -21,7 +22,7 @@ public class CityUpdateView extends AbstractView{
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Modifica andata a buon fine.\n");
+			System.out.println("Changes successful.\n");
 			listAll("City", "CITYLIST");
 		}
 	}
@@ -32,14 +33,15 @@ public class CityUpdateView extends AbstractView{
 	@Override
 	public void showOptions() {
 		try {
-			System.out.println("Inserisci id della città:");
-			id = Integer.parseInt(getInput());
-			System.out.println("Inserisci il nome della città :");
-			cityname = getInput();
+				System.out.println("Insert city id:");
+				id = Integer.parseInt(getInput());
+				System.out.println("Insert city name :");
+				cityname = getInput();
+			
 		} catch (Exception e) {
 
 		}
-	}
+}
 
 
 	/**
@@ -47,10 +49,11 @@ public class CityUpdateView extends AbstractView{
 	 */
 	@Override
 	public void submit() {
-		request = new Request();
-		request.put("id", id);
-		request.put("cityname", cityname);
-		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("City", "doControl", request);
+			request = new Request();
+			request.put("id", id);
+			request.put("cityname", cityname);
+			request.put("mode", mode);
+			MainDispatcher.getInstance().callAction("City", "doControl", request);
+		
 	}
 }

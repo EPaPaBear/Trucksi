@@ -19,7 +19,7 @@ public class HomeUserView extends AbstractView{
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
 		
-		System.out.println("[T]ruck [H]ystorytravel T[R]avel  [E]sci");
+		System.out.println("[T]ruck [H]ystorytravel [C]ity T[R]avel  [E]sci");
 		choice = this.getInput();
 
 	}
@@ -51,6 +51,11 @@ public class HomeUserView extends AbstractView{
 			case "e":
 				MainDispatcher.getInstance().callAction("Login", "doControl", null);
 				break;
+				
+			 case "c":
+		        this.request.put("mode", "CITYLIST");
+		        MainDispatcher.getInstance().callAction("City", "doControl", request);
+		        break;
 	
 			default:
 				MainDispatcher.getInstance().callAction("Login", "doControl", null);
