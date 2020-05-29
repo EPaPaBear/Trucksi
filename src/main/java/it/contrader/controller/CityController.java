@@ -102,7 +102,7 @@ public class CityController implements Controller {
 					//toUpperCase() mette in maiuscolo la scelta
 			switch (choice.toUpperCase()) {
 			
-			case "L":
+			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "CityRead", null);
 				break;
 				
@@ -133,8 +133,7 @@ public class CityController implements Controller {
 				
 			default:
 				System.out.println("No operation matches");
-				request.put("mode", "CITYLIST");
-				MainDispatcher.getInstance().callAction("City", "doControl", request);
+				MainDispatcher.getInstance().callView("City", null);
 			}
 			
 		default:

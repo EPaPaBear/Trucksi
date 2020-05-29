@@ -26,7 +26,12 @@ public class HomeController implements Controller {
 
 			// Qui invoca il Login Service
 			String usertype = loginService.login(username, password);
-			MainDispatcher.getInstance().setUserType(usertype);
+			if(usertype!=null) {
+				MainDispatcher.getInstance().setUserType(usertype);
+			}else {
+				usertype= "error";
+			}
+			
 			
 			// Reindirizza alla giusta view in base allo usertype
 			switch(usertype) {
@@ -40,6 +45,7 @@ public class HomeController implements Controller {
 				break;
 			
 			default:
+				System.out.println("User not found");
 				 MainDispatcher.getInstance().callView("Login", null);
 				 break;
 			}
