@@ -46,28 +46,28 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 		return htList;
 	}
 	
-	public List<Hystorytravel> getHystory(int idtravel) {
-		
-		List<Hystorytravel> htList = new ArrayList<>();
-		Connection connection = ConnectionSingleton.getInstance();
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_HYSTORY);
-			preparedStatement.setInt(1, idtravel);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			Hystorytravel ht;
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				int travelindex = resultSet.getInt("travelindex");
-				int idcity = resultSet.getInt("idcity");
-				Date hour = resultSet.getDate("hour");
-				ht = new Hystorytravel(id, idtravel, idcity, hour, travelindex);
-				htList.add(ht);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return htList;
-	}
+//	public List<Hystorytravel> getHystory(int idtravel) {
+//		
+//		List<Hystorytravel> htList = new ArrayList<>();
+//		Connection connection = ConnectionSingleton.getInstance();
+//		try {
+//			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_HYSTORY);
+//			preparedStatement.setInt(1, idtravel);
+//			ResultSet resultSet = preparedStatement.executeQuery();
+//			Hystorytravel ht;
+//			while (resultSet.next()) {
+//				int id = resultSet.getInt("id");
+//				int travelindex = resultSet.getInt("travelindex");
+//				int idcity = resultSet.getInt("idcity");
+//				Date hour = resultSet.getDate("hour");
+//				ht = new Hystorytravel(id, idtravel, idcity, hour, travelindex);
+//				htList.add(ht);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return htList;
+//	}
 	@Override
 	public Hystorytravel read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();

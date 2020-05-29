@@ -46,7 +46,7 @@ public class HystorytravelInsertView extends AbstractView {
 	        String data;
 	        data = Integer.toString(h) + "-" + Integer.toString(m) + "-" + Integer.toString(y) ;  
 	        System.out.println("Date : " + data); 
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
 	      
 	        try {
 				this.hour = dateFormat.parse(data);

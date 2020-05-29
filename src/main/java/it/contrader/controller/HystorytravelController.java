@@ -30,7 +30,7 @@ public class HystorytravelController implements Controller {
 			id = Integer.parseInt(request.get("id").toString());
 			HystorytravelDTO htDTO = hystorytravelService.read(id);
 			if(htDTO.getId()==0) {
-				System.out.println("ID non trovato");
+				System.out.println("ID not found");
 				request.put("mode", "HYSTORYTRAVELLIST"); 
 	        	MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);
 			}else {
@@ -56,7 +56,7 @@ public class HystorytravelController implements Controller {
 			hystorytravelService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package + "UserDelete", request);
+			MainDispatcher.getInstance().callView(sub_package + "HystorytravelDelete", request);
 			break;
 		case "HYSTORYTRAVELLIST":
 			List<HystorytravelDTO> hystorytravelsDTO = hystorytravelService.getAll();
@@ -67,18 +67,6 @@ public class HystorytravelController implements Controller {
 			switch (choice.toUpperCase()) {
 			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "HystorytravelRead", null);
-				break;
-				
-			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "HystorytravelInsert", null);
-				break;
-				
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "HystorytravelUpdate", null);
-				break;
-				
-			case "D":
-				MainDispatcher.getInstance().callView(sub_package + "HystorytravelDelete", null);
 				break;
 				
 			case "E":
