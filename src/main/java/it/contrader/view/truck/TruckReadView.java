@@ -44,7 +44,7 @@ public class TruckReadView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci l'ID del truck:");
+		System.out.println("Insert truck ID:");
 		id = Integer.parseInt(getInput());
 	}
 

@@ -6,7 +6,7 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
 
-public class TruckUpdateView extends AbstractView {
+public class TruckUpdateView extends AbstractView { 
 	private Request request;
 
 	private int id;
@@ -14,7 +14,7 @@ public class TruckUpdateView extends AbstractView {
 	private String licensePlate;
 	private int peopleBooking;
 	private final String mode = "UPDATE";
-
+	private String userType = MainDispatcher.getInstance().getUserType();
 	public TruckUpdateView() {
 	}
 
@@ -25,7 +25,7 @@ public class TruckUpdateView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Modifica andata a buon fine.\n");
+			System.out.println("Change successfull.\n");
 			MainDispatcher.getInstance().callView("Truck", null);
 		}
 	}
@@ -35,18 +35,25 @@ public class TruckUpdateView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-		try {
-			System.out.println("Inserisci id del truck:");
-			id = Integer.parseInt(getInput());
-			System.out.println("Inserisci il numero massimo di passeggeri:");
-			howManyPeople = Integer.parseInt(getInput());
-			System.out.println("Inserisci la targa del veicolo:");
-			licensePlate = getInput();
-			System.out.println("Inserisci il numero dei passeggeri già abbordo:");
-			peopleBooking = Integer.parseInt(getInput());
-		} catch (Exception e) {
+		
+		if (userType.equals("ADMIN")) {
+			try {
+				
+				System.out.println("Insert truck ID:");
+				id = Integer.parseInt(getInput());
+				System.out.println("Insert passenger number:");
+				howManyPeople = Integer.parseInt(getInput());
+				System.out.println("Enter vehicle plate:");
+				licensePlate = getInput();
+				System.out.println("Enter number of passengers on board:");
+				peopleBooking = Integer.parseInt(getInput());
+			} catch (Exception e) {
 
+			}
+		}else {
+	    	System.out.println("You cannot edit as a USER");
 		}
+	
 	}
 
 
@@ -56,11 +63,16 @@ public class TruckUpdateView extends AbstractView {
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("id", id);
-		request.put("howmanypeople", howManyPeople);
-		request.put("licenseplate", licensePlate);
-		request.put("peoplebooking", peopleBooking);
-		request.put("mode", mode);
+		if (userType.equals("ADMIN")) {
+			request.put("id", id);
+			request.put("howmanypeople", howManyPeople);
+			request.put("licenseplate", licensePlate);
+			request.put("peoplebooking", peopleBooking);
+			request.put("mode", mode);
+		}else {
+			request.put("mode", "TRUCKLIST");
+		}
+		
 		MainDispatcher.getInstance().callAction("Truck", "doControl", request);
 	}
 

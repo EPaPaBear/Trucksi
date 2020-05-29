@@ -12,7 +12,16 @@ import it.contrader.view.View;
  * PS: Implementa anche il pattern Singleton
  */
 public class MainDispatcher {
+private String userType;
 	
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 	/*
 	 * Costruttore Vuoto
 	 */
@@ -56,7 +65,7 @@ public class MainDispatcher {
 			Method metodo = oggettoController.getClass().getMethod(action, Request.class);
 			metodo.invoke(oggettoController, request);
 		} catch (Throwable e) {
-	
+			 System.out.println("-------------errore dispatcher------------\n "+ e.toString());
 		}
 	}
 	

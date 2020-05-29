@@ -23,7 +23,7 @@ public class HomeAdminView extends AbstractView {
 	 */
     public void showResults(Request request) {
     	if(request!=null) {
-    	System.out.println("\n Benvenuto in SAMPLE PROJECT "+request.get("username").toString() + "\n");
+    	System.out.println("\n Welcome in Trucksi "+request.get("username").toString() + "\n");
     	}
     }
 
@@ -33,8 +33,8 @@ public class HomeAdminView extends AbstractView {
      */
     public void showOptions() {
         System.out.println("-------------MENU------------\n");
-        System.out.println(" Seleziona cosa vuoi gestire:");
-        System.out.println("[U]tenti  [E]sci");
+        System.out.println(" \r\n" + "select what you want to manage:");
+        System.out.println("[U]sers [T]ruck [C]ity [H]ystorytravel  T[R]avel [E]xit");
         //Il metodo che salva l'input nella stringa choice.
         //getInput() è definito in AbstractView.
         choice = this.getInput();
@@ -51,6 +51,21 @@ public class HomeAdminView extends AbstractView {
         case "u":
         	this.request.put("mode", "USERLIST");
         	MainDispatcher.getInstance().callAction("User", "doControl", request);
+        	break;
+        
+        case "t":
+        	this.request.put("mode", "TRUCKLIST");
+        	MainDispatcher.getInstance().callAction("Truck", "doControl", request);
+        	break;
+        
+        case "h":
+        	this.request.put("mode", "HYSTORYTRAVELLIST");
+        	MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);
+        	break;
+        	
+        case "c":
+        	this.request.put("mode", "CITYLIST");
+        	MainDispatcher.getInstance().callAction("City", "doControl", request);
         	break;
  
         case "e":

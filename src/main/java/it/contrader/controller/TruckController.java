@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import java.util.List;
 
+import it.contrader.dao.LoginDAO;
 import it.contrader.dto.TruckDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.TruckService;
@@ -57,8 +58,15 @@ public class TruckController implements Controller {
 		case "READ":
 			id = Integer.parseInt(request.get("id").toString());
 			TruckDTO truckDTO = truckService.read(id);
-			request.put("truck", truckDTO);
-			MainDispatcher.getInstance().callView(sub_package + "TruckRead", request);
+			if(truckDTO.getId()==0) {
+				System.out.println("ID not found");
+				request.put("mode", "TRUCKLIST"); 
+	        	MainDispatcher.getInstance().callAction("Truck", "doControl", request);
+			}else {
+				request.put("truck", truckDTO);
+				MainDispatcher.getInstance().callView(sub_package + "TruckRead", request);
+		
+			}
 			break;
 		
 		// Arriva qui dalla TruckInsertView. Estrae i parametri da inserire e chiama il service per inserire uno user con questi parametri
@@ -116,7 +124,7 @@ public class TruckController implements Controller {
 					//toUpperCase() mette in maiuscolo la scelta
 			switch (choice.toUpperCase()) {
 			
-			case "L":
+			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "TruckRead", null);
 				break;
 				
@@ -125,10 +133,12 @@ public class TruckController implements Controller {
 				break;
 				
 			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "TruckUpdate", null);
+			
+				MainDispatcher.getInstance().callView(sub_package + "TruckUpdate", null);	
+				
 				break;
 				
-			case "C":
+			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "TruckDelete", null);
 				break;
 				
@@ -137,9 +147,15 @@ public class TruckController implements Controller {
 				break;
 
 			case "B":
-				MainDispatcher.getInstance().callView("HomeTruck", null);
+				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
+			
+			case "T":
 				
+				request.put("mode", "TRUCKLIST");
+				MainDispatcher.getInstance().callAction("Truck", "doControl", request);
+				break;
+			
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
 			}

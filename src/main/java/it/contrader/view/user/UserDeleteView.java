@@ -20,7 +20,7 @@ public class UserDeleteView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Cancellazione andata a buon fine.\n");
+			System.out.println("Cancellation succcessful c.\n");
 			MainDispatcher.getInstance().callView("User", null);
 		}
 	}
@@ -30,7 +30,7 @@ public class UserDeleteView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Inserisci id dell'utente:");
+			System.out.println("Insert user ID:");
 			id = Integer.parseInt(getInput());
 
 	}

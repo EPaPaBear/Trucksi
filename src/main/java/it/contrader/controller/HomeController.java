@@ -1,5 +1,6 @@
 package it.contrader.controller;
 
+import it.contrader.dao.LoginDAO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.LoginService;
 
@@ -24,8 +25,14 @@ public class HomeController implements Controller {
 			String password = request.get("password").toString();
 
 			// Qui invoca il Login Service
-			String usertype= loginService.login(username, password);
-
+			String usertype = loginService.login(username, password);
+			if(usertype!=null) {
+				MainDispatcher.getInstance().setUserType(usertype);
+			}else {
+				usertype= "error";
+			}
+			
+			
 			// Reindirizza alla giusta view in base allo usertype
 			switch(usertype) {
 			
@@ -37,11 +44,8 @@ public class HomeController implements Controller {
 				MainDispatcher.getInstance().callView("HomeUser", request);
 				break;
 			
-			case "TRUCK": 
-				MainDispatcher.getInstance().callView("HomeTruck", request);
-				break;
-			
 			default:
+				System.out.println("User not found");
 				 MainDispatcher.getInstance().callView("Login", null);
 				 break;
 			}
