@@ -15,7 +15,7 @@ public class TravelView extends AbstractView{
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n-------------Gestione Travel---------------- \n");
+		System.out.println("\n------------Travel Management---------------- \n");
 		System.out.println("   ---------------------------------------");
 		System.out.println("idusername " + "\t" + "idtruck \t idcity \t idhistory");
 		
@@ -23,7 +23,7 @@ public class TravelView extends AbstractView{
 
 	@Override
 	public void showOptions() {
-		System.out.println("Scegli l'operazione da effettuare ");
+		System.out.println("What operation would you like to perform?");
 		@SuppressWarnings("unchecked")
 		List<TravelDTO> htDTOList = (List<TravelDTO>) request.get("Travel");
 		for(TravelDTO ht: htDTOList ) {

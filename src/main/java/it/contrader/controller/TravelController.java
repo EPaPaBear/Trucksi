@@ -36,10 +36,10 @@ public class TravelController implements Controller {
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "UserDelete", request);
 			break;
-		case "TravelList":
+		case "TRAVELLIST":
 			List<TravelDTO> travelDTO = travelService.getAll();
 			request.put("travel", travelDTO);
-			MainDispatcher.getInstance().callView("travel", request);
+			MainDispatcher.getInstance().callView("Travel", request);
 			break;
 		case "GETCHOICE":
 			switch (choice.toUpperCase()) {

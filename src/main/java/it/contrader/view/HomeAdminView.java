@@ -34,7 +34,7 @@ public class HomeAdminView extends AbstractView {
     public void showOptions() {
         System.out.println("-------------MENU------------\n");
         System.out.println(" \r\n" + "select what you want to manage:");
-        System.out.println("[U]sers [T]ruck [C]ity [H]ystorytravel  [E]xit");
+        System.out.println("[U]sers [T]ruck [C]ity [H]ystorytravel  T[R]avel [E]xit");
         //Il metodo che salva l'input nella stringa choice.
         //getInput() è definito in AbstractView.
         choice = this.getInput();
