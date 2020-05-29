@@ -17,7 +17,6 @@ public class TravelDao implements DAO<Travel>{
 	private final String QUERY_READ = "SELECT * FROM Travel WHERE id=?";
 	private final String QUERY_UPDATE = "SELECT Travel SET idusername=? , idtruck=? , idcity=?, idhistory=? WHERE id=?;";
 	private final String QUERY_DELETE = "DELETE FROM Travel WHERE id=?";
-	private final String QUERY_HYSTORY = "SELECT * FROM Travel WHERE idusername=? ORDER BY travelindex ASC; "; // to check well
 	
 	public TravelDao(){
 		
@@ -26,25 +25,25 @@ public class TravelDao implements DAO<Travel>{
 	@Override
 	public List<Travel> getAll() {
 		// TODO Auto-generated method stub
-		List<Travel> htList = new ArrayList<>();
+		List<Travel> tvList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
-			Travel ht;
+			Travel tv;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				int idusername = resultSet.getInt("idusername");
 				int idtruck = resultSet.getInt("idtruck");
 				int idcity = resultSet.getInt("idcity");
 				int idhistory = resultSet.getInt("idhistory");
-				ht = new Travel(id,idusername, idtruck, idcity, idhistory);
-				htList.add(ht);
+				tv = new Travel(id,idusername, idtruck, idcity, idhistory);
+			    tvList.add(tv);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return htList;
+		return tvList;
 	}
 	
 	
@@ -74,7 +73,7 @@ public class TravelDao implements DAO<Travel>{
 		try {	
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1, travelToInsert.getId());
+			preparedStatement.setInt(1, travelToInsert.getIdusername());
 			preparedStatement.setInt(2, travelToInsert.getIdtruck());
 			preparedStatement.setInt(3, travelToInsert.getIdcity());
 			preparedStatement.setInt(4, travelToInsert.getIdhistory());

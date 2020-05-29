@@ -16,6 +16,9 @@ public class TravelDTO {
 	public void setIdusername(int idusername) {
 		this.idusername = idusername;
 	}
+	public int getIdusername() {
+		return idusername;
+	}
 	public int getIdtruck() {
 		return idtruck;
 	}
@@ -25,7 +28,7 @@ public class TravelDTO {
 	public int getIdcity() {
 		return idcity;
 	}
-	public void setItdicty(int idcity) {
+	public void setIdcity(int idcity) {
 		this.idcity = idcity;
 	}
 	public int getIdhistory()

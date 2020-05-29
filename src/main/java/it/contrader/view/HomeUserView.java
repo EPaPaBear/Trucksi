@@ -43,7 +43,11 @@ public class HomeUserView extends AbstractView{
 	        	this.request.put("mode", "HYSTORYTRAVELLIST");
 	        	MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);
 	        	break;
-	
+		// travel 
+			case "r": 
+				this.request.put("mode", "TRAVELLIST");
+	        	MainDispatcher.getInstance().callAction("Travel", "doControl", request);
+	        	break;
 			case "e":
 				MainDispatcher.getInstance().callAction("Login", "doControl", null);
 				break;
