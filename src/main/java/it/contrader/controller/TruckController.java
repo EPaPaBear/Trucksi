@@ -65,7 +65,7 @@ public class TruckController implements Controller {
 			}else {
 				request.put("truck", truckDTO);
 				MainDispatcher.getInstance().callView(sub_package + "TruckRead", request);
-				
+		
 			}
 			break;
 		

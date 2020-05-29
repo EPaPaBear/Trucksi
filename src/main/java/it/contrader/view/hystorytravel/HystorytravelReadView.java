@@ -17,7 +17,8 @@ public class HystorytravelReadView  extends AbstractView {
 		if (request != null) {
 			HystorytravelDTO htDTO = (HystorytravelDTO) request.get("hystorytravel");
 			System.out.println(htDTO);
-			MainDispatcher.getInstance().callView("Hystorytravel", null);
+		/* 	MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);*/
+		/*	MainDispatcher.getInstance().callView("Hystorytravel", null); */
 		}
 	}
 

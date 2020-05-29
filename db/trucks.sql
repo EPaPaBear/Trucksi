@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `sampledb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+USE `sampledb`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: sampledb
@@ -23,10 +25,10 @@ DROP TABLE IF EXISTS `city`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `city` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cityname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +37,7 @@ CREATE TABLE `city` (
 
 LOCK TABLES `city` WRITE;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
+INSERT INTO `city` VALUES (1,'palermo'),(2,'iuiu+u'),(3,'trr'),(4,'mantova');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,10 +77,10 @@ CREATE TABLE `hystorytravel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idtravel` int(11) DEFAULT NULL,
   `idcity` int(11) DEFAULT NULL,
-  `hour` time DEFAULT NULL,
+  `hour` date DEFAULT NULL,
   `travelindex` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,6 +89,7 @@ CREATE TABLE `hystorytravel` (
 
 LOCK TABLES `hystorytravel` WRITE;
 /*!40000 ALTER TABLE `hystorytravel` DISABLE KEYS */;
+INSERT INTO `hystorytravel` VALUES (1,1,1,'2020-05-28',2),(2,2,2,'2020-03-02',2);
 /*!40000 ALTER TABLE `hystorytravel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +107,7 @@ CREATE TABLE `travel` (
   `idcity` int(11) DEFAULT NULL,
   `idhystory` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,6 +116,7 @@ CREATE TABLE `travel` (
 
 LOCK TABLES `travel` WRITE;
 /*!40000 ALTER TABLE `travel` DISABLE KEYS */;
+INSERT INTO `travel` VALUES (1,1,1,1,1);
 /*!40000 ALTER TABLE `travel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +133,7 @@ CREATE TABLE `truck` (
   `licenseplate` varchar(10) DEFAULT NULL,
   `peoplebooking` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +142,7 @@ CREATE TABLE `truck` (
 
 LOCK TABLES `truck` WRITE;
 /*!40000 ALTER TABLE `truck` DISABLE KEYS */;
+INSERT INTO `truck` VALUES (2,2,'tret',2),(3,4,'ree',2);
 /*!40000 ALTER TABLE `truck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +159,7 @@ CREATE TABLE `user` (
   `password` varchar(32) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,16 +168,9 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ADMIN','admin',1),('user','USER','user',2),('truck','TRUCK','truck',3);
+INSERT INTO `user` VALUES ('admin','ADMIN','admin',1),('user','USER','user',2),('truck','TRUCK','truck',4),('user','USER','user',5);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-LOCK TABLES `truck` WRITE;
-/*!40000 ALTER TABLE `truck` DISABLE KEYS */;
-INSERT INTO `truck` VALUES (1,8,'aaaaa',9),(2,3,'aaaa',1);
-/*!40000 ALTER TABLE `truck` ENABLE KEYS */;
-UNLOCK TABLES; 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -182,6 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-26  9:49:35
-
-
+-- Dump completed on 2020-05-29 12:10:52

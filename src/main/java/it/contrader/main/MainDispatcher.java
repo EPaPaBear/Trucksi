@@ -65,7 +65,7 @@ private String userType;
 			Method metodo = oggettoController.getClass().getMethod(action, Request.class);
 			metodo.invoke(oggettoController, request);
 		} catch (Throwable e) {
-			 System.out.println("-------------errore dispatcher------------\n");
+			 System.out.println("-------------errore dispatcher------------\n "+ e.toString());
 		}
 	}
 	
