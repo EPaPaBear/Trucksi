@@ -13,37 +13,27 @@ public class TravelDeleteView extends AbstractView {
 	public TravelDeleteView() {
 	}
 
-	/**
-	 * Se la request non è nulla (ovvero se si arriva dalla mode DELETE del controller) mostra
-	 * l'esito dell'operazione
-	 */
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Cancellazione andata a buon fine.\n");
-			MainDispatcher.getInstance().callView("Truck", null);
+			System.out.println("Travel Successfully eliminated! \n");
+			MainDispatcher.getInstance().callView("Travel", null);
 		}
 	}
 
-	/**
-	 * Chiede all'utente di inserire l'id dell'truck da cancellare
-	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Inserisci id del truck:");
+			System.out.println("Insert the travel ID");
 			id = Integer.parseInt(getInput());
 
 	}
 
-	/**
-	 * impacchetta la request con l'id del truck da cancellare
-	 */
 	@Override
 	public void submit() {
 		request = new Request();
 		request.put("id", id);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("Truck", "doControl", request);
+		MainDispatcher.getInstance().callAction("Travel", "doControl", request);
 	}
 
 
