@@ -17,21 +17,23 @@ public class HystorytravelView extends AbstractView {
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n------------------- Management HystoryTravel ----------------\n");
-		System.out.println("ID \t IDtravel \t IDcity \t hour \t TravelIndex \t");
-		System.out.println("---------------------------------------------------------------\n");
-	
-		@SuppressWarnings("unchecked")
-		List<HystorytravelDTO> htDTOList = (List<HystorytravelDTO>) request.get("hystorytravel");
-		for ( HystorytravelDTO ht: htDTOList)
-			System.out.println(ht);
-		System.out.println();
+		if(request != null) {
+			System.out.println("\n------------------- Management HystoryTravel ----------------\n");
+			System.out.println("ID \t IDtravel \t IDcity \t hour \t TravelIndex");
+			System.out.println("---------------------------------------------------------------\n");
+		
+			@SuppressWarnings("unchecked")
+			List<HystorytravelDTO> htDTOList = (List<HystorytravelDTO>) request.get("hystorytravel");
+			for ( HystorytravelDTO ht: htDTOList)
+				System.out.println(ht);
+			System.out.println();
+		}
 	}
 
 	@Override
 	public void showOptions() {
 		System.out.println("          \r\n" + "Choose the operation to perform:");
-		System.out.println("[R]ead [I]nsert [M]odify [D]elete [B]ack [E]xit");
+		System.out.println("[R]ead [B]ack [E]xit");
 
 		this.choice = getInput();
 		

@@ -59,7 +59,7 @@ public class TruckController implements Controller {
 			id = Integer.parseInt(request.get("id").toString());
 			TruckDTO truckDTO = truckService.read(id);
 			if(truckDTO.getId()==0) {
-				System.out.println("ID non trovato");
+				System.out.println("ID not found");
 				request.put("mode", "TRUCKLIST"); 
 	        	MainDispatcher.getInstance().callAction("Truck", "doControl", request);
 			}else {
@@ -124,7 +124,7 @@ public class TruckController implements Controller {
 					//toUpperCase() mette in maiuscolo la scelta
 			switch (choice.toUpperCase()) {
 			
-			case "L":
+			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "TruckRead", null);
 				break;
 				
@@ -138,7 +138,7 @@ public class TruckController implements Controller {
 				
 				break;
 				
-			case "C":
+			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "TruckDelete", null);
 				break;
 				

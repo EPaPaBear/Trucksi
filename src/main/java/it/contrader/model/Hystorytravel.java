@@ -84,7 +84,7 @@ public class Hystorytravel {
 			return false;
 		if (this.hour != other.hour)
 			return false;
-		if (this.idtravel == 0 & other.idtravel != 0) 
+		if (this.idtravel == 0 && other.idtravel != 0) 
 			return false;
 		
 		return true;
