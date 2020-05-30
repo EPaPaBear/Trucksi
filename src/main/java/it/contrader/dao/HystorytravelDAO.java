@@ -24,7 +24,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 	
 	@Override
 	public List<Hystorytravel> getAll() {
-		// TODO Auto-generated method stub
+		
 		List<Hystorytravel> htList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {

@@ -68,7 +68,12 @@ public class HystorytravelController implements Controller {
 			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "HystorytravelRead", null);
 				break;
-				
+			case "D":
+				MainDispatcher.getInstance().callView(sub_package + "HystorytravelDelete", null);
+				break;
+			case "I":
+				MainDispatcher.getInstance().callView(sub_package + "HystorytravelInsert", null);
+				break;	
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
 				break;

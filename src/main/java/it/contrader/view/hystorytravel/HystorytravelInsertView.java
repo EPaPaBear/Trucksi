@@ -53,7 +53,7 @@ public class HystorytravelInsertView extends AbstractView {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-	        System.out.println("Inserisci travelindex:");
+	        System.out.println("Insert travelindex:");
 	        this.travelindex = Integer.parseInt(getInput());
 		
 	}
@@ -63,7 +63,7 @@ public class HystorytravelInsertView extends AbstractView {
 		request = new Request();
 		request.put("idtravel", idtravel);
 		request.put("idcity", idcity);
-		request.put("hour", hour);
+		request.put("hour", hour.toString());
 		request.put("travelindex", travelindex);
 	}
 	

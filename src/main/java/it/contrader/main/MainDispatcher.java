@@ -13,7 +13,7 @@ import it.contrader.view.View;
  */
 public class MainDispatcher {
 private String userType;
-	
+private boolean debug = true;	
 	public String getUserType() {
 		return userType;
 	}
@@ -59,6 +59,9 @@ private String userType;
 	 * 					all'interno del programma.
 	 */
 	public void callAction(String controller, String action, Request request) {
+		if(debug) {
+		System.out.println("metodo callAction chiamato: " + controller + " controller" );
+		}
 		Controller oggettoController = (Controller) ReflectionUtils
 				.instantiateClass("it.contrader.controller." + controller + "Controller");
 		try {
@@ -81,6 +84,9 @@ private String userType;
  * 						request, poi showOption ed infine submit()
 	 */
 	public void callView(String view, Request request) {
+		if(debug) {
+		System.out.println("metodo callView chiamato: " + view + " View" );
+		}
 		View oggettoView = (View) ReflectionUtils.instantiateClass("it.contrader.view." + view + "View");
 		oggettoView.showResults(request);
 		oggettoView.showOptions();
