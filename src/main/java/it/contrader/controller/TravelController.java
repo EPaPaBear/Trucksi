@@ -38,25 +38,25 @@ public class TravelController implements Controller {
 			break;
 		case "TRAVELLIST":
 			List<TravelDTO> travelDTO = travelService.getAll();
-			request.put("travel", travelDTO);
+			request.put("travels", travelDTO);
 			MainDispatcher.getInstance().callView("Travel", request);
 			break;
 		case "GETCHOICE":
 			switch (choice.toUpperCase()) {
-			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "travelREAD", null);
+			case "R":
+				MainDispatcher.getInstance().callView(sub_package + "TravelRead", null);
 				break;
 				
 			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "travelINSERT", null);
+				MainDispatcher.getInstance().callView(sub_package + "TravelInsert", null);
 				break;
 				
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "travelUPDATE", null);
+			case "U":
+				MainDispatcher.getInstance().callView(sub_package + "TravelUpdate", null);
 				break;
 				
-			case "C":
-				MainDispatcher.getInstance().callView(sub_package + "travelDELETE", null);
+			case "D":
+				MainDispatcher.getInstance().callView(sub_package + "TravelDelete", null);
 				break;
 				
 			case "E":

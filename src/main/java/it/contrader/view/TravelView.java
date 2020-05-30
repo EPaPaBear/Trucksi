@@ -15,23 +15,27 @@ public class TravelView extends AbstractView{
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n------------Travel Management---------------- \n");
-		System.out.println("   ---------------------------------------");
-		System.out.println("idusername " + "\t" + "idtruck \t idcity \t idhistory");
-		
+		if (request != null) {
+			System.out.println("\n-------------------User Management ----------------\n");
+			System.out.println("UsernameID \t Truck \t City Id \t History Id");
+			System.out.println("----------------------------------------------------\n");
+			
+			@SuppressWarnings("unchecked")
+			List<TravelDTO> travels = (List<TravelDTO>) request.get("travels");
+			for (TravelDTO u: travels)
+				System.out.println(u);
+			System.out.println();
+		}
 	}
-
 	@Override
 	public void showOptions() {
-		System.out.println("What operation would you like to perform?");
-		@SuppressWarnings("unchecked")
-		List<TravelDTO> htDTOList = (List<TravelDTO>) request.get("Travel");
-		for(TravelDTO ht: htDTOList ) {
-			System.out.println(ht);
-		}
-		System.out.println();
-	}
+		System.out.println("What operation would you like to perform?:");
+		System.out.println("[R]ead [I]nsert [U]pdate [D]elete list[A]ll [E]xit [B]ack");
 
+		this.choice = getInput();
+
+		
+	}
 	@Override
 	public void submit() {
 		request = new Request();
