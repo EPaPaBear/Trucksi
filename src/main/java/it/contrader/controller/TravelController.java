@@ -26,7 +26,7 @@ public class TravelController implements Controller {
 			id = Integer.parseInt(request.get("id").toString());
 			TravelDTO tvDTO = travelService.read(id);
 			request.put("travel", tvDTO);
-			MainDispatcher.getInstance().callView(sub_package + "travelREAD", request);
+			MainDispatcher.getInstance().callView(sub_package + "TravelRead", request);
 			break;
 		
 		case "DELETE":
@@ -34,7 +34,7 @@ public class TravelController implements Controller {
 			travelService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package + "UserDelete", request);
+			MainDispatcher.getInstance().callView(sub_package + "TravelDelete", request);
 			break;
 		case "TRAVELLIST":
 			List<TravelDTO> travelDTO = travelService.getAll();
