@@ -43,7 +43,6 @@ public class TravelController implements Controller {
 			break;
 		case "GETCHOICE":
 			switch (choice.toUpperCase()) {
-<<<<<<< HEAD
 			case "R":
 				MainDispatcher.getInstance().callView(sub_package + "TravelRead", null);
 				break;
@@ -58,22 +57,6 @@ public class TravelController implements Controller {
 				
 			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "TravelDelete", null);
-=======
-			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "travelREAD", null);
-				break;
-				
-			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "travelINSERT", null);
-				break;
-				
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "travelUPDATE", null);
-				break;
-				
-			case "C":
-				MainDispatcher.getInstance().callView(sub_package + "travelDELETE", null);
->>>>>>> f1c107cdfc46d1dc58359c7bbbae1079ae034aec
 				break;
 				
 			case "E":

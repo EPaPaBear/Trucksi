@@ -6,7 +6,7 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
 
-public class TruckUpdateView extends AbstractView { 
+public class TruckUpdateView extends AbstractView {
 	private Request request;
 
 	private int id;
