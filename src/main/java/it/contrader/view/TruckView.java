@@ -46,7 +46,7 @@ public class TruckView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-		System.out.println("          Scegli l'operazione da effettuare:");
+		System.out.println("Choose an operation to execute:");
 		System.out.println("[R]ead [I]nsert [U]update show [A]ll [D]elete [B]ack [E]xit");
 
 		this.choice = getInput();

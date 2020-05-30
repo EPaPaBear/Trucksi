@@ -2,7 +2,6 @@ package it.contrader.controller;
 
 import java.util.List;
 
-import it.contrader.dao.LoginDAO;
 import it.contrader.dto.TruckDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.TruckService;
