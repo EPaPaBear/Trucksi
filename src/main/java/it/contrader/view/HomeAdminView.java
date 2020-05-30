@@ -67,11 +67,14 @@ public class HomeAdminView extends AbstractView {
         	this.request.put("mode", "CITYLIST");
         	MainDispatcher.getInstance().callAction("City", "doControl", request);
         	break;
+<<<<<<< HEAD
         case "r":
         	this.request.put("mode", "TRAVELLIST");
         	MainDispatcher.getInstance().callAction("Travel", "doControl", request);
         	break;
  
+=======
+>>>>>>> f1c107cdfc46d1dc58359c7bbbae1079ae034aec
  
         case "e":
         	MainDispatcher.getInstance().callAction("Login", "doControl", null);

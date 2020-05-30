@@ -16,7 +16,11 @@ public class HystorytravelDeleteView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
+<<<<<<< HEAD
 			System.out.println("Cancellazione andata a buon fine.\n");
+=======
+			System.out.println("Hystorytravel successfully deleted\r\n");
+>>>>>>> f1c107cdfc46d1dc58359c7bbbae1079ae034aec
 			MainDispatcher.getInstance().callView("Hystorytravel", null);
 		}
 		

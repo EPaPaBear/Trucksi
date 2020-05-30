@@ -132,7 +132,11 @@ public class CityController implements Controller {
 				break;
 				
 			default:
+<<<<<<< HEAD
 				System.out.println("No operation matches");
+=======
+				System.out.println("No operation matches  ");
+>>>>>>> f1c107cdfc46d1dc58359c7bbbae1079ae034aec
 				MainDispatcher.getInstance().callView("City", null);
 			}
 			

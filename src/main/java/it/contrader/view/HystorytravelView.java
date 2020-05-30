@@ -33,7 +33,11 @@ public class HystorytravelView extends AbstractView {
 	@Override
 	public void showOptions() {
 		System.out.println("          \r\n" + "Choose the operation to perform:");
+<<<<<<< HEAD
 		System.out.println("[R]ead [B]ack [E]xit");
+=======
+		System.out.println("[R]ead [D]elete [B]ack [E]xit");
+>>>>>>> f1c107cdfc46d1dc58359c7bbbae1079ae034aec
 
 		this.choice = getInput();
 		
