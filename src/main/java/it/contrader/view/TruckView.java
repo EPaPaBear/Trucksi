@@ -28,7 +28,7 @@ public class TruckView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			System.out.println("\n------------------- Gestione truck ----------------\n");
+			System.out.println("\n------------------- Truck Management  ----------------\n");
 			System.out.println("ID\tHow Many People\tLicense Plate\tPeople Booked");
 			System.out.println("----------------------------------------------------\n");
 			
@@ -47,7 +47,7 @@ public class TruckView extends AbstractView {
 	@Override
 	public void showOptions() {
 		System.out.println("          Scegli l'operazione da effettuare:");
-		System.out.println("[L]eggi [I]nserisci [M]odifica mostra[T]utti [C]ancella [B]ack [E]sci");
+		System.out.println("[R]ead [I]nsert [U]update show [A]ll [D]elete [B]ack [E]xit");
 
 		this.choice = getInput();
 

@@ -132,7 +132,7 @@ public class TruckController implements Controller {
 				MainDispatcher.getInstance().callView(sub_package + "TruckInsert", null);
 				break;
 				
-			case "M":
+			case "U":
 			
 				MainDispatcher.getInstance().callView(sub_package + "TruckUpdate", null);	
 				
@@ -149,8 +149,8 @@ public class TruckController implements Controller {
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
-			
-			case "T":
+				
+			case "A":
 				
 				request.put("mode", "TRUCKLIST");
 				MainDispatcher.getInstance().callAction("Truck", "doControl", request);
