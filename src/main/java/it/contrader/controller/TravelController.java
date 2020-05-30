@@ -1,5 +1,6 @@
 package it.contrader.controller;
 import java.util.List;
+
 import it.contrader.dto.TravelDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.TravelService;
@@ -11,21 +12,53 @@ public class TravelController implements Controller {
 	public TravelController() {
 		this.travelService = new TravelService();
 	}
+
+	private int id;
+	private int idusername;
+	private int idtruck;
+	private int idcity;
+	private int idhistory;
+	
 	
 	@Override
 	public void doControl(Request request) {
 		
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
-		int id;
+
 
 		
 		switch (mode) {
+		
+		case "INSERT":
+			idusername =  Integer.parseInt(request.get("idusername").toString());
+			idtruck =  Integer.parseInt(request.get("idtruck").toString());
+			idcity =  Integer.parseInt(request.get("idcity").toString());
+			idhistory =  Integer.parseInt(request.get("idhistory").toString());
+			TravelDTO tvDTO = new TravelDTO(idusername, idtruck,idcity,idhistory);
+			travelService.insert(tvDTO);
+			request = new Request();
+			request.put("mode", "mode");
+			MainDispatcher.getInstance().callView(sub_package + "TravelInsert", request);
+			break;
+		case "UPDATE":
+			id = Integer.parseInt(request.get("id").toString());
+			idusername = Integer.parseInt(request.get("idusername").toString());
+			idtruck = Integer.parseInt(request.get("idtruck").toString());
+			idcity = Integer.parseInt(request.get("idcity").toString());
+			idhistory = Integer.parseInt(request.get("idhistory").toString());
+			TravelDTO traveltoupdate = new TravelDTO(idusername,idtruck,idcity,idhistory);
+			traveltoupdate.setId(id);
+			travelService.update(traveltoupdate);
+			request = new Request();
+			request.put("mode", "mode");
+			MainDispatcher.getInstance().callView(sub_package + "TravelUpdate", request);
+			break;
 			
 		case "READ":
 			id = Integer.parseInt(request.get("id").toString());
-			TravelDTO tvDTO = travelService.read(id);
-			request.put("travel", tvDTO);
+			TravelDTO tvDTO1 = travelService.read(id);
+			request.put("travel", tvDTO1);
 			MainDispatcher.getInstance().callView(sub_package + "TravelRead", request);
 			break;
 		
@@ -65,6 +98,10 @@ public class TravelController implements Controller {
 
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
+				break;
+			case "A":
+				request.put("mode", "TRAVELLIST");
+				MainDispatcher.getInstance().callAction("Travel", "doControl", request);
 				break;
 				
 			default:

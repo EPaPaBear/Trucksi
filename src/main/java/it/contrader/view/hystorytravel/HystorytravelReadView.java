@@ -2,7 +2,6 @@ package it.contrader.view.hystorytravel;
 
 import it.contrader.controller.Request;
 import it.contrader.dto.HystorytravelDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
@@ -17,8 +16,7 @@ public class HystorytravelReadView  extends AbstractView {
 		if (request != null) {
 			HystorytravelDTO htDTO = (HystorytravelDTO) request.get("hystorytravel");
 			System.out.println(htDTO);
-		/* 	MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);*/
-		/*	MainDispatcher.getInstance().callView("Hystorytravel", null); */
+			MainDispatcher.getInstance().callView("Hystorytravel", null); 
 		}
 	}
 

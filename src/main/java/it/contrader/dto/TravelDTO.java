@@ -7,6 +7,27 @@ public class TravelDTO {
 	private int idcity;
 	private int idhistory;
 	
+	public TravelDTO(){
+		
+	}
+	
+	public TravelDTO(int idusername, int idtruck, int idcity, int idhistory) {
+		this.idusername = idusername;
+		this.idtruck = idtruck;
+		this.idcity = idcity;
+		this.idhistory = idhistory;
+	}
+	
+	public TravelDTO(int id, int idusername, int idtruck, int idcity, int idhistory) {
+		this.id = id;
+		this.idusername = idusername;
+		this.idtruck = idtruck;
+		this.idcity = idcity;
+		this.idhistory = idhistory;
+	}
+	
+	
+	
 	public int getId() {
 		return id;
 	}
