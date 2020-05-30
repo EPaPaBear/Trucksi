@@ -32,7 +32,7 @@ public class UserInsertView extends AbstractView{
 	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Insert user ID:");
+			System.out.println("Insert username:");
 			username = getInput();
 			System.out.println("Insert user password:");
 			password = getInput();
