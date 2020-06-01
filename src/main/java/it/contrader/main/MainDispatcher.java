@@ -13,7 +13,7 @@ import it.contrader.view.View;
  */
 public class MainDispatcher {
 private String userType;
-private boolean debug=true;
+private boolean debug= Utils.utils_conf();
 	
 	public String getUserType() {
 		return userType;
@@ -60,6 +60,7 @@ private boolean debug=true;
 	 * 					all'interno del programma.
 	 */
 	public void callAction(String controller, String action, Request request) {
+		
 		if (debug) {System.out.print("Instanziato controller: "+ controller + "\n");}
 		Controller oggettoController = (Controller) ReflectionUtils
 				.instantiateClass("it.contrader.controller." + controller + "Controller");
@@ -73,7 +74,7 @@ private boolean debug=true;
 
 		    // generic exception handling
 		    e.printStackTrace();
-		    System.out.println("testo"+e.getCause().toString());
+		  if(debug) {  System.out.println("testo"+e.getCause().toString());}
 		}
 	}
 	
