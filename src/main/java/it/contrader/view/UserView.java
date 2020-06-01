@@ -17,7 +17,7 @@ public class UserView extends AbstractView {
 
 	private Request request;
 	private String choice;
-
+	private String userType = MainDispatcher.getInstance().getUserType();
 	public UserView() {
 		
 	}
@@ -59,6 +59,26 @@ public class UserView extends AbstractView {
 	 */
 	@Override
 	public void submit() {
+		String[] confronto_user = { "r", "i", "a", "b", "e" };
+		//Confronto le possibilità dei vari users
+		if(userType.equals("ADMIN")) {
+
+		}
+		else if (userType.equals("USER")){
+			boolean trovato = false;
+			//Confronto l'inserimento dell'utente con i possibili vari per quel utente
+			for(String confronto : confronto_user) {
+				if(this.choice.equals(confronto)) trovato= true;
+			}
+			//Se non ho trovato il valore inserito tra le possibilità di quel utenteritorno errore
+			if(!trovato) this.choice = "ERROR";
+			
+			//if(this.choice.equals("r") || this.choice.equals("i") || this.choice.equals("a") || this.choice.equals("b") || this.choice.equals("e")) {
+			//}
+			//else {
+			//	this.choice = "ERROR";
+			//}
+		}
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "GETCHOICE");

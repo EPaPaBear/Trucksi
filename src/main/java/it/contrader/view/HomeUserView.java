@@ -8,6 +8,7 @@ public class HomeUserView extends AbstractView{
 
 	String choice;
 	private Request request;
+	private String userType = MainDispatcher.getInstance().getUserType();
 
 	@Override
 	public void showResults(Request request) {
@@ -28,6 +29,21 @@ public class HomeUserView extends AbstractView{
 	public void submit() {
 		request = new Request();
 		
+		String[] confronto_user = { "r", "i", "a", "b", "e" };
+		//Confronto le possibilità dei vari users
+		if(userType.equals("ADMIN")) {
+
+		}
+		else if (userType.equals("USER")){
+			boolean trovato = false;
+			//Confronto l'inserimento dell'utente con i possibili vari per quel utente
+			for(String confronto : confronto_user) {
+				if(this.choice.equals(confronto)) trovato= true;
+			}
+			//Se non ho trovato il valore inserito tra le possibilità di quel utenteritorno errore
+			if(!trovato) this.choice = "ERROR";
+			
+		}
 		switch (choice) {
 			case "u":
 	        	this.request.put("mode", "USERLIST");
