@@ -30,7 +30,7 @@ public class CityReadView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci l'ID della città:");
+		System.out.println("Insert id city:");
 		id = Integer.parseInt(getInput());
 	}
 
