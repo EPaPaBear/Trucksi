@@ -16,7 +16,7 @@ public class HystorytravelDeleteView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Cancellazione andata a buon fine.\n");
+			System.out.println("Successfull deleted \n");
 			MainDispatcher.getInstance().callView("Hystorytravel", null);
 		}
 		
@@ -24,7 +24,7 @@ public class HystorytravelDeleteView extends AbstractView {
 
 	@Override
 	public void showOptions() {
-		System.out.println("Insert idtravel:");
+		System.out.println("Insert id Hystory:");
 		id = Integer.parseInt(getInput());
 		
 	}
