@@ -20,7 +20,7 @@ public class TruckDeleteView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Cancellazione andata a buon fine.\n");
+			System.out.println("Successfull deleted \n");
 			MainDispatcher.getInstance().callView("Truck", null);
 		}
 	}
@@ -30,7 +30,7 @@ public class TruckDeleteView extends AbstractView {
 	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Inserisci id del truck:");
+			System.out.println("Insert truck ID:");
 			id = Integer.parseInt(getInput());
 
 	}

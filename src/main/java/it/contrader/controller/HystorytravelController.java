@@ -52,7 +52,6 @@ public class HystorytravelController implements Controller {
 			 break;
 		case "DELETE":
 			id = Integer.parseInt(request.get("id").toString());
-			//Qui chiama il service
 			hystorytravelService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
@@ -72,7 +71,14 @@ public class HystorytravelController implements Controller {
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
 				break;
-
+			case "D":
+				MainDispatcher.getInstance().callView(sub_package +"HystorytravelDelete", null);
+				break;
+	case "A":
+				
+				request.put("mode", "HYSTORYTRAVELLIST");
+				MainDispatcher.getInstance().callAction("Hystorytravel", "doControl", request);
+				break;
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;

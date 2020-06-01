@@ -34,7 +34,7 @@ public class TruckInsertView extends AbstractView{
 	 */
 	@Override
 	public void showOptions() {
-			System.out.println("Insert truck ID::");
+			System.out.println("Insert howmany people is possible to insert in truck:");
 			howManyPeople = Integer.parseInt(getInput());
 			System.out.println("Enter vehicle plate:");
 			licensePlate = getInput();
