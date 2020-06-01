@@ -20,7 +20,7 @@ public class TruckDeleteView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
-			System.out.println("Cancellazione andata a buon fine.\n");
+			System.out.println("Sccessfull deleted \n");
 			MainDispatcher.getInstance().callView("Truck", null);
 		}
 	}

@@ -66,8 +66,14 @@ private boolean debug=true;
 		try {
 			Method metodo = oggettoController.getClass().getMethod(action, Request.class);
 			metodo.invoke(oggettoController, request);
-		} catch (Throwable e) {
+	/*	} catch (Throwable e) {
 			 System.out.println("-------------errore dispatcher------------\n "+ e.toString());
+		} */
+		} catch (Throwable e) {
+
+		    // generic exception handling
+		    e.printStackTrace();
+		    System.out.println("testo"+e.getCause().toString());
 		}
 	}
 	
