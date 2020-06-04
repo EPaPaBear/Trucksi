@@ -18,5 +18,7 @@
   <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="homeadmin.jsp">Home</a>
   <a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="UserServlet?mode=userlist">Users</a>
   <a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="TruckServlet?mode=trucklist">Trucks</a>
+  <a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="HystorytravelServlet?mode=hystorytravellist">Hystorytravel</a>
+ 
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
