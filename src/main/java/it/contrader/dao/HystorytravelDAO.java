@@ -11,8 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import it.contrader.main.ConnectionSingleton;
+
 import it.contrader.model.Hystorytravel;
+import it.contrader.utils.ConnectionSingleton;
 
 public class HystorytravelDAO implements DAO<Hystorytravel>{
 	
@@ -107,7 +108,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 		       
 		//	preparedStatement.setDate(3, Date.valueOf(hystorytravelToInsert.getDate()));
 			System.out.println(hystorytravelToInsert.getDate());
-			preparedStatement.setDate(parameterIndex, x, cal);(3, Date.parse(hystorytravelToInsert.getDate()));
+		//	preparedStatement.setDate(parameterIndex, x, cal);(3, Date.parse(hystorytravelToInsert.getDate()));
 			
 			
 			preparedStatement.setInt(4, hystorytravelToInsert.getTravelindex());
@@ -148,7 +149,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 					PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 					preparedStatement.setInt(1, htToUpdate.getIdtravel());
 					preparedStatement.setInt(2, htToUpdate.getIdcity());
-					preparedStatement.setDate(3, Date.valueOf(htToUpdate.getDate()));
+				//	preparedStatement.setDate(3, Date.valueOf(htToUpdate.getDate()));
 					preparedStatement.setInt(4,  htToUpdate.getTravelindex());
 					System.out.println(preparedStatement.toString());
 					int a = preparedStatement.executeUpdate();
