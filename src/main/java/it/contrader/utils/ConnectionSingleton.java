@@ -27,7 +27,7 @@ public class ConnectionSingleton {
                 String username="root";
                 String password ="root";
                 String jdbcAdditionalParams="useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useLegacyDatetimeCode=false&UseSSL=false"; //Added string UseSSL= false to force connection without SSL encryption protocol
-                Class<?> c = Class.forName(driver);
+//                Class<?> c = Class.forName(driver);
 //                System.out.println("Ho caricato: " + c.getName());
                 String url = "jdbc:" + vendor + "://" + host + ":" + port + "/" + dbName+"?"+jdbcAdditionalParams;
                 connection = (Connection) DriverManager.getConnection(url, username, password);
