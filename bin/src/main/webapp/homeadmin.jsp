@@ -13,7 +13,12 @@
 <body>
 <%@include file="css/header.jsp"%>
 
-<%@ include file="/common-content/menu.jsp" %>
+
+<div class="navbar">
+  <a class="active" href="homeadmin.jsp">Home</a>
+  <a href="UserServlet?mode=userlist">Users</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 
 <div class="main" >
 <h1 style="color: #39A8E8;" >Welcome <b><u>${user.getUsername()}</u></b></h1> <!-- Prints Welcome + name of user -->

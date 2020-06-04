@@ -1,31 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.TruckDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/salvatorestyle.css" rel="stylesheet">
-<title>Read User</title>
+<title>Read Track</title>
 </head>
 <body>
 <%@ include file="/css/header.jsp" %>
-
 <%@ include file="/common-content/menu.jsp" %>
 
 <div class="main">
-<%UserDTO u = (UserDTO) request.getAttribute("dto");%>
+<%TruckDTO t = (TruckDTO) request.getAttribute("dto");%> 
 
 
-<table>
+<table class="full">
 	<tr> 
-		<th>Username</th>
-		<th>Password</th>
-		<th>Usertype</th>
+		<th>License Plate</th>
+		<th>How Many People</th>
+		<th>People Booking</th>
 	</tr>
 	<tr>
-		<td><%=u.getUsername()%></td>
-		<td> <%=u.getPassword()%></td>
-		<td> <%=u.getUsertype()%></td>
+		<td> <%=t.getLicensePlate()%></td>
+		<td> <%=t.getHowManyPeople()%></td>
+		<td> <%=t.getPeopleBooking()%></td>
 	</tr>	
 </table>
 

@@ -120,7 +120,6 @@ div.text{
 	margin-right: 5%;
 	margin-left: 5%;
 	margin-bottom: 5%;
-	margin-top: 20px;
 	width: 90%;
 	font-size: 15px;
 	text-align: justify;
@@ -226,10 +225,6 @@ table {
     -moz-border-radius:4px;
 }
 
-table.full{
-	width: 100%;
-}
-
 
 th, td {
 	text-align: center;
@@ -319,24 +314,6 @@ form {
 .col-25 {
   float: left;
   width: 25%;
-  margin-top: 6px;
-}
-
-.col-40 {
-  float: left;
-  width: 40%;
-  margin-top: 6px;
-}
-
-.col-50 {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-}
-
-.col-60 {
-  float: left;
-  width: 60%;
   margin-top: 6px;
 }
 
@@ -465,4 +442,5 @@ div.navbar a.active {
 ::placeholder {
 	
 	color: #000000;
+}
 }

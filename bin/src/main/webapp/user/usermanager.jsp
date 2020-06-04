@@ -12,13 +12,18 @@
 <body>
 <%@ include file="/css/header.jsp" %>
 
-<%@ include file="/common-content/menu.jsp" %>
-
+<div class="navbar">
+  <a class="" href="homeadmin.jsp">Home</a>
+  <a href="UserServlet?mode=userlist" class="active">Users</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
 <div class="main">
 	<%
 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
 	%>
-	
+
+<br>
+
 	<table>
 		<tr>
 			<th>Username</th>
