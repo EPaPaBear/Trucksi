@@ -19,13 +19,18 @@
 <div class="main">
 	<%
 		List<TruckDTO> list = (List<TruckDTO>) request.getAttribute("list");
-		UserDTO user = (UserDTO) session.getAttribute("user") ; 
-		String user_type = user.getUsertype().toUpperCase();
+		UserDTO user = (UserDTO) request.getSession().getAttribute("user") ; 
+		String user_type = ""; 
+		if(user==null){
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		}else{
+			user_type = user.getUsertype().toUpperCase();	
+		}
+		 
+		//System.out.println(user_type);
 	%>
 	
-<br>
-
-	<table <% if(!user_type.equals("ADMIN")) out.println("class=\"full\""); %>>
+	<table <% if(!user_type.equals("ADMIN")) out.println("class=\"full\""); %>> 
 		<tr>
 			<th>License Plate</th>
 			<th>How Many People</th>

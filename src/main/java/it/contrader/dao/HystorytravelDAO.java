@@ -99,22 +99,17 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 	public boolean insert(Hystorytravel hystorytravelToInsert) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
-			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setInt(1, hystorytravelToInsert.getIdtravel());
 			preparedStatement.setInt(2, hystorytravelToInsert.getIdcity());
-			
 			System.out.println(hystorytravelToInsert.toString());
-		       
 		//	preparedStatement.setDate(3, Date.valueOf(hystorytravelToInsert.getDate()));
 			System.out.println(hystorytravelToInsert.getDate());
 		//	preparedStatement.setDate(parameterIndex, x, cal);(3, Date.parse(hystorytravelToInsert.getDate()));
-			
-			
 			preparedStatement.setInt(4, hystorytravelToInsert.getTravelindex());
-			System.out.println("++++++++++++++++++++++++++++++++++++");
-			System.out.println(preparedStatement.toString() + "\n");
-			System.out.println("+++++++++++++++++++++++++++++++++++++");
+		//	System.out.println("++++++++++++++++++++++++++++++++++++");
+		//	System.out.println(preparedStatement.toString() + "\n");
+		//	System.out.println("+++++++++++++++++++++++++++++++++++++");
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -129,7 +124,6 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 		// Check if id is present
 				if (htToUpdate.getId() == 0)
 					return false;
-	
 				Hystorytravel htRead = read(htToUpdate.getId());
 				if(!htRead.equals(htToUpdate)) {
 					try {
@@ -160,14 +154,8 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 					} catch (SQLException e) {
 						return false;
 					}
-					
-					
 				}
-				
-				return false;
-	
-				
-				
+				return false;	
 	}
 
 	@Override
