@@ -20,6 +20,7 @@
   <a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="TruckServlet?mode=trucklist">Trucks</a>
   <a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="HystorytravelServlet?mode=hystorytravellist">Hystorytravel</a>
   <a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="CityServlet?mode=citylist">Cities</a>
+  <a <% if(confronto.equals("travel")) out.println("class=\"active\""); %> href="TravelServlet?mode=travellist">Travel</a>
  
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
