@@ -1,0 +1,14 @@
+it\contrader\converter\AbstractConverter.class
+it\contrader\dto\LoginDTO.class
+it\contrader\dto\UserDTO.class
+it\contrader\SpringWebApplication.class
+it\contrader\model\User$Usertype.class
+it\contrader\controller\AbstractController.class
+it\contrader\model\User.class
+it\contrader\service\ServiceDTO.class
+it\contrader\controller\UserController.class
+it\contrader\service\AbstractService.class
+it\contrader\converter\Converter.class
+it\contrader\converter\UserConverter.class
+it\contrader\service\UserService.class
+it\contrader\dao\UserRepository.class
