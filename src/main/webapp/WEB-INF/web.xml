@@ -51,6 +51,18 @@
     <servlet-name>TruckServlet</servlet-name>
     <url-pattern>/TruckServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>CityServlet</display-name>
+    <servlet-name>CityServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.CityServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CityServlet</servlet-name>
+    <url-pattern>/CityServlet</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
     <description></description>
     <display-name>HystorytravelServlet</display-name>
