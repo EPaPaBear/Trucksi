@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,9 +24,27 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 	private final String QUERY_UPDATE = "SELECT hystorytravel SET idtravel=? , idcity=? , date=?, travelindex=? WHERE id=?;";
 	private final String QUERY_DELETE = "DELETE FROM hystorytravel WHERE id=?";
 	private final String QUERY_HYSTORY = "SELECT * FROM hystorytravel WHERE idtravel=? ORDER BY travelindex ASC; ";
+	private final String QUERY_LASTTRAVELINDEX = "SELECT MAX(travelindex) as travelindex FROM sampledb.hystorytravel WHERE idtravel = ? ";
 	public HystorytravelDAO() {}
 	private Date d ;
+	public int lasttravelindex(int idtravel) {
+		Connection connection = ConnectionSingleton.getInstance();
 	
+		try {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_LASTTRAVELINDEX);
+			preparedStatement.setInt(1, idtravel);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			int travelindex = resultSet.getInt("travelindex");
+			return travelindex;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	@Override
 	public List<Hystorytravel> getAll() {
 		// TODO Auto-generated method stub
@@ -78,7 +97,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1, id);
-			System.out.println(preparedStatement.toString());
+			//System.out.println(preparedStatement.toString());
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			int idtravel = resultSet.getInt("idtravel");
@@ -94,7 +113,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 		}
 	}
 
-	@SuppressWarnings("deprecation")
+	//@SuppressWarnings("deprecation")
 	@Override
 	public boolean insert(Hystorytravel hystorytravelToInsert) {
 		Connection connection = ConnectionSingleton.getInstance();
@@ -102,20 +121,32 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setInt(1, hystorytravelToInsert.getIdtravel());
 			preparedStatement.setInt(2, hystorytravelToInsert.getIdcity());
-			System.out.println(hystorytravelToInsert.toString());
+		//	System.out.println(hystorytravelToInsert.toString());
+		    String dateString=hystorytravelToInsert.getDate(); 
+		    
+		    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		    Date myDate = formatter.parse(dateString);
+		   
+		    
 		//	preparedStatement.setDate(3, Date.valueOf(hystorytravelToInsert.getDate()));
-			System.out.println(hystorytravelToInsert.getDate());
+		//	System.out.println(hystorytravelToInsert.getDate());
 		//	preparedStatement.setDate(parameterIndex, x, cal);(3, Date.parse(hystorytravelToInsert.getDate()));
-			preparedStatement.setInt(4, hystorytravelToInsert.getTravelindex());
+			preparedStatement.setDate(3, getCurrentDate(myDate));
+			preparedStatement.setInt(4, this.lasttravelindex(hystorytravelToInsert.getIdtravel())+10);
 		//	System.out.println("++++++++++++++++++++++++++++++++++++");
 		//	System.out.println(preparedStatement.toString() + "\n");
 		//	System.out.println("+++++++++++++++++++++++++++++++++++++");
 			preparedStatement.execute();
 			return true;
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
 			System.out.println("sql excelption"+e.toString());
 			return false;
 		}
+	}
+	
+	private  java.sql.Date getCurrentDate(java.util.Date date) {
+	    
+	    return new java.sql.Date(date.getTime());
 	}
 
 	@Override
@@ -145,7 +176,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 					preparedStatement.setInt(2, htToUpdate.getIdcity());
 				//	preparedStatement.setDate(3, Date.valueOf(htToUpdate.getDate()));
 					preparedStatement.setInt(4,  htToUpdate.getTravelindex());
-					System.out.println(preparedStatement.toString());
+			//		System.out.println(preparedStatement.toString());
 					int a = preparedStatement.executeUpdate();
 					if (a > 0)
 						return true;

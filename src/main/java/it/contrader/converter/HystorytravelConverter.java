@@ -10,7 +10,7 @@ public class HystorytravelConverter implements Converter<Hystorytravel, Hystoryt
 
 	@Override
 	public HystorytravelDTO toDTO(Hystorytravel ht) {
-		System.out.print("hystorytravelconverter todto \n");
+		//System.out.print("hystorytravelconverter todto \n");
 		HystorytravelDTO htDTO = new HystorytravelDTO();
 		if(ht != null) {
 			htDTO.setId(ht.getId());
@@ -25,7 +25,7 @@ public class HystorytravelConverter implements Converter<Hystorytravel, Hystoryt
 
 	@Override
 	public Hystorytravel toEntity(HystorytravelDTO htDTO) {
-		System.out.print("hystorytravelconverter to entity \n");
+		//System.out.print("hystorytravelconverter to entity \n");
 		Hystorytravel ht = new Hystorytravel();
 		if (htDTO != null) {
 			ht.setDate(htDTO.getDate());
@@ -33,7 +33,7 @@ public class HystorytravelConverter implements Converter<Hystorytravel, Hystoryt
 			ht.setIdcity(htDTO.getIdcity());
 			ht.setIdtravel(htDTO.getIdtravel());
 			ht.setTravelindex(htDTO.getTravelindex());
-			System.out.println("HYSTORYTRAVEL converter ht to string:"+ ht.toString()+ "\n");
+			//System.out.println("HYSTORYTRAVEL converter ht to string:"+ ht.toString()+ "\n");
 		}
 		return ht;
 		
@@ -41,7 +41,7 @@ public class HystorytravelConverter implements Converter<Hystorytravel, Hystoryt
 
 	@Override
 	public List<HystorytravelDTO> toDTOList(List<Hystorytravel> htList) {
-		System.out.print("hystorytravelconverter todtolist \n");
+		//System.out.print("hystorytravelconverter todtolist \n");
 		List<HystorytravelDTO> htDTOList = new ArrayList<HystorytravelDTO>();
 		for (Hystorytravel ht : htList) {
 			htDTOList.add(toDTO(ht));

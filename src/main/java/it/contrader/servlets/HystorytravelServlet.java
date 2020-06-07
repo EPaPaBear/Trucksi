@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.contrader.service.CityService;
 import it.contrader.service.HystorytravelService;
 import it.contrader.service.Service;
+import it.contrader.service.TravelService;
 import it.contrader.dto.*;
 
 public class HystorytravelServlet extends HttpServlet {
@@ -24,7 +26,24 @@ public class HystorytravelServlet extends HttpServlet {
 		Service<HystorytravelDTO> service = new HystorytravelService();
 		List<HystorytravelDTO>listDTO = service.getAll();
 		request.setAttribute("list", listDTO);
+		
 	}
+	public void updateListTravel(HttpServletRequest request) {
+		Service<TravelDTO> serviceT = new TravelService();
+		List<TravelDTO> listTravelDTO = serviceT.getAll();
+		request.setAttribute("listT", listTravelDTO);
+	}
+	
+	public void updateListCity(HttpServletRequest request) {
+		Service<CityDTO> serviceC = new CityService();
+		List<CityDTO> listCityDTO = serviceC.getAll();
+		request.setAttribute("listC", listCityDTO);
+	}
+	public void getTravelIndex(HttpServletRequest request) {
+		int travelIndex = 0;
+		request.setAttribute("travelIndex", travelIndex);
+	}
+	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		Service<HystorytravelDTO> service = new HystorytravelService();
@@ -35,6 +54,9 @@ public class HystorytravelServlet extends HttpServlet {
 		switch(mode.toUpperCase()) {
 			case "HYSTORYTRAVELLIST":
 				updateList(request);
+				updateListTravel(request);
+				updateListCity(request);
+				getTravelIndex(request);
 				getServletContext().getRequestDispatcher("/hystorytravel/hystorytravelmanager.jsp").forward(request, response);
 				break;
 			case "READ":
@@ -51,9 +73,14 @@ public class HystorytravelServlet extends HttpServlet {
 				}
 				break;
 			case "INSERT":
-				int idcity =  Integer.parseInt(request.getParameter("idcity"));
-				int idtravel = Integer.parseInt(request.getParameter("idtravel"));
-				String datetime = request.getParameter("datetime");
+				updateList(request);
+				updateListTravel(request);
+				updateListCity(request);
+				getTravelIndex(request);
+				
+				int idcity =  Integer.parseInt(request.getParameter("city"));
+				int idtravel = Integer.parseInt(request.getParameter("travel"));
+				String datetime = request.getParameter("date");
 				int travelindex = Integer.parseInt(request.getParameter("travelindex"));
 				dto = new HystorytravelDTO(idcity,idtravel,datetime, travelindex);
 				ans = service.insert(dto);
