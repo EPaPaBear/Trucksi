@@ -36,7 +36,7 @@
 		int travelindex = (int)request.getAttribute("travelIndex");
 	
 	%>
-	
+	<!--  
 <script>
   	$( function() {
     	$( "#dialog" ).dialog();
@@ -44,7 +44,7 @@
 </script>
 <div id="dialog" title="Basic dialog">
   <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
+</div> -->
 	<table <% if(!user_type.equals("ADMIN")) out.println("class=\"full\""); %>> 
 		<tr>
 			<th>idtravel</th>
@@ -59,14 +59,14 @@
 			for (HystorytravelDTO t : list) { 
 		%>
 		<tr>
-			<td><a href=TruckServlet?mode=read&id=<%=t.getId()%> >
+			<td><a href=HystorytravelServlet?mode=read&id=<%=t.getId()%> >
 			<%=t.getIdtravel() %></a></td>
 			<td><%=t.getIdcity()%></td>
 			<td><%=t.getDate()%></td>
 			<td><%=t.getTravelindex() %> </td>
 			<% if(user_type.equals("ADMIN")){ %>
-				<td><a class="edit" href=TruckServlet?mode=read&update=true&id=<%=t.getId()%>></a>&nbsp;&nbsp;<!-- Blank fields -->
-					<a class="delete" href=TruckServlet?mode=delete&id=<%=t.getId()%>></a>	<!-- Icon links within themed actions  -->
+				<td><a class="edit" href=HystorytravelServlet?mode=read&update=true&id=<%=t.getId()%>></a>&nbsp;&nbsp;<!-- Blank fields -->
+					<a class="delete" href=HystorytravelServlet?mode=delete&id=<%=t.getId()%>></a>	<!-- Icon links within themed actions  -->
 				</td>
 			<% } %>
 		</tr>

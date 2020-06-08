@@ -62,14 +62,15 @@ public class HystorytravelServlet extends HttpServlet {
 			case "READ":
 				id = Integer.parseInt(request.getParameter("id"));
 				dto = service.read(id);
+			
 				request.setAttribute("dto", dto);
-				
+				updateListCity(request);
 				if (request.getParameter("update")==null) {
 					getServletContext().getRequestDispatcher("/hystorytravel/readhystorytravel.jsp").forward(request, response);
 				}
 				
 				else {
-					getServletContext().getRequestDispatcher("/hystorytravel/updateystorytravel.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/hystorytravel/updatehystorytravel.jsp").forward(request, response);
 				}
 				break;
 			case "INSERT":
@@ -102,6 +103,10 @@ public class HystorytravelServlet extends HttpServlet {
 				 getServletContext().getRequestDispatcher("/hystorytravel/hystorytravelmanager.jsp").forward(request, response);
 				 break;
 			case "DELETE":
+				updateList(request);
+				updateListTravel(request);
+				updateListCity(request);
+				getTravelIndex(request);
 				 id = Integer.parseInt(request.getParameter("id"));
 				 ans = service.delete(id);
 				 request.setAttribute("ans", ans);
