@@ -1,6 +1,6 @@
 package it.contrader.dto;
 
-import java.util.Date;
+
 
 public class HystorytravelDTO {
 	private int id;

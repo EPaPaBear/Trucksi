@@ -90,9 +90,14 @@ public class HystorytravelServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/hystorytravel/hystorytravelmanager.jsp").forward(request, response);
 				break;
 			case "UPDATE":
-				 idcity =  Integer.parseInt(request.getParameter("idcity"));
-				 idtravel = Integer.parseInt(request.getParameter("idtravel"));
-				 datetime = request.getParameter("datetime");
+				updateList(request);
+				updateListTravel(request);
+				updateListCity(request);
+				getTravelIndex(request);
+				System.out.println("test");
+				 idcity =  Integer.parseInt(request.getParameter("city"));
+				 idtravel = Integer.parseInt(request.getParameter("travel"));
+				 datetime = request.getParameter("date");
 				 travelindex = Integer.parseInt(request.getParameter("travelindex"));
 				 dto = new HystorytravelDTO(idcity,idtravel,datetime, travelindex);
 				 
@@ -103,10 +108,10 @@ public class HystorytravelServlet extends HttpServlet {
 				 getServletContext().getRequestDispatcher("/hystorytravel/hystorytravelmanager.jsp").forward(request, response);
 				 break;
 			case "DELETE":
-				updateList(request);
-				updateListTravel(request);
-				updateListCity(request);
-				getTravelIndex(request);
+				 updateList(request);
+				 updateListTravel(request);
+				 updateListCity(request);
+				 getTravelIndex(request);
 				 id = Integer.parseInt(request.getParameter("id"));
 				 ans = service.delete(id);
 				 request.setAttribute("ans", ans);

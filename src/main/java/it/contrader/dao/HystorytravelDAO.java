@@ -174,6 +174,11 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 					PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 					preparedStatement.setInt(1, htToUpdate.getIdtravel());
 					preparedStatement.setInt(2, htToUpdate.getIdcity());
+					   String dateString=htToUpdate.getDate(); 
+					    
+					    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+					    Date myDate = formatter.parse(dateString);
+					    preparedStatement.setDate(3, getCurrentDate(myDate));
 				//	preparedStatement.setDate(3, Date.valueOf(htToUpdate.getDate()));
 					preparedStatement.setInt(4,  htToUpdate.getTravelindex());
 			//		System.out.println(preparedStatement.toString());
@@ -182,7 +187,7 @@ public class HystorytravelDAO implements DAO<Hystorytravel>{
 						return true;
 					else
 						return false;
-					} catch (SQLException e) {
+					} catch (SQLException | ParseException e) {
 						return false;
 					}
 				}
