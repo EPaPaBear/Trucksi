@@ -21,6 +21,15 @@
 		confronto="home";
 	}
  
+	
+	String get_uri = request.getRequestURI();
+	boolean stampa = true ;
+	
+	if(get_uri != "" && get_uri != null){
+		if(get_uri.equals("/singin.jsp")) stampa = false;
+	}
+	
+	if(stampa){ 
 %>
 
 <div class="navbar">
@@ -33,3 +42,5 @@
  <a id="username">Nome utente</a>
   <a href="/user/logout" id="logout">Logout</a>
 </div>
+
+<% } %>

@@ -2,8 +2,6 @@ package it.contrader.dto;
 
 import java.util.List;
 
-import javax.persistence.OneToMany;
-
 import it.contrader.model.Driver;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
@@ -24,7 +22,6 @@ public class UserDTO {
 
 	private Usertype usertype;
 	
-	@OneToMany
 	private List<Driver> drivers; 
 	
 }

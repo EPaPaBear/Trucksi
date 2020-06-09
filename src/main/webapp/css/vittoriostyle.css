@@ -76,6 +76,16 @@ h2 {
 	z-index:1;
 }
 
+.singin{
+	heigth:50%;
+	width:20%;
+	margin-left:35.6%;
+	margin-right:44.4%;
+	margin-top:10%;
+	margin-bottom:auto;
+	z-index:1;
+}
+
 .login input {
 	text-align: center;
 	float: center;
@@ -85,7 +95,7 @@ h2 {
 	margin-right:5%;
 }
 
-.login label {
+.login label, .singin label {
 	float: center;
 	clear: both;
 	width:100%;
@@ -236,13 +246,12 @@ label {
 }
 
 
-button {
+button,.bottone {
   -webkit-transition-duration: 0.1s; /* Safari */
   transition-duration: 0.1s;
   background-color:  #00a990;
   border: none;
   color: white;
-  padding: 3% 3%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -256,11 +265,22 @@ button {
   width:80%;
 }
 
-button:hover {
+button:hover, .bottone:hover {
   background-color:  #00ccad; 
   color: white;
 }
 
+button {
+	 padding: 3% 3%;
+}
+
+.bottone {
+	 padding: 3% 0%;
+}
+
+a.bottone.white {
+	color: white;
+}
 
 
 /*IDs*/
@@ -328,4 +348,7 @@ div.navbar a.active {
 	z-index: -1; opacity : .9;
 	width: 8%;
 }
+
+.hideDriver, .hidePassenger{
+	display: none; 
 }

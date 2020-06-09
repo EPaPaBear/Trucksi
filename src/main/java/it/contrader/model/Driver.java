@@ -30,6 +30,9 @@ public class Driver {
 	
 	private String phone; 
 	
+	private int age; 
+	
+	
 	@ManyToOne
 	private User user;
 

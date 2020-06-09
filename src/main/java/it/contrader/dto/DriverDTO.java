@@ -23,6 +23,8 @@ public class DriverDTO {
 	
 	private String phone; 
 	
+	private int age;  
+	
 	@ManyToOne
 	private User user;
 

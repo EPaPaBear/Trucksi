@@ -29,6 +29,7 @@
 		
 		<input type="hidden" name="richiesta" value="login">
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+		<a href="/singin.jsp" class="bottone white">Sing In</a> 
 	</form>
 
 </body>

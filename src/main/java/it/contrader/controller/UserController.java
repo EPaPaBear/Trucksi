@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.model.User.Usertype;
+
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User.Usertype;
 import it.contrader.service.UserService;
@@ -96,6 +98,33 @@ public class UserController {
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "index";
+	}
+	
+	@PostMapping("/singin") 
+	public String singin(HttpServletRequest request,
+			 @RequestParam(value = "username", required = true) String username,
+			 @RequestParam(value = "password", required = true) String password,
+			 @RequestParam(value = "usertype", required = true) Usertype usertype,
+			 @RequestParam("nameD") String nameD,
+			 @RequestParam("surnameD") String surnameD,
+			 @RequestParam("phoneD") String phoneD,
+			 @RequestParam("ageD") String ageD,
+			 @RequestParam("driverLicense") String driverLicense,
+			 @RequestParam("driverLicense") String licensePlate,
+			 @RequestParam("nameP") String nameP,
+			 @RequestParam("surnameP") String surnameP,
+			 @RequestParam("phoneP") String phoneP,
+			 @RequestParam("ageP") String ageP
+			) {
+		//Come prima cosa mi creo un utente nel db
+		UserDTO dto = new UserDTO();
+		dto.setUsername(username);
+		dto.setPassword(password);
+		dto.setUsertype(usertype);
+		//Mi salvo il risultato della insert che mi ritorna un dto, cosi gli aggiorno l'id
+		dto=service.insert(dto);
+		Long idNewUser = dto.getId(); 
+ 		return "./singin.jsp";
 	}
 
 	private void setAll(HttpServletRequest request) {
