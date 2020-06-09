@@ -68,20 +68,26 @@
 			</select>
 	    </div> 
 	</div> -->
+	<!--  departure city -->
 	<div class="row">
 	    <div class="col-40">
 	      <label for="city"> Departure City:</label>
 	     </div>
 	     <div class="col-60">
-			<select name="departurecity" id="city">
+			<select name="citydeparture" id="city">
 				<%//for (CityDTO ltc : ltcs) { %>
-  					<option value="1" > A1<%//=ltc.getCityname() %></option>
+  					<option value="1" > Roma <%//=ltc.getCityname() %></option>
 				<%//}%>
 			</select>
 	    </div>
 	</div>
+	<!--  departure city -->
 	
-	  <div class="row">
+	
+	
+	
+	<!--  time departure ok -->
+	<div class="row">
 	    <div class="col-40">
 	     <label for="date">Departure time </label>
 	    </div>
@@ -90,63 +96,61 @@
        min="09:00" max="24:00" required>
 	    </div>
 	  </div>
-		<div class="row">
+	<!--  departure time -->	
+	
+	
+	
+	<!--  arrival city -->
+	<div class="row">
 	    <div class="col-40">
 	      <label for="city"> Arrival City :</label>
 	     </div>
 	     <div class="col-60">
 			<select name="arrivalcity" id="city">
 				<%//for (CityDTO ltc : ltcs) { %>
-  					<option value="<%//=ltc.getId()%>"><%//=ltc.getCityname() %></option>
+  					<option value="2" <%//=ltc.getId()%>> milano <%//=ltc.getCityname() %></option>
 				<%//}%>
 			</select>
-	    </div>
-	      <div class="row">
+	 	</div>
+	 </div>
+	 <!--  arrival city -->
+	 
+	 
+	 
+	 
+	 <!--  arrival time  -->
+	  <div class="row">
 	    <div class="col-40">
-	     <label for="arrivaltime">Time Arrival:</label>
+	     <label for="arrivaltime">Arrival Time:</label>
 	    </div>
 	    <div class="col-60">
 	<input type="time" id="appt" name="arrivaltime"
        min="09:00" max="24:00" required>
 	    </div>
 	  </div>
-	</div>
+	  <!--  arrival time -->
 	
 	
-	 <div class="row">
+	
+	
+
+	
+	
+	
+	<!--  departure date -->
+	<div class="row">
 	    <div class="col-40">
 	     <label for="departuretime">Departure date :</label>
 	    </div>
 	    <div class="col-60">
-	<input type="time" id="date" name="departuredate"
+	<input  id="datepicker" name="departuredate"
        min="09:00" max="24:00" required>
 	    </div>
 	  </div>
-	</div>
+	<!--  departure date -->	
 	
 	
-	 <div class="row">
-	    <div class="col-40">
-	     <label for="arrivaldate">Arrival Date:</label>
-	    </div>
-	    <div class="col-60">
-	<input type="time" id="appt" name="arrivaldate"
-       min="09:00" max="24:00" required>
-	    </div>
-	  </div>
-	</div>
-	
-	
-	
-	  
-	  <div class="row">
-	    <div class="col-40">
-	     <label for="date">Date:</label>
-	    </div>
-	    <div class="col-60">
-		  <input type="text" id="datepicker" name="date">
-	    </div>
-	  </div>
+	 <!--  
 	   <div class="row">
 	    <div class="col-40">
 	     <label for="date">TravelIndex:</label>
@@ -154,11 +158,9 @@
 	    <div class="col-60">
 		  <input type="text" id="datepicker" name="travelindex" value="<%//=travelindex %>">
 	    </div>
-	  </div>
-	  
-	
-	      <button type="submit" >Insert</button>
-	</form>
+	  </div> -->
+	   <button type="submit" >Insert</button>
+</form>
 	
 
 </div>

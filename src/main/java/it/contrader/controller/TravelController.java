@@ -3,13 +3,16 @@ package it.contrader.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.TruckDTO;
 import it.contrader.service.TruckService;
-
+@Controller
+@RequestMapping("/travel")
 public class TravelController {
 	private String pathFolder = "travel/";
 
@@ -34,18 +37,30 @@ public class TravelController {
 		request.getSession().setAttribute("dto", service.read(id));
 		return "updatetruck";
 	}
-	
-	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, 
-			@RequestParam("citydeparture") String citydeparture,
-			@RequestParam("timedeparture") String timedeparture,
-			@RequestParam("cityarrival") String arrivalcity,
-			@RequestParam("timearrival") String arrivaltime,
-			@RequestParam("departuredate") String departuredate,
-			@RequestParam("arrivaldate") String arrivaldate
+	@GetMapping("/submit")
+	public String getsubmit(HttpServletRequest request
+		
 			)
 			{
-		return "test";
+		System.out.println("test" );
+		return "/travel/travel";
+	}
+	
+	@PostMapping("/submit")
+	public String submit(HttpServletRequest request, 
+			@RequestParam("citydeparture") int citydeparture,
+			@RequestParam("timedeparture") String timedeparture,
+			@RequestParam("arrivalcity") int arrivalcity,
+			@RequestParam("arrivaltime") String arrivaltime,
+			@RequestParam("departuredate") String departuredate
+			)
+			{
+		System.out.println("citydeparture" + citydeparture +
+				"timedeparture" + timedeparture +
+				"arrival city "+arrivalcity + 
+				"arrivaltime" + arrivaltime +
+				"departuredate" + departuredate );
+		return "/travel/travel";
 	}
 
 
@@ -67,7 +82,7 @@ public class TravelController {
 
 	}
 
-	@PostMapping("/insert")
+	@PostMapping("/test")
 	public String insert(HttpServletRequest request,
 			@RequestParam("howManyPeople") int howManyPeople,
 			@RequestParam("licensePlate") String licensePlate,
