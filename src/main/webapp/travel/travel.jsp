@@ -70,12 +70,12 @@
 	</div> -->
 	<div class="row">
 	    <div class="col-40">
-	      <label for="city">City Departure:</label>
+	      <label for="city"> Departure City:</label>
 	     </div>
 	     <div class="col-60">
-			<select name="citydeparture" id="city">
+			<select name="departurecity" id="city">
 				<%//for (CityDTO ltc : ltcs) { %>
-  					<option value="<%//=ltc.getId()%>"><%//=ltc.getCityname() %></option>
+  					<option value="1" > A1<%//=ltc.getCityname() %></option>
 				<%//}%>
 			</select>
 	    </div>
@@ -83,7 +83,7 @@
 	
 	  <div class="row">
 	    <div class="col-40">
-	     <label for="date">Time departure:</label>
+	     <label for="date">Departure time </label>
 	    </div>
 	    <div class="col-60">
 		<input type="time" id="time" name="timedeparture"
@@ -92,10 +92,10 @@
 	  </div>
 		<div class="row">
 	    <div class="col-40">
-	      <label for="city">City Arrival:</label>
+	      <label for="city"> Arrival City :</label>
 	     </div>
 	     <div class="col-60">
-			<select name="cityarrival" id="city">
+			<select name="arrivalcity" id="city">
 				<%//for (CityDTO ltc : ltcs) { %>
   					<option value="<%//=ltc.getId()%>"><%//=ltc.getCityname() %></option>
 				<%//}%>
@@ -103,10 +103,34 @@
 	    </div>
 	      <div class="row">
 	    <div class="col-40">
-	     <label for="date">Time Arrival:</label>
+	     <label for="arrivaltime">Time Arrival:</label>
 	    </div>
 	    <div class="col-60">
-	<input type="time" id="appt" name="appt"
+	<input type="time" id="appt" name="arrivaltime"
+       min="09:00" max="24:00" required>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	 <div class="row">
+	    <div class="col-40">
+	     <label for="departuretime">Departure date :</label>
+	    </div>
+	    <div class="col-60">
+	<input type="time" id="date" name="departuredate"
+       min="09:00" max="24:00" required>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	 <div class="row">
+	    <div class="col-40">
+	     <label for="arrivaldate">Arrival Date:</label>
+	    </div>
+	    <div class="col-60">
+	<input type="time" id="appt" name="arrivaldate"
        min="09:00" max="24:00" required>
 	    </div>
 	  </div>

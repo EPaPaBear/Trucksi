@@ -39,9 +39,12 @@ public class TravelController {
 	public String insert(HttpServletRequest request, 
 			@RequestParam("citydeparture") String citydeparture,
 			@RequestParam("timedeparture") String timedeparture,
-			@RequestParam("cityarrival") String cityarrival,
-			@RequestParam("")
-			) {
+			@RequestParam("cityarrival") String arrivalcity,
+			@RequestParam("timearrival") String arrivaltime,
+			@RequestParam("departuredate") String departuredate,
+			@RequestParam("arrivaldate") String arrivaldate
+			)
+			{
 		return "test";
 	}
 
