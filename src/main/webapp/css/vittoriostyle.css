@@ -264,6 +264,10 @@ button:hover {
 
 
 /*IDs*/
+#username {
+	float: right;
+	color: #ffffff;
+}
 #logout {
 	float: right;
 	color: #ffffff;
