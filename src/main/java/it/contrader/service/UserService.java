@@ -14,7 +14,7 @@ public class UserService extends AbstractService<User, UserDTO> {
 
 	@Autowired
 	private UserConverter converter;
-	@Autowired
+	@Autowired 
 	private UserRepository repository;
 
 	public UserDTO findByUsernameAndPassword(String username, String password) {

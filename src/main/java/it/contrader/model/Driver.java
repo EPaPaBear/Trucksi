@@ -1,40 +1,36 @@
 package it.contrader.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-public class User {
-
-	public enum Usertype {
-		ADMIN, USER, DRIVER, PASSENGER
-	}
+public class Driver {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	private String name;
+	
+	private String surname;
+	
 	@Column(unique = true)
-	private String username;
-
-	private String password;
-
-	private Usertype usertype; 
+	private String driverLicense;
 	
-	@OneToMany
-	private List<Driver> drivers; 
+	private String phone; 
 	
+	@ManyToOne
+	private User user;
+
 }
