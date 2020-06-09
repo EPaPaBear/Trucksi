@@ -18,7 +18,7 @@
   <script>
   $( function() {
     $( "#datepicker" ).datepicker();
-  } );
+  });
   </script>
   
 </head>
@@ -55,6 +55,87 @@
 		//	}
 		%>
 </table>
+<form id="floatright" action="/travel/submit" method="post">	  
+	<!--  <div class="row">
+	    <div class="col-40">
+	      <label for="travel">travel:</label>
+	         </div>
+	     <div class="col-60">
+			<select name="travel" id="travel">
+				<%//for (TravelDTO lt : lts) { %>
+  					<option value="<%//=lt.getId()%>"><%//=lt.getId()%></option>
+				<%//}%>
+			</select>
+	    </div> 
+	</div> -->
+	<div class="row">
+	    <div class="col-40">
+	      <label for="city">City Departure:</label>
+	     </div>
+	     <div class="col-60">
+			<select name="citydeparture" id="city">
+				<%//for (CityDTO ltc : ltcs) { %>
+  					<option value="<%//=ltc.getId()%>"><%//=ltc.getCityname() %></option>
+				<%//}%>
+			</select>
+	    </div>
+	</div>
+	
+	  <div class="row">
+	    <div class="col-40">
+	     <label for="date">Time departure:</label>
+	    </div>
+	    <div class="col-60">
+		<input type="time" id="time" name="timedeparture"
+       min="09:00" max="24:00" required>
+	    </div>
+	  </div>
+		<div class="row">
+	    <div class="col-40">
+	      <label for="city">City Arrival:</label>
+	     </div>
+	     <div class="col-60">
+			<select name="cityarrival" id="city">
+				<%//for (CityDTO ltc : ltcs) { %>
+  					<option value="<%//=ltc.getId()%>"><%//=ltc.getCityname() %></option>
+				<%//}%>
+			</select>
+	    </div>
+	      <div class="row">
+	    <div class="col-40">
+	     <label for="date">Time Arrival:</label>
+	    </div>
+	    <div class="col-60">
+	<input type="time" id="appt" name="appt"
+       min="09:00" max="24:00" required>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	
+	  
+	  <div class="row">
+	    <div class="col-40">
+	     <label for="date">Date:</label>
+	    </div>
+	    <div class="col-60">
+		  <input type="text" id="datepicker" name="date">
+	    </div>
+	  </div>
+	   <div class="row">
+	    <div class="col-40">
+	     <label for="date">TravelIndex:</label>
+	    </div>
+	    <div class="col-60">
+		  <input type="text" id="datepicker" name="travelindex" value="<%//=travelindex %>">
+	    </div>
+	  </div>
+	  
+	
+	      <button type="submit" >Insert</button>
+	</form>
+	
 
 </div>
 

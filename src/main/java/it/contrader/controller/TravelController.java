@@ -34,6 +34,17 @@ public class TravelController {
 		request.getSession().setAttribute("dto", service.read(id));
 		return "updatetruck";
 	}
+	
+	@PostMapping("/insert")
+	public String insert(HttpServletRequest request, 
+			@RequestParam("citydeparture") String citydeparture,
+			@RequestParam("timedeparture") String timedeparture,
+			@RequestParam("cityarrival") String cityarrival,
+			@RequestParam("")
+			) {
+		return "test";
+	}
+
 
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
