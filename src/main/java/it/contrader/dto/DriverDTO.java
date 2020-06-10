@@ -1,7 +1,11 @@
 package it.contrader.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.ManyToOne;
 
+import it.contrader.model.Truck;
 import it.contrader.model.User;
 import lombok.AllArgsConstructor; 
 import lombok.Data;
@@ -25,7 +29,9 @@ public class DriverDTO {
 	
 	private int age;  
 	
-	@ManyToOne
+	private List<Truck> truckList = new ArrayList<>(); 
 	private User user;
+	
+	
 
 }

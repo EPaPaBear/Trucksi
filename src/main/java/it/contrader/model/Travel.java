@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,24 +17,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Driver {
+public class Travel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	private String name;
-	
-	private String surname;
-	
+	private int id;
 	@Column(unique = true)
-	private String driverLicense;
-	
-	private String phone; 
-	
-	private int age; 
-	
-	@OneToMany
+	private int citydeparture;
+	private String timedeparture;
+	private int arrivalcity;
+	private String arrivaltime;
+	private String departuredate;
+	@ManyToOne
+	private Passenger passenger;
+	@ManyToOne
 	private Truck truck;
-
 }
