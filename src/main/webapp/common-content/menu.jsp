@@ -1,3 +1,6 @@
+<%@ page  import="it.contrader.dto.UserDTO"%> 
+<%@ page  import="it.contrader.model.User.Usertype"%>   
+
 <% 
 	//javax.servlet.forward.request_uri ritorna effettivamente l'url che noi visualizziamo
 	String url_path = (String) request.getAttribute("javax.servlet.forward.request_uri");
@@ -22,19 +25,19 @@
 	}
  
 	
-	String get_uri = request.getRequestURI();
-	boolean stampa = true ;
 	
-	if(get_uri != "" && get_uri != null){
-		if(get_uri.equals("/singin.jsp")) stampa = false;
-	}
+	UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
+	Usertype usertype = userDTO.getUsertype();
 	
-	if(stampa){ 
 %>
 
 <div class="navbar">
   <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="/homeadmin.jsp">Home</a>
-  <a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a>
+  
+  <% if(!usertype.equals(Usertype.DRIVER)){  %> 
+  	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a>
+  <% } %>
+  
   <a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
   <!--<a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>-->
   <!--<a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="cities">Cities</a>-->
@@ -42,5 +45,3 @@
  <a id="username">Nome utente</a>
   <a href="/user/logout" id="logout">Logout</a>
 </div>
-
-<% } %>

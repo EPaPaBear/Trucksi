@@ -21,6 +21,7 @@ import it.contrader.model.User.Usertype;
 import it.contrader.service.DriverService;
 import it.contrader.service.PassengerService;
 import it.contrader.service.UserService;
+import it.contrader.service.TruckService;
 
 @Controller
 @RequestMapping("/user")
@@ -31,6 +32,9 @@ public class UserController {
 	
 	@Autowired
 	private DriverService driverService;
+	
+	@Autowired
+	private TruckService truckService;  
 
 	@Autowired
 	private PassengerService passengerService; 
@@ -46,6 +50,12 @@ public class UserController {
 
 		case ADMIN:
 			return "homeadmin";
+			
+		case DRIVER:
+			return "homedriver";
+			
+		case PASSENGER:
+			return "homepassenger";
 
 		case USER:
 			return "index";
@@ -139,9 +149,12 @@ public class UserController {
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		
 		//Mi salvo il risultato della insert che mi ritorna un dto, cosi gli aggiorno l'id
-		dto=service.insert(dto);
-		Long idNewUser = dto.getId(); 
+		//dto=service.insert(dto);
+		//Long idNewUser = dto.getId(); 
+		
+		
 		if(dto.getUsertype().equals(Usertype.DRIVER)) { 
 			//Mi creo un oggetto driver
 			DriverDTO driverDTO = new DriverDTO(); 
@@ -152,18 +165,20 @@ public class UserController {
 			driverDTO.setAge(ageD);
 			driverDTO.setUser(service.convertUserDTO(dto));  
 			
-			System.out.println(dto); 
-			System.out.println(driverDTO);
+			//System.out.println(dto); 
+			//System.out.println(driverDTO);
 			
 			//Inserisco il driver nel db
-			driverDTO = driverService.insert(driverDTO); 
+			//driverDTO = driverService.insert(driverDTO);  
 			
-			System.out.println(driverDTO);
+			//System.out.println(driverDTO);
 			
 			//Una volta creato il driver mi creo il Truck
 			TruckDTO truckDTO = new TruckDTO();
 			truckDTO.setLicensePlate(licensePlate);
 			truckDTO.setDriver(driverService.convertDriverDTO(driverDTO)); 
+			
+			truckService.insert(truckDTO);
 			
 		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) {
 			PassengerDTO passengerDTO = new PassengerDTO();

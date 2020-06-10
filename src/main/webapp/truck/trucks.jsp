@@ -1,23 +1,10 @@
 <%@ page import="it.contrader.dto.TruckDTO" import="java.util.*"%>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Truck Management">
-<meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
-<title>Truck Manager</title>
-
-</head>
-<body>
-	<%@ include file="/css/header.jsp"%>
-	<%@include file="/common-content/menu.jsp" %>
+<%@ include file="/css/header2.jsp"%>
 	
 	
 	<div class="main">
 		<%
-			List<TruckDTO> list = (List<TruckDTO>) request.getSession().getAttribute("list");
+			List<TruckDTO> list = (List<TruckDTO>) request.getSession().getAttribute("list"); 
 			System.out.println(list);
 		%>
 
@@ -25,9 +12,7 @@
 
 		<table>
 			<tr>
-				<th>How Many People</th>
 				<th>License Plate</th>
-				<th>People Booking</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -36,10 +21,8 @@
 			%>
 			<tr>
 				<td>
-					<a href="/truck/read?id=<%=t.getId()%>"> <%=t.getLicensePlate()%></a> 
+					<a href="/truck/read?id=<%=t.getId()%>"> <%=t.getLicensePlate()%></a>  
 				</td>
-				<td><%=t.getHowManyPeople()%></td>
-				<td><%=t.getLicensePlate()%></td>
 				<td><a href="/truck/preupdate?id=<%=t.getId()%>">Edit</a></td>
 
 
@@ -86,6 +69,4 @@
 
 	</div>
 	<br>
-	<%@ include file="/css/footer.jsp"%>
-</body>
-</html>
+<%@ include file="/css/footer2.jsp"%>
