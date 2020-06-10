@@ -1,13 +1,12 @@
 package it.contrader.model;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,7 +33,8 @@ public class User {
 
 	private Usertype usertype; 
 	
-	@OneToMany
-	private List<Driver> drivers; 
+	//mappedBy -> creo una connessione bidirezionale tra user e driver
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)  
+	private Driver driver = new Driver();  
 	
 }
