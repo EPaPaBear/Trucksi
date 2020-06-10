@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.*;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,11 +25,10 @@ public class Travel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(unique = true)
-	private int citydeparture;
-	private String timedeparture;
-	private int arrivalcity;
-	private String arrivaltime;
-	private String departuredate;
+	private int idpassenger;
+	private int idtruck;
+	private int idhistory;
+	Date  traveldate = new Date();
 	@ManyToOne
 	private Passenger passenger;
 	@ManyToOne
