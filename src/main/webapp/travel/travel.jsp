@@ -39,7 +39,7 @@
 			<% // } %>
 		</tr>
 		<tr>
-			<td>1<a href=HystorytravelServlet?mode=read&id=<%//=t.getId()%> >
+			<td>1<a href=TravelServlet?mode=read&id=<%//=t.getId()%> >
 			<%//=t.getIdtravel() %></a></td>
 			<td>2<%//=t.getIdcity()%></td>
 			<td>3<%//=t.getDate()%></td>

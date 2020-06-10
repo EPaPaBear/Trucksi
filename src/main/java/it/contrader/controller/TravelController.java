@@ -9,101 +9,68 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.contrader.dto.TruckDTO;
-import it.contrader.service.TruckService;
+import it.contrader.dto.TravelDTO;
+import it.contrader.service.TravelService;
+import java.util.*;
 @Controller
 @RequestMapping("/travel")
 public class TravelController {
 	private String pathFolder = "travel/";
 
 	@Autowired
-	private TruckService service;
+	private TravelService service;
 
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return pathFolder+"trucks";
+		return pathFolder+"travels";
 	}
 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "trucks";
+		return "travels";
 	}
 
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updatetruck";
+		return "updatetravel";
 	}
-	@GetMapping("/submit")
-	public String getsubmit(HttpServletRequest request
-		
-			)
-			{
-		System.out.println("test" );
-		return "/travel/travel";
-	}
-	
-	@PostMapping("/submit")
-	public String submit(HttpServletRequest request, 
-			@RequestParam("citydeparture") int citydeparture,
-			@RequestParam("timedeparture") String timedeparture,
-			@RequestParam("arrivalcity") int arrivalcity,
-			@RequestParam("arrivaltime") String arrivaltime,
-			@RequestParam("departuredate") String departuredate
-			)
-			{
-		System.out.println("citydeparture" + citydeparture +
-				"timedeparture" + timedeparture +
-				"arrival city "+arrivalcity + 
-				"arrivaltime" + arrivaltime +
-				"departuredate" + departuredate );
-		return "/travel/travel";
-	}
-
 
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
 			@RequestParam("id") Long id,
-			@RequestParam("howManyPeople") int howManyPeople,
-			@RequestParam("licensePlate") String licensePlate,
-			@RequestParam("peopleBooking") int peopleBooking) {
-
-		TruckDTO dto = new TruckDTO();
+			@RequestParam("traveldate") Date traveldate)
+			{
+		TravelDTO dto = new TravelDTO();
 		dto.setId(id);
-		dto.setHowManyPeople(howManyPeople);
-		dto.setLicensePlate(licensePlate);
-		dto.setPeopleBooking(peopleBooking);
+		dto.setTraveldate(traveldate);
 		service.update(dto);
 		setAll(request);
-		return "trucks";
+		return "travels";
 
 	}
 
-	@PostMapping("/test")
+	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@RequestParam("howManyPeople") int howManyPeople,
-			@RequestParam("licensePlate") String licensePlate,
-			@RequestParam("peopleBooking") int peopleBooking) {
-		TruckDTO dto = new TruckDTO();
-		dto.setHowManyPeople(howManyPeople);
-		dto.setLicensePlate(licensePlate);
-		dto.setPeopleBooking(peopleBooking);
+			@RequestParam("traveldate") String travelate
+			) {
+		TravelDTO dto = new TravelDTO();
+	//	dto.setTraveldate(traveldate);
 		service.insert(dto);
 		setAll(request);
-		return "trucks";
+		return "travels";
 	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readtruck";
+		return "readtravel";
 	}
 
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("list", service.getAll());
 	}
-
 }

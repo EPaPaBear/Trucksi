@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
@@ -23,14 +24,17 @@ public class Travel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(unique = true)
-	private int idpassenger;
-	private int idtruck;
-	private int idhistory;
-	Date  traveldate = new Date();
+	@DateTimeFormat
+	Date  traveldate;
 	@ManyToOne
 	private Passenger passenger;
 	@ManyToOne
 	private Truck truck;
+	//@ManyToOne
+	//private Historytravel history;
+	
+	
+
 }
