@@ -1,5 +1,8 @@
 package it.contrader.dto;
 
+import java.util.List;
+
+import it.contrader.model.Driver;
 import lombok.AllArgsConstructor; 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,10 +15,8 @@ public class TruckDTO {
 
 	private Long id;
 
-	private int howManyPeople;
-
 	private String licensePlate;
 
-	private int peopleBooking;
+	private List <Driver> driversList;
 
 }

@@ -13,7 +13,7 @@ public class DriverConverter extends AbstractConverter<Driver, DriverDTO> {
 	public Driver toEntity(DriverDTO driverDTO) {
 		Driver driver = null;
 		if (driverDTO != null) {
-			driver = new Driver(driverDTO.getId(), driverDTO.getName(), driverDTO.getSurname(), driverDTO.getDriverLicense(), driverDTO.getPhone(), driverDTO.getAge(), driverDTO.getUser());
+			driver = new Driver(driverDTO.getId(), driverDTO.getName(), driverDTO.getSurname(), driverDTO.getDriverLicense(), driverDTO.getPhone(), driverDTO.getAge(), driverDTO.getTruckList(), driverDTO.getUser());
 		}
 		return driver;
 	}
@@ -22,7 +22,7 @@ public class DriverConverter extends AbstractConverter<Driver, DriverDTO> {
 	public DriverDTO toDTO(Driver driver) {
 		DriverDTO driverDTO = null;
 		if (driver != null) {
-			driverDTO = new DriverDTO(driver.getId(), driver.getName(), driver.getSurname(), driver.getDriverLicense(), driver.getPhone(), driver.getAge(), driver.getUser());
+			driverDTO = new DriverDTO(driver.getId(), driver.getName(), driver.getSurname(), driver.getDriverLicense(), driver.getPhone(), driver.getAge(), driver.getTruckList(), driver.getUser());
 
 		}
 		return driverDTO;
