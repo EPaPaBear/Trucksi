@@ -12,7 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.model.User.Usertype;
 
 import it.contrader.dto.UserDTO;
+import it.contrader.dto.DriverDTO;
+import it.contrader.dto.PassengerDTO;
+import it.contrader.dto.TruckDTO;
+
+
 import it.contrader.model.User.Usertype;
+import it.contrader.service.DriverService;
+import it.contrader.service.PassengerService;
 import it.contrader.service.UserService;
 
 @Controller
@@ -21,7 +28,13 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private DriverService driverService;
 
+	@Autowired
+	private PassengerService passengerService; 
+	
 	@PostMapping("/login")
 	public String login(HttpServletRequest request, @RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "password", required = true) String password) {
@@ -108,13 +121,13 @@ public class UserController {
 			 @RequestParam("nameD") String nameD,
 			 @RequestParam("surnameD") String surnameD,
 			 @RequestParam("phoneD") String phoneD,
-			 @RequestParam("ageD") String ageD,
+			 @RequestParam("ageD") int ageD,
 			 @RequestParam("driverLicense") String driverLicense,
 			 @RequestParam("driverLicense") String licensePlate,
 			 @RequestParam("nameP") String nameP,
 			 @RequestParam("surnameP") String surnameP,
 			 @RequestParam("phoneP") String phoneP,
-			 @RequestParam("ageP") String ageP
+			 @RequestParam("ageP") int ageP
 			) {
 		//Come prima cosa mi creo un utente nel db
 		UserDTO dto = new UserDTO();
@@ -124,7 +137,35 @@ public class UserController {
 		//Mi salvo il risultato della insert che mi ritorna un dto, cosi gli aggiorno l'id
 		dto=service.insert(dto);
 		Long idNewUser = dto.getId(); 
- 		return "./singin.jsp";
+		if(dto.getUsertype().equals("DRIVER")) {
+			//Mi creo un oggetto driver
+			DriverDTO driverDTO = new DriverDTO();
+			driverDTO.setName(nameD);
+			driverDTO.setSurname(surnameD);
+			driverDTO.setDriverLicense(driverLicense);
+			driverDTO.setPhone(phoneD);
+			driverDTO.setAge(ageD);
+			driverDTO.setUser(service.convertUserDTO(dto));  
+			
+			//Inserisco il driver nel db
+			driverService.insert(driverDTO);
+			
+			//Una volta creato il driver mi creo il Truck
+			TruckDTO truckDTO = new TruckDTO();
+			truckDTO.setLicensePlate(licensePlate);
+			
+		}else if(dto.getUsertype().equals("PASSENGER")) {
+			PassengerDTO passengerDTO = new PassengerDTO();
+			passengerDTO.setName(nameP);
+			passengerDTO.setSurname(surnameP);
+			passengerDTO.setPhone(phoneP);
+			passengerDTO.setAge(ageP);
+		}
+		
+		
+		
+		
+ 		return "/index";
 	}
 
 	private void setAll(HttpServletRequest request) {

@@ -24,7 +24,7 @@ public class Passenger {
 	
 	private String surname;
 	
-	private String age;
+	private int age;
 	
 	private String phone;
 	

@@ -30,6 +30,7 @@ public class DriverDTO {
 	private int age;  
 	
 	private List<Truck> truckList = new ArrayList<>(); 
+	
 	private User user;
 	
 	

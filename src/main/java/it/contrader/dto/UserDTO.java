@@ -1,7 +1,5 @@
 package it.contrader.dto;
 
-import java.util.List;
-
 import it.contrader.model.Driver;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
@@ -22,6 +20,6 @@ public class UserDTO {
 
 	private Usertype usertype;
 	
-	private List<Driver> drivers; 
+	private Driver driver; 
 	
 }

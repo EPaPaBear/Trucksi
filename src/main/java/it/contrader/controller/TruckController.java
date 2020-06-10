@@ -42,15 +42,11 @@ public class TruckController {
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
 			@RequestParam("id") Long id,
-			@RequestParam("howManyPeople") int howManyPeople,
-			@RequestParam("licensePlate") String licensePlate,
-			@RequestParam("peopleBooking") int peopleBooking) {
+			@RequestParam("licensePlate") String licensePlate) {
 
 		TruckDTO dto = new TruckDTO();
 		dto.setId(id);
-		dto.setHowManyPeople(howManyPeople);
 		dto.setLicensePlate(licensePlate);
-		dto.setPeopleBooking(peopleBooking);
 		service.update(dto);
 		setAll(request);
 		return "trucks";
@@ -59,13 +55,10 @@ public class TruckController {
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@RequestParam("howManyPeople") int howManyPeople,
-			@RequestParam("licensePlate") String licensePlate,
-			@RequestParam("peopleBooking") int peopleBooking) {
+			@RequestParam("licensePlate") String licensePlate
+			) {
 		TruckDTO dto = new TruckDTO();
-		dto.setHowManyPeople(howManyPeople);
 		dto.setLicensePlate(licensePlate);
-		dto.setPeopleBooking(peopleBooking);
 		service.insert(dto);
 		setAll(request);
 		return "trucks";

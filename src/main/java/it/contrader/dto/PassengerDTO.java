@@ -19,7 +19,7 @@ public class PassengerDTO {
 	
 	private String surname;
 	
-	private String age;
+	private int age;
 	
 	private String phone;
 	
