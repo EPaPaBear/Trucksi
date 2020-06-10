@@ -1,8 +1,5 @@
 package it.contrader.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +28,6 @@ public class Truck {
 	
 	@ManyToOne(cascade = CascadeType.ALL) 
 	@JoinColumn(name = "driver_id", referencedColumnName = "id") 
-	private List <Driver> driversList = new ArrayList<>();
+	private Driver driver ;
 
 }

@@ -35,6 +35,6 @@ public class User {
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)  
-	private Driver driver = new Driver();  
+	private Driver driver;  
 	
 }

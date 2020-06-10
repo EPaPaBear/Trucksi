@@ -11,6 +11,6 @@ import it.contrader.model.Truck;
 @Transactional
 public interface TruckRepository extends CrudRepository<Truck, Long> {
 
-	//Truck findByUsernameAndPassword(String username, String password);
+	Truck getById(Long id);
 
 }

@@ -121,14 +121,19 @@ public class UserController {
 			 @RequestParam("nameD") String nameD,
 			 @RequestParam("surnameD") String surnameD,
 			 @RequestParam("phoneD") String phoneD,
-			 @RequestParam("ageD") int ageD,
+			 @RequestParam("ageD") String ageDriver,
 			 @RequestParam("driverLicense") String driverLicense,
 			 @RequestParam("driverLicense") String licensePlate,
 			 @RequestParam("nameP") String nameP,
 			 @RequestParam("surnameP") String surnameP,
 			 @RequestParam("phoneP") String phoneP,
-			 @RequestParam("ageP") int ageP
+			 @RequestParam("ageP") String agePassenger  
 			) {
+		
+		//Converto i valori che mi servono interi
+		int ageD = (ageDriver!="") ? Integer.parseInt(ageDriver) : 0;
+		int ageP = (agePassenger!="") ? Integer.parseInt(agePassenger) : 0; 
+		
 		//Come prima cosa mi creo un utente nel db
 		UserDTO dto = new UserDTO();
 		dto.setUsername(username);
@@ -137,9 +142,9 @@ public class UserController {
 		//Mi salvo il risultato della insert che mi ritorna un dto, cosi gli aggiorno l'id
 		dto=service.insert(dto);
 		Long idNewUser = dto.getId(); 
-		if(dto.getUsertype().equals("DRIVER")) {
+		if(dto.getUsertype().equals(Usertype.DRIVER)) { 
 			//Mi creo un oggetto driver
-			DriverDTO driverDTO = new DriverDTO();
+			DriverDTO driverDTO = new DriverDTO(); 
 			driverDTO.setName(nameD);
 			driverDTO.setSurname(surnameD);
 			driverDTO.setDriverLicense(driverLicense);
@@ -147,14 +152,20 @@ public class UserController {
 			driverDTO.setAge(ageD);
 			driverDTO.setUser(service.convertUserDTO(dto));  
 			
+			System.out.println(dto); 
+			System.out.println(driverDTO);
+			
 			//Inserisco il driver nel db
-			driverService.insert(driverDTO);
+			driverDTO = driverService.insert(driverDTO); 
+			
+			System.out.println(driverDTO);
 			
 			//Una volta creato il driver mi creo il Truck
 			TruckDTO truckDTO = new TruckDTO();
 			truckDTO.setLicensePlate(licensePlate);
+			truckDTO.setDriver(driverService.convertDriverDTO(driverDTO)); 
 			
-		}else if(dto.getUsertype().equals("PASSENGER")) {
+		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) {
 			PassengerDTO passengerDTO = new PassengerDTO();
 			passengerDTO.setName(nameP);
 			passengerDTO.setSurname(surnameP);
