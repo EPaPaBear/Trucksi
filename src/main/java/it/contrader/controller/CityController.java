@@ -9,68 +9,68 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.contrader.dto.TruckDTO;
-import it.contrader.service.TruckService;
+import it.contrader.dto.CityDTO;
+import it.contrader.service.CityService;
 
 @Controller
-@RequestMapping("/truck")
-public class TruckController {
-	private String pathFolder = "truck/";
+@RequestMapping("/city")
+public class CityController {
+	private String pathFolder = "city/";
 
 	@Autowired
-	private TruckService service;
+	private CityService service;
 
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return pathFolder+"trucks";
+		return pathFolder+"cities";
 	}
 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "trucks";
+		return "cities";
 	}
 
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updatetruck";
+		return "updatecity";
 	}
 
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
 			@RequestParam("id") Long id,
-			@RequestParam("licensePlate") String licensePlate) {
+			@RequestParam("cityname") String cityname) {
 
-		TruckDTO dto = new TruckDTO();
+		CityDTO dto = new CityDTO();
 		dto.setId(id);
-		dto.setLicensePlate(licensePlate);
+		dto.setCityname(cityname);
 		service.update(dto);
 		setAll(request);
-		return "trucks";
+		return "cities";
 
 	}
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@RequestParam("licensePlate") String licensePlate
+			@RequestParam("cityname") String cityname
 			) {
-		TruckDTO dto = new TruckDTO();
-		dto.setLicensePlate(licensePlate);
+		CityDTO dto = new CityDTO();
+		dto.setCityname(cityname);
 		service.insert(dto);
 		setAll(request);
-		return "truck/trucks";
+		return "city/cities";
 	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readtruck";
+		return "readcity";
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("listT", service.getAll());
+		request.getSession().setAttribute("listC", service.getAll());
 	}
 }

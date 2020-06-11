@@ -1,7 +1,5 @@
 package it.contrader.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,16 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-
+@ToString(exclude= {"ht"})
 public class City {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,9 @@ public class City {
 
 	@Column(unique = true)
 	private String cityname;
-	
-
+	//@ManyToOne(cascade=CascadeType.MERGE)
+	//@JoinColumn(name="idhystorytravel", referencedColumnName="idt")
+	//private Hystorytravel ht;
+	@OneToOne(mappedBy = "city", cascade = CascadeType.MERGE)  
+	private Hystorytravel ht; 
 }
