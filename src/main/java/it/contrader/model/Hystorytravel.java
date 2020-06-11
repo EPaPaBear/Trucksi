@@ -13,17 +13,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table
+
+@ToString(exclude= {"city"})
 public class Hystorytravel {
 	
 	@Id 
@@ -39,10 +42,11 @@ public class Hystorytravel {
 	private String numeroutenti;
 	
 	private String numeroteam;
-/*
-	@OneToMany(mappedBy= "truck")
-	private Set<Truck> truck;
-*/
+
+	@OneToOne( cascade=CascadeType.MERGE)
+	@JoinColumn(name = "idCity", referencedColumnName = "id")  
+	private City city;
+
 
 
 }
