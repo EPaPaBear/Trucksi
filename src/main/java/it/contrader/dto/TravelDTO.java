@@ -18,12 +18,8 @@ import it.contrader.model.Truck;
 
 public class TravelDTO {
 	private Long id;
-	@Column(unique = true)
-	@DateTimeFormat
-	private  Date  traveldate;
-	@ManyToOne
+	private Date traveldate;
 	private Passenger passenger;
-	@ManyToOne
 	private Truck truck;
 	//@ManyToOne
 	//private Historytravel history;

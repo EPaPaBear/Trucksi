@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +25,8 @@ public class Travel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(unique = true)
+	
+	
 	@DateTimeFormat
 	Date  traveldate;
 	@ManyToOne
@@ -34,7 +35,4 @@ public class Travel {
 	private Truck truck;
 	//@ManyToOne
 	//private Historytravel history;
-	
-	
-
 }
