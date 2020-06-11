@@ -1,5 +1,8 @@
 package it.contrader.dto;
 
+import java.sql.Time;
+
+import it.contrader.model.City;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +21,7 @@ public class HystorytravelDTO {
 	private String numeroutenti;
 	
 	private String numeroteam;
+	private Time timedeparture;
+	private City citydeparture;
+	private City cityarrive;
 }

@@ -93,7 +93,7 @@
 	    </div>
 	    <div class="col-60">
 		<input type="time" id="time" name="timedeparture"
-       min="09:00" max="24:00" required>
+       min="00:00" max="23:59" required>
 	    </div>
 	  </div>
 	<!--  departure time -->	

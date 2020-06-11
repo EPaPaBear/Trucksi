@@ -1,5 +1,6 @@
 package it.contrader.model;
 
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,10 +43,15 @@ public class Hystorytravel {
 	private String numeroutenti;
 	
 	private String numeroteam;
+	
+	private Time timedeparture;
 
 	@OneToOne( cascade=CascadeType.MERGE)
-	@JoinColumn(name = "idCity", referencedColumnName = "id")  
-	private City city;
+	@JoinColumn(name = "idcitydeparture", referencedColumnName = "id")  
+	private City citydeparture;
+	@OneToOne( cascade=CascadeType.MERGE)
+	@JoinColumn(name = "idcityarrive", referencedColumnName = "id")  
+	private City cityarrive;
 
 
 
