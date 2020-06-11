@@ -61,7 +61,7 @@ public class TruckController {
 		dto.setLicensePlate(licensePlate);
 		service.insert(dto);
 		setAll(request);
-		return "trucks";
+		return "truck/trucks";
 	}
 
 	@GetMapping("/read")

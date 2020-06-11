@@ -61,7 +61,7 @@ public class CityController {
 		dto.setCityname(cityname);
 		service.insert(dto);
 		setAll(request);
-		return "cities";
+		return "city/cities";
 	}
 
 	@GetMapping("/read")
