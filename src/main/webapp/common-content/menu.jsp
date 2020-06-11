@@ -1,5 +1,4 @@
-<%@ page  import="it.contrader.dto.UserDTO"%> 
-<%@ page  import="it.contrader.model.User.Usertype"%>   
+<%@ page  import="it.contrader.dto.UserDTO" import="it.contrader.model.User.Usertype"%> 
 
 <% 
 	//javax.servlet.forward.request_uri ritorna effettivamente l'url che noi visualizziamo
@@ -23,20 +22,23 @@
 	}else{
 		confronto="home";
 	}
- 
-	
 	
 	UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
-	Usertype usertype = userDTO.getUsertype();
+	//Se non ho fatto il login, o se mi è scaduta la sessione riporto l'utente al login
+	if(userDTO == null) {
+		response.sendRedirect("/index.jsp"); //error
+	}else{
+		Usertype usertype = userDTO.getUsertype();		
+	}
 	
 %>
 
 <div class="navbar">
   <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="/homeadmin.jsp">Home</a>
   
-  <% if(!usertype.equals(Usertype.DRIVER)){  %> 
+  <% //if(!usertype.equals(Usertype.DRIVER)){  %>  
   	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a>
-  <% } %>
+  <% //} %>
   
   <a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
   <!--<a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>-->

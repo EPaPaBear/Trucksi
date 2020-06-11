@@ -1,5 +1,7 @@
 package it.contrader.dao;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,6 +13,6 @@ import it.contrader.model.Passenger;
 @Transactional
 public interface PassengerRepository extends CrudRepository<Passenger, Long> {
 
-	//User findByUsernameAndPassword(String username, String password); 
+	Optional<Passenger> findById(Long id);
 
 }

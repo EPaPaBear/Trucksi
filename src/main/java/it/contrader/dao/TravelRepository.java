@@ -1,5 +1,7 @@
 package it.contrader.dao;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,6 +13,6 @@ import it.contrader.model.Travel;
 @Transactional
 public interface TravelRepository extends CrudRepository<Travel, Long > {
 
-	
+	Optional<Travel> findById(Long id);
 
 }

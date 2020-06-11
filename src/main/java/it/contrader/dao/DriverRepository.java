@@ -1,5 +1,7 @@
 package it.contrader.dao;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,6 +13,6 @@ import it.contrader.model.Driver;
 @Transactional
 public interface DriverRepository extends CrudRepository<Driver, Long> {
 
-	//User findByUsernameAndPassword(String username, String password);
+	Optional<Driver> findById(Long id);
 
 }

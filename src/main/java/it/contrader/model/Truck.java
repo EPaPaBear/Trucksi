@@ -12,11 +12,13 @@ import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
+@ToString(exclude = {"driver"})
 public class Truck {
 
 	@Id
@@ -26,8 +28,8 @@ public class Truck {
 	@Column(unique = true)
 	private String licensePlate;
 	
-	@ManyToOne(cascade = CascadeType.ALL) 
-	@JoinColumn(name = "driver_id", referencedColumnName = "id") 
+	@ManyToOne(cascade = CascadeType.MERGE) 
+	@JoinColumn(name = "idDriver", referencedColumnName = "id") 
 	private Driver driver ;
 
 }

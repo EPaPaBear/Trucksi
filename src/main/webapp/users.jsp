@@ -17,7 +17,7 @@
 	
 	<div class="main">
 		<%
-			List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("list");
+			List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("listU");
 		%>
 
 		<br>

@@ -4,8 +4,7 @@
 	
 	<div class="main">
 		<%
-			List<TruckDTO> list = (List<TruckDTO>) request.getSession().getAttribute("list"); 
-			System.out.println(list);
+			List<TruckDTO> list = (List<TruckDTO>) request.getSession().getAttribute("listT"); 
 		%>
 
 		<br>
@@ -24,8 +23,6 @@
 					<a href="/truck/read?id=<%=t.getId()%>"> <%=t.getLicensePlate()%></a>  
 				</td>
 				<td><a href="/truck/preupdate?id=<%=t.getId()%>">Edit</a></td>
-
-
 				<td><a href="/truck/delete?id=<%=t.getId()%>">Delete</a></td>
 
 			</tr>

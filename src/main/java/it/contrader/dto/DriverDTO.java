@@ -3,8 +3,6 @@ package it.contrader.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.ManyToOne;
-
 import it.contrader.model.Truck;
 import it.contrader.model.User;
 import lombok.AllArgsConstructor; 
@@ -29,7 +27,7 @@ public class DriverDTO {
 	
 	private int age;  
 	
-	private List<Truck> truckList = new ArrayList<>(); 
+	private List<Truck> truckList; 
 	
 	private User user;
 	

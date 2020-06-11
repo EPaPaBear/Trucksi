@@ -23,7 +23,6 @@ public class TruckController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		System.out.println(request);
 		return pathFolder+"trucks";
 	}
 
@@ -72,6 +71,6 @@ public class TruckController {
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
+		request.getSession().setAttribute("listT", service.getAll());
 	}
 }

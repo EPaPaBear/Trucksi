@@ -151,7 +151,7 @@ public class UserController {
 		dto.setUsertype(usertype);
 		
 		//Mi salvo il risultato della insert che mi ritorna un dto, cosi gli aggiorno l'id
-		//dto=service.insert(dto);
+		dto=service.insert(dto);
 		//Long idNewUser = dto.getId(); 
 		
 		
@@ -169,18 +169,18 @@ public class UserController {
 			//System.out.println(driverDTO);
 			
 			//Inserisco il driver nel db
-			//driverDTO = driverService.insert(driverDTO);  
+			driverDTO = driverService.insert(driverDTO);  
 			
 			//System.out.println(driverDTO);
 			
 			//Una volta creato il driver mi creo il Truck
 			TruckDTO truckDTO = new TruckDTO();
 			truckDTO.setLicensePlate(licensePlate);
-			truckDTO.setDriver(driverService.convertDriverDTO(driverDTO)); 
+			truckDTO.setDriver(driverService.convertDriverDTO(driverDTO));  
 			
 			truckService.insert(truckDTO);
 			
-		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) {
+		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) { 
 			PassengerDTO passengerDTO = new PassengerDTO();
 			passengerDTO.setName(nameP);
 			passengerDTO.setSurname(surnameP);
@@ -188,13 +188,10 @@ public class UserController {
 			passengerDTO.setAge(ageP);
 		}
 		
-		
-		
-		
- 		return "/index";
+ 		return "index";
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
+		request.getSession().setAttribute("listU", service.getAll());
 	}
 }

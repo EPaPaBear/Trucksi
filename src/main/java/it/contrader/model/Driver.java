@@ -15,11 +15,13 @@ import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
+@ToString(exclude = {"truckList","user"})
 public class Driver {
 
 	@Id
@@ -37,16 +39,16 @@ public class Driver {
 	
 	private int age; 
 	
-	@OneToMany(mappedBy = "driver") 	
+	@OneToMany(mappedBy = "driver", cascade = CascadeType.MERGE) 	 
 	private List<Truck> truckList;
 	
 	//cascade -> propaga tutte le operazione dal padre a tutti i figli(tutte le tabbelle collegate)
 	//joinColumn -> va definito dove si vuole la chiave esterna
 		//name -> nome della colonna dentro driver
 		//referencedColumnName -> colonna dalla quale prendere il valore di user, per metterla in name
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", referencedColumnName = "id") 
-	private User user; 
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "idUser", referencedColumnName = "id")  
+	private User user;
 	
 	 
 
