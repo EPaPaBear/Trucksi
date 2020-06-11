@@ -22,6 +22,7 @@ public class HystorytravelDTO {
 	
 	private String numeroteam;
 	private Time timedeparture;
+	private Time timearrival;
 	private City citydeparture;
 	private City cityarrive;
 }

@@ -46,6 +46,8 @@ public class Hystorytravel {
 	
 	private Time timedeparture;
 
+	private Time timearrival;
+
 	@OneToOne( cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idcitydeparture", referencedColumnName = "id")  
 	private City citydeparture;

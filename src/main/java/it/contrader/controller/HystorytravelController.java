@@ -1,6 +1,10 @@
 package it.contrader.controller;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +20,7 @@ import it.contrader.dto.CityDTO;
 import it.contrader.dto.HystorytravelDTO;
 import it.contrader.service.CityService;
 import it.contrader.service.HystorytravelService;
+import it.contrader.utils.StringtoTime;
 
 
 
@@ -66,16 +71,20 @@ public class HystorytravelController {
 	//@RequestParam("nometeam") String nometeam,
 	//@RequestParam("descrizione") String descrizione, 
 	//@RequestParam("numeroutenti") String numeroutenti
+	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, 
 			@RequestParam("citydeparture") long cd,
 			@RequestParam("cityarrive") long ca,
-			@RequestParam("timedeparture") String tm
+			@RequestParam("timedeparture") String tm,
+			@RequestParam("timearrival") String at
 			) {
 		
 		HystorytravelDTO dto = new HystorytravelDTO();
 		
-	//	dto.setTimedeparture(tm);
+		dto.setTimedeparture(StringtoTime.convert(tm));
+		
+		dto.setTimearrival(StringtoTime.convert(at));
 		CityDTO dtoCd = new CityDTO();
 		
 		dtoCd.setId(cd);

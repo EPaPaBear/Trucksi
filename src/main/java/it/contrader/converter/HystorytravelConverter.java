@@ -24,6 +24,7 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 					HystorytravelDTO.getNumeroutenti(),
 					HystorytravelDTO.getNumeroteam(), 
 					HystorytravelDTO.getTimedeparture(), 
+					HystorytravelDTO.getTimearrival(),
 					HystorytravelDTO.getCitydeparture(), 
 					HystorytravelDTO.getCityarrive()
 					);
@@ -46,6 +47,7 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 					ht.getNumeroutenti(), 
 					ht.getNumeroteam(), 
 					ht.getTimedeparture(),
+					ht.getTimearrival(),
 					ht.getCitydeparture(),
 					ht.getCityarrive());
 		}

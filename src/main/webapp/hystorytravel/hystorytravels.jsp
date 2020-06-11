@@ -22,6 +22,7 @@
 				<th>Città di partenza</th>
 				<th>Orario di partenza </th>
 				<th>CIttà di arrivo</th>
+				<th>Arrival time</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -36,6 +37,7 @@
 				<td> <%=t.getCitydeparture().getCityname() %></td>
 				<td> <%=t.getTimedeparture() %></td>
 				<td> <%=t.getCityarrive().getCityname() %> </td>
+				<td> <%=t.getTimearrival() %></td>
 				
 				<td><a href="/truck/preupdate?id=<%=t.getIdt()%>">Edit</a></td>
 				<td><a href="/truck/delete?id=<%=t.getIdt()%>">Delete</a></td>
@@ -57,7 +59,7 @@
 	      <label for="city"> Departure City:</label>
 	     </div>
 	     <div class="col-75">
-			<select name="citydeparture" id="city">
+			<select name="citydeparture" id="city" required>
 				<%for (CityDTO ltc : listC) { %>
   					<option value="<%=ltc.getId()%>" > <%=ltc.getCityname() %></option>
 				<%}%>
@@ -67,10 +69,10 @@
 <!--  departure city -->
 	<!--  time departure ok -->
 	<div class="row">
-	    <div class="col-40">
+	    <div class="col-25">
 	     <label for="date">Departure time </label>
 	    </div>
-	    <div class="col-60">
+	    <div class="col-75">
 		<input type="time" id="time" name="timedeparture"
        min="00:00" max="23:59" required>
 	    </div>
@@ -82,7 +84,7 @@
 	      <label for="city"> Arrival City :</label>
 	     </div>
 	     <div class="col-75">
-			<select name="cityarrive" id="city">
+			<select name="cityarrive" id="city" required>
 				<%for (CityDTO ltc : listC) { %>
   					<option value="<%=ltc.getId()%>" > <%=ltc.getCityname() %></option>
 				<%}%>
@@ -90,6 +92,17 @@
 	 	</div>
 	 </div>
 	 <!--  arrival city -->
+	 	<!--  time departure ok -->
+	<div class="row">
+	    <div class="col-25">
+	     <label for="date">Arrival time: </label>
+	    </div>
+	    <div class="col-75">
+		<input type="time" id="time" name="timearrival"
+       min="00:00" max="23:59" required>
+	    </div>
+	  </div>
+	<!--  departure time -->
 	<!--  		<div class="row">
 				<div class="col-25">
 					<label for="truck">License Plate</label>
