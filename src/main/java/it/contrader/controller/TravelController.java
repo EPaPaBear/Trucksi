@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.Date;
 import it.contrader.dto.TravelDTO;
+import it.contrader.model.Passenger;
+import it.contrader.model.Truck;
 import it.contrader.service.TravelService;
-import java.util.*;
+
 @Controller
 @RequestMapping("/travel")
 public class TravelController {
@@ -42,11 +44,16 @@ public class TravelController {
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
 			@RequestParam("id") Long id,
-			@RequestParam("traveldate") Date traveldate)
-			{
+			@RequestParam("traveldate") Date traveldate,
+			@RequestParam("passenger") Passenger passenger,
+			@RequestParam("truck") Truck truck)
+		{
+
 		TravelDTO dto = new TravelDTO();
 		dto.setId(id);
 		dto.setTraveldate(traveldate);
+		dto.setPassenger(passenger);
+		dto.setTruck(truck);
 		service.update(dto);
 		setAll(request);
 		return "travels";
@@ -55,13 +62,17 @@ public class TravelController {
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@RequestParam("traveldate") String travelate
-			) {
+			@RequestParam("traveldate") Date traveldate,
+			@RequestParam("passenger") Passenger passenger,
+			@RequestParam("truck") Truck truck)
+	 {
 		TravelDTO dto = new TravelDTO();
-	//	dto.setTraveldate(traveldate);
+		dto.setTraveldate(traveldate);
+		dto.setPassenger(passenger);
+		dto.setTruck(truck);
 		service.insert(dto);
 		setAll(request);
-		return "travels";
+		return "travel/travels";
 	}
 
 	@GetMapping("/read")
@@ -71,6 +82,6 @@ public class TravelController {
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
+		request.getSession().setAttribute("listT", service.getAll());
 	}
 }

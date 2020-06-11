@@ -13,7 +13,7 @@ import it.contrader.model.Truck;
 @Transactional
 public interface TruckRepository extends CrudRepository<Truck, Long> {
 
-	public List<Truck> findByDriver_id(long id);
-	public List<Truck> findAllByDriver(Driver driver);
+	public List<Truck> findByDriver_id(long id); 
+	public List<Truck> findAllByDriver(Driver driver); 
 
 }

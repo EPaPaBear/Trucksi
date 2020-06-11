@@ -165,13 +165,8 @@ public class UserController {
 			driverDTO.setAge(ageD);
 			driverDTO.setUser(service.convertUserDTO(dto));  
 			
-			//System.out.println(dto); 
-			//System.out.println(driverDTO);
-			
 			//Inserisco il driver nel db
 			driverDTO = driverService.insert(driverDTO);  
-			
-			//System.out.println(driverDTO);
 			
 			//Una volta creato il driver mi creo il Truck
 			TruckDTO truckDTO = new TruckDTO();
@@ -180,12 +175,15 @@ public class UserController {
 			
 			truckService.insert(truckDTO);
 			
-		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) { 
+		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) {  
 			PassengerDTO passengerDTO = new PassengerDTO();
 			passengerDTO.setName(nameP);
 			passengerDTO.setSurname(surnameP);
 			passengerDTO.setPhone(phoneP);
 			passengerDTO.setAge(ageP);
+			passengerDTO.setUser(service.convertUserDTO(dto));
+			
+			passengerService.insert(passengerDTO);
 		}
 		
  		return "index";

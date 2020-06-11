@@ -1,5 +1,6 @@
 package it.contrader.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -14,16 +15,8 @@ public class TravelService extends AbstractService<Travel, TravelDTO> {
 
 	@Autowired
 	private TravelConverter converter;
-	@Autowired 
+	@Autowired
 	private TravelRepository repository;
 
-	//public TravelDTO findByUsernameAndPassword(String username, String password) {
-		//return converter.toDTO(repository.findByUsernameAndPassword(username, password));
-	//}
-	
-	public Travel converttravelDTO(TravelDTO travelDTO) {
-		return converter.toEntity(travelDTO);
-		
-	}
 
 }

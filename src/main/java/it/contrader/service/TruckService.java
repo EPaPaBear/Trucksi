@@ -11,6 +11,7 @@ import it.contrader.converter.TruckConverter;
 import it.contrader.dao.TruckRepository;
 import it.contrader.dto.DriverDTO;
 import it.contrader.dto.TruckDTO;
+import it.contrader.model.Driver;
 import it.contrader.model.Truck;
 
 @Service
@@ -31,8 +32,8 @@ public class TruckService extends AbstractService<Truck, TruckDTO> {
 		return converter.toDTOList(repository.findByDriver_id(id)); 
 	}
 	
-	public List<TruckDTO> getAllByDriver(DriverDTO driverDTO){
-		return converter.toDTOList(repository.findAllByDriver(driverConverter.toEntity(driverDTO)));
+	public List<TruckDTO> getAllByDriver(Driver driver){
+		return converter.toDTOList(repository.findAllByDriver(driver));
 	}
 	
 	

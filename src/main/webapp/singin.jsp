@@ -4,10 +4,10 @@
 		<h1>SING IN</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> 
-		<input type="text" name="username" id="inputUser" class="form-control" placeholder="Username" required autofocus>
+		<input type="text" name="username" id="inputUser" placeholder="Username" autocomplete="false" required autofocus>
 		
 		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+		<input type="password" name="password" id="inputPassword" placeholder="Password" autocomplete="new-password" required> 
 		
 		<select name="usertype" onchange="hideContent()" id="userSelect" required>
 			<option disabled selected>SELECT USERTYPE</option>
