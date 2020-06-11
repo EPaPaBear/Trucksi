@@ -50,7 +50,7 @@
 
 
 
-		<form id="floatright" action="/team/insert" method="post">
+		<form id="floatright" action="/travel/insert" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="nteam">Travel Date</label>
