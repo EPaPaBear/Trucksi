@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.dto.DriverDTO;
 import it.contrader.dto.TruckDTO;
+import it.contrader.dto.UserDTO;
+import it.contrader.model.User.Usertype;
+import it.contrader.service.DriverService;
 import it.contrader.service.TruckService;
 
 @Controller
@@ -19,6 +23,9 @@ public class TruckController {
 
 	@Autowired
 	private TruckService service;
+	
+	@Autowired
+	private DriverService driverService;
 
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -64,13 +71,16 @@ public class TruckController {
 		return "truck/trucks";
 	}
 
-	@GetMapping("/read")
+	@GetMapping("/read") 
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
 		return "readtruck";
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("listT", service.getAll());
+		UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user"); 
+		System.out.println(userDTO);
+		if(userDTO.getUsertype().equals(Usertype.ADMIN))  request.getSession().setAttribute("listT", service.getAll());
+		else request.getSession().setAttribute("listT", service.getAllByDriver(userDTO.getDriver()));
 	}
 }

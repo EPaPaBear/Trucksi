@@ -1,4 +1,4 @@
-<%@ page  import="it.contrader.dto.UserDTO" import="it.contrader.model.User.Usertype"%> 
+<%@ page  import="it.contrader.dto.UserDTO" import="it.contrader.model.User.Usertype" import="java.util.HashMap"%> 
 
 <% 
 	//javax.servlet.forward.request_uri ritorna effettivamente l'url che noi visualizziamo
@@ -25,10 +25,12 @@
 	
 	UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
 	//Se non ho fatto il login, o se mi è scaduta la sessione riporto l'utente al login
+	Usertype usertype = null; 
+	String username = "";
 	if(userDTO == null) {
-		response.sendRedirect("/index.jsp"); //error
+		response.sendRedirect("/index.jsp"); //error   
 	}else{
-		Usertype usertype = userDTO.getUsertype();		
+		usertype = userDTO.getUsertype();	
 	}
 	
 %>
@@ -36,14 +38,14 @@
 <div class="navbar">
   <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="/homeadmin.jsp">Home</a>
   
-  <% //if(!usertype.equals(Usertype.DRIVER)){  %>  
-  	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a>
-  <% //} %>
+  <% if(usertype!= null && !usertype.equals(Usertype.DRIVER)){  %>  
+  	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a> 
+  <% } %>
   
   <a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
-  <a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>
-  <a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="/city/getall">Cities</a>
+  <!--<a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>-->
+  <!--<a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="cities">Cities</a>-->
  <a <% if(confronto.equals("travel")) out.println("class=\"active\""); %> href="/travel/getall">Travel</a>
- <a id="username">Nome utente</a>
+ <a id="username"><%=usertype %></a>
   <a href="/user/logout" id="logout">Logout</a>
 </div>

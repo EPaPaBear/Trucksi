@@ -17,7 +17,7 @@
 	</div>
 	<div class="main">
 		<%
-			List<TravelDTO> list = (List<TravelDTO>) request.getSession().getAttribute("list");
+			List<TravelDTO> list = (List<TravelDTO>) request.getSession().getAttribute("listT");
 		%>
 
 		<br>
@@ -85,6 +85,6 @@
 
 	</div>
 	<br>
-	<%@ include file="./css/footer.jsp"%>
+	<%@ include file="/css/footer.jsp"%>
 </body>
 </html>
