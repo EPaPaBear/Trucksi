@@ -1,8 +1,10 @@
 package it.contrader.converter;
 
+import org.springframework.stereotype.Component;
+
 import it.contrader.dto.CityDTO;
 import it.contrader.model.City;
-
+@Component
 public class CityConverter extends AbstractConverter<City, CityDTO>{
 	@Override
 	public City toEntity(CityDTO cityDTO) {

@@ -4,7 +4,7 @@
 	
 	<div class="main">
 		<%
-			List<CityDTO> list = (List<CityDTO>) request.getSession().getAttribute("list"); 
+			List<CityDTO> list = (List<CityDTO>) request.getSession().getAttribute("listC"); 
 			System.out.println(list);
 		%>
 

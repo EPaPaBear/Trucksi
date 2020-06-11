@@ -49,7 +49,7 @@ public class CityController {
 		dto.setCityname(cityname);
 		service.update(dto);
 		setAll(request);
-		return "trucks";
+		return "cities";
 
 	}
 
@@ -61,7 +61,7 @@ public class CityController {
 		dto.setCityname(cityname);
 		service.insert(dto);
 		setAll(request);
-		return "trucks";
+		return "cities";
 	}
 
 	@GetMapping("/read")
@@ -71,6 +71,6 @@ public class CityController {
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("listT", service.getAll());
+		request.getSession().setAttribute("listC", service.getAll());
 	}
 }
