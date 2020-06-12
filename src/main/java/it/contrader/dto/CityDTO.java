@@ -15,6 +15,6 @@ public class CityDTO {
 
 	private String cityname;
 	
-	private Hystorytravel ht;
+	//private Hystorytravel ht;
 	
 }

@@ -10,7 +10,7 @@ public class CityConverter extends AbstractConverter<City, CityDTO>{
 	public City toEntity(CityDTO cityDTO) {
 		City city = null;
 		if (cityDTO != null) {
-			city = new City(cityDTO.getId(), cityDTO.getCityname(), null);
+			city = new City(cityDTO.getId(), cityDTO.getCityname());
 		}
 		return city;
 	}
@@ -19,7 +19,7 @@ public class CityConverter extends AbstractConverter<City, CityDTO>{
 	public CityDTO toDTO(City city) {
 		CityDTO cityDTO = null;
 		if (city != null) {
-			cityDTO = new CityDTO(city.getId(), city.getCityname(), city.getHt());
+			cityDTO = new CityDTO(city.getId(), city.getCityname());
 
 		}
 		return cityDTO;
