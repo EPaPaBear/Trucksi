@@ -13,7 +13,7 @@ public class TruckConverter extends AbstractConverter<Truck, TruckDTO> {
 	public Truck toEntity(TruckDTO truckDTO) {
 		Truck truck = null;
 		if (truckDTO != null) {
-			truck = new Truck(truckDTO.getId(), truckDTO.getLicensePlate(), truckDTO.getDriver());
+			truck = new Truck(truckDTO.getId(), truckDTO.getLicensePlate(), truckDTO.getModel(), truckDTO.getDriver());
 		}
 		return truck;
 	}
@@ -22,7 +22,7 @@ public class TruckConverter extends AbstractConverter<Truck, TruckDTO> {
 	public TruckDTO toDTO(Truck truck) {
 		TruckDTO truckDTO = null;
 		if (truck != null) {
-			truckDTO = new TruckDTO(truck.getId(), truck.getLicensePlate(), truck.getDriver());
+			truckDTO = new TruckDTO(truck.getId(), truck.getLicensePlate(), truck.getModel(), truck.getDriver());
 
 		}
 		return truckDTO;

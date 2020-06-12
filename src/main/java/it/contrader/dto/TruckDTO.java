@@ -14,6 +14,8 @@ public class TruckDTO {
 	private Long id;
 
 	private String licensePlate;
+	
+	private String model;
 
 	private Driver driver;
 

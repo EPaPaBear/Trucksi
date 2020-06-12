@@ -31,6 +31,7 @@ public class City {
 	//@ManyToOne(cascade=CascadeType.MERGE)
 	//@JoinColumn(name="idhystorytravel", referencedColumnName="idt")
 	//private Hystorytravel ht;
-	@OneToOne(mappedBy = "city", cascade = CascadeType.MERGE)  
+	@OneToOne( cascade = CascadeType.MERGE)  
 	private Hystorytravel ht; 
+
 }

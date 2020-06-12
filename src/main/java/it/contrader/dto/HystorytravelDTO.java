@@ -1,5 +1,10 @@
 package it.contrader.dto;
 
+import java.sql.Time;
+
+import it.contrader.model.City;
+import it.contrader.model.Truck;
+import it.contrader.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +23,10 @@ public class HystorytravelDTO {
 	private String numeroutenti;
 	
 	private String numeroteam;
+	private Time timedeparture;
+	private Time timearrival;
+	private City citydeparture;
+	private City cityarrive;
+	private User user;
+	private Truck truck;
 }

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import it.contrader.model.City;
 import it.contrader.model.Passenger;
 import it.contrader.model.Truck;
 @Data
@@ -23,6 +24,7 @@ public class TravelDTO {
 	private LocalDateTime traveldate;
 	private Passenger passenger;
 	private Truck truck;
+	private City city;
 	//@ManyToOne
 	//private Historytravel history;
 }

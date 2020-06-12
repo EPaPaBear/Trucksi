@@ -17,7 +17,19 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 		
 		if (HystorytravelDTO != null) {
 			
-			Hystorytravel = new Hystorytravel(HystorytravelDTO.getIdt(), HystorytravelDTO.getNometeam(), HystorytravelDTO.getDescrizione(), HystorytravelDTO.getNumeroutenti(), HystorytravelDTO.getNumeroteam(), null);
+			Hystorytravel = new Hystorytravel(
+					HystorytravelDTO.getIdt(),
+					HystorytravelDTO.getNometeam(),
+					HystorytravelDTO.getDescrizione(),
+					HystorytravelDTO.getNumeroutenti(),
+					HystorytravelDTO.getNumeroteam(), 
+					HystorytravelDTO.getTimedeparture(), 
+					HystorytravelDTO.getTimearrival(),
+					HystorytravelDTO.getCitydeparture(), 
+					HystorytravelDTO.getCityarrive(),
+					HystorytravelDTO.getUser(),
+					HystorytravelDTO.getTruck()
+					);
 		//	Hystorytravel = new Hystorytravel(HystorytravelDTO.getIdt(), HystorytravelDTO.getNometeam(), HystorytravelDTO.getDescrizione(), HystorytravelDTO.getNumeroutenti(), HystorytravelDTO.getNumeroteam());
 			
 		}
@@ -30,7 +42,18 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 	public HystorytravelDTO toDTO(Hystorytravel ht) {
 		HystorytravelDTO htDTO = null;
 		if( ht != null) {
-			htDTO = new HystorytravelDTO(ht.getIdt(), ht.getNometeam(), ht.getDescrizione(), ht.getNumeroutenti(), ht.getNumeroteam());
+			htDTO = new HystorytravelDTO(
+					ht.getIdt(),
+					ht.getNometeam(), 
+					ht.getDescrizione(),
+					ht.getNumeroutenti(), 
+					ht.getNumeroteam(), 
+					ht.getTimedeparture(),
+					ht.getTimearrival(),
+					ht.getCitydeparture(),
+					ht.getCityarrive(),
+					ht.getUser(),
+					ht.getTruck());
 		}
 		return htDTO;
 		

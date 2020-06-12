@@ -133,6 +133,7 @@ public class UserController {
 			 @RequestParam("phoneD") String phoneD,
 			 @RequestParam("ageD") String ageDriver,
 			 @RequestParam("driverLicense") String driverLicense,
+			 @RequestParam("model") String model,
 			 @RequestParam("driverLicense") String licensePlate,
 			 @RequestParam("nameP") String nameP,
 			 @RequestParam("surnameP") String surnameP,
@@ -165,27 +166,27 @@ public class UserController {
 			driverDTO.setAge(ageD);
 			driverDTO.setUser(service.convertUserDTO(dto));  
 			
-			//System.out.println(dto); 
-			//System.out.println(driverDTO);
-			
 			//Inserisco il driver nel db
 			driverDTO = driverService.insert(driverDTO);  
 			
-			//System.out.println(driverDTO);
-			
-			//Una volta creato il driver mi creo il Truck
-			TruckDTO truckDTO = new TruckDTO();
-			truckDTO.setLicensePlate(licensePlate);
-			truckDTO.setDriver(driverService.convertDriverDTO(driverDTO));  
-			
-			truckService.insert(truckDTO);
-			
-		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) { 
+			if(!licensePlate.equals("") && !model.equals("")) {//Se ho info sul truck,lo inserisco
+				//Una volta creato il driver mi creo il Truck
+				TruckDTO truckDTO = new TruckDTO();
+				truckDTO.setLicensePlate(licensePlate);
+				truckDTO.setModel(model);
+				truckDTO.setDriver(driverService.convertDriverDTO(driverDTO));  
+				
+				truckService.insert(truckDTO);
+			}
+		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) {  
 			PassengerDTO passengerDTO = new PassengerDTO();
 			passengerDTO.setName(nameP);
 			passengerDTO.setSurname(surnameP);
 			passengerDTO.setPhone(phoneP);
 			passengerDTO.setAge(ageP);
+			passengerDTO.setUser(service.convertUserDTO(dto));
+			
+			passengerService.insert(passengerDTO);
 		}
 		
  		return "index";

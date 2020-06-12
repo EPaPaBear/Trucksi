@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 import it.contrader.dto.TravelDTO;
 import it.contrader.model.Passenger;
 import it.contrader.model.Truck;
+import it.contrader.service.CityService;
+import it.contrader.service.PassengerService;
 import it.contrader.service.TravelService;
 import it.contrader.service.TruckService;
 
@@ -24,6 +26,14 @@ public class TravelController {
 	private String pathFolder = "/travel/";
 	@Autowired
 	private TruckService serviceT;
+	
+
+	@Autowired
+	private CityService serviceC;
+	
+	
+	@Autowired
+	private PassengerService serviceP;
 
 	@Autowired
 	private TravelService service;
@@ -90,6 +100,10 @@ public class TravelController {
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("listT", service.getAll());
 		request.getSession().setAttribute("TruckList", serviceT.getAll());
+		request.getSession().setAttribute("PassengerList", serviceP.getAll());
+		request.getSession().setAttribute("CityList", serviceC.getAll());
 
+
+		
 	}
 }

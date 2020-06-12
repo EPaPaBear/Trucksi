@@ -30,11 +30,19 @@ public class Travel {
 	
 	@DateTimeFormat
 	LocalDateTime  traveldate;
-	@ManyToOne
+	@OneToOne( cascade=CascadeType.MERGE)
+	@JoinColumn(name = "idpassenger", referencedColumnName = "id")
 	private Passenger passenger;
 	@OneToOne( cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idtruck", referencedColumnName = "id")
 	private Truck truck;
+	
+	
+	@OneToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name = "idcity", referencedColumnName = "id")
+	private City city;
+	
+	
 	//@ManyToOne
 	//private Historytravel history;
 

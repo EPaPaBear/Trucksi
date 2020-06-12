@@ -1,5 +1,6 @@
 <%@page import="java.time.format.DateTimeFormatter"%>
-<%@ page import="it.contrader.dto.TravelDTO" import="it.contrader.dto.TruckDTO" import="java.util.*" import="java.time.*"%>
+<%@ page import="it.contrader.dto.TravelDTO" import="it.contrader.dto.TruckDTO" import="java.util.*" import="java.time.*" import ="it.contrader.dto.PassengerDTO"%>
+<%@ page import ="it.contrader.dto.CityDTO" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,26 +14,24 @@
 		
 </head>
 <body>
-	<%@ include file="../css/header.jsp"%>
-	
+	<%@ include file="/css/header2.jsp"%>
+		
 	<div class="main">
 		<% 
 		List<TravelDTO> travelList = (List<TravelDTO>) request.getSession().getAttribute("listT");
-		%>
-		<% 
 		List<TruckDTO> truckList = (List<TruckDTO>) request.getSession().getAttribute("TruckList");
+		List<PassengerDTO> passengerList = (List<PassengerDTO>) request.getSession().getAttribute("PassengerList");
+		List<CityDTO> cityList = (List<CityDTO>) request.getSession().getAttribute("CityList");
 		%>
-		
 <br>
 		<table>
-		
 		<tr>
 				<th>Travel ID</th>
 				<th>Travel Date</th>
 				<th>Passenger</th>
 				<th>Truck</th>
+				<th>City</th>
 		</tr>
-		
 		<%
 			for(TravelDTO e : travelList){	
 		%>
@@ -42,12 +41,13 @@
 			<td><%=e.getTraveldate().format((DateTimeFormatter.ofPattern("dd/MM/YYYY HH:mm")))%></td>
 			<td><%=e.getPassenger() %></td>
 			<td><%=e.getTruck()%></td>	
+			<td><%=e.getCity()%>
 			<td><a href=/travel/preupdate?id=<%=e.getId() %>>Edit</a></td>
 			<td><a href=/travel/delete?id=<%=e.getId() %>>Delete</a></td>			
 		</tr>
 		<% } %>	
 	</table>
-	
+</div>
 <br>
 <br>
 	<form id="floatright" action="/travel/insert" method="post">
@@ -84,17 +84,36 @@
 		 <input type="datetime-local" id="startDate" name="startDate">
 		</div>
 	</div>
+	
 	<div class="row">
-		<div class="col-25">
-		 <label for="category">Passenger</label>
-		</div>
-		<div class="col-75">
-		 <input list="passenger" name="passenger" placeholder="Passenger Name">
-		</div>
-	</div>
+	    <div class="col-25">
+	      <label for="city">City</label>
+	     </div>
+	     <div class="col-75">
+			<select name="cityname" id="city" required>
+			 <option value="">None</option>
+				<%for (CityDTO city : cityList) { %>
+  					<option value="<%=city.getId()%>" > <%=city.getCityname() %></option>
+				<%}%>
+			</select>
+	 	</div>
+	 </div>
+		<div class="row">
+	    <div class="col-25">
+	      <label for="pass">Passenger</label>
+	     </div>
+	     <div class="col-75">
+			<select name="name" id="pass" required>
+			 <option value="">None</option>
+				<%for (PassengerDTO p : passengerList) { %>
+  					<option value="<%=p.getId()%>" > <%=p.getName()%></option>
+				<%}%>
+			</select>
+	 	</div>
+	 </div>
 	
 	<button type="submit">Insert</button>
 </form>
-<%@ include file="../css/footer.jsp"%>
+<%@ include file="/css/footer2.jsp"%>
 </body>
 </html>
