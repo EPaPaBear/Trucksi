@@ -1,10 +1,13 @@
 package it.contrader.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +31,8 @@ public class Passenger {
 	
 	private String phone;
 	
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "idUser", referencedColumnName = "id")  
 	private User user;
 
 }

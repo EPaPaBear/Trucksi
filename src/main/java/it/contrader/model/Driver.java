@@ -39,7 +39,7 @@ public class Driver {
 	
 	private int age; 
 	
-	@OneToMany(mappedBy = "driver", cascade = CascadeType.MERGE) 	 
+	@OneToMany(mappedBy = "driver", cascade = CascadeType.REFRESH)	 
 	private List<Truck> truckList;
 	
 	//cascade -> propaga tutte le operazione dal padre a tutti i figli(tutte le tabbelle collegate)

@@ -1,7 +1,5 @@
 package it.contrader.dto;
 
-import javax.persistence.ManyToOne;
-
 import it.contrader.model.User;
 import lombok.AllArgsConstructor; 
 import lombok.Data;
@@ -23,7 +21,6 @@ public class PassengerDTO {
 	
 	private String phone;
 	
-	@ManyToOne
 	private User user;
 
 }

@@ -1,6 +1,6 @@
 <%@include file="css/header2.jsp"%>
 
-	<form action="/user/singin" method="post" class="singin" name="singin" novalidate>
+	<form action="/user/singin" method="post" class="singin" name="singin">
 		<h1>SING IN</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> 
@@ -31,8 +31,11 @@
 			<label for="ageD">Age</label>
 			<input type="text" name="ageD" id="ageD" placeholder="Age">
 			
+			<label for="model">Model</label>
+			<input type="text" name="model" id="model" placeholder="Model" onchange="checkTruck()"> 
+			
 			<label for="licensePlate">License Plate</label>
-			<input type="text" name="licensePlate" id="licensePlate" placeholder="License Plate">
+			<input type="text" name="licensePlate" id="licensePlate" placeholder="License Plate" onchange="checkTruck()">
 		</div>
 		
 		<div class="hidePassenger">
@@ -55,6 +58,20 @@
 	</form>
 	
 	<script>
+	
+		function checkTruck(){
+			const modello = document.querySelector("#model").value;
+			const licensePlate = document.querySelector("#licensePlate").value;
+			
+			if(modello != "" || licensePlate != ""){
+				document.querySelector("#model").required = true
+				document.querySelector("#licensePlate").required = true
+			}else{
+				document.querySelector("#model").required = false
+				document.querySelector("#licensePlate").required = false
+			}
+		}
+		
 		function hideContent(){ 
 			const index = document.querySelector('#userSelect').selectedIndex;
 			const classToShow = document.querySelector('#userSelect').options[index].getAttribute("showclass");
@@ -66,7 +83,10 @@
 			const inputs=document.querySelectorAll('.'+classToShow+' input');
 			
 			inputs.forEach(function(item){
-				item.required = true;
+				if(item.id != "model" && item.id != "licensePlate"){
+					item.required = true;	
+				}
+				
 			});
 		}
 		

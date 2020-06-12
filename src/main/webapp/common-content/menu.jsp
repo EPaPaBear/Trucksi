@@ -1,4 +1,4 @@
-<%@ page  import="it.contrader.dto.UserDTO" import="it.contrader.model.User.Usertype" import="java.util.HashMap"%> 
+<%@ page  import="it.contrader.dto.UserDTO" import="it.contrader.model.User.Usertype" %> 
 
 <% 
 	//javax.servlet.forward.request_uri ritorna effettivamente l'url che noi visualizziamo
@@ -27,10 +27,18 @@
 	//Se non ho fatto il login, o se mi è scaduta la sessione riporto l'utente al login
 	Usertype usertype = null; 
 	String username = "";
-	if(userDTO == null) {
+	String printName= "";
+	if(userDTO == null) { 
 		response.sendRedirect("/index.jsp"); //error   
 	}else{
-		usertype = userDTO.getUsertype();	
+		usertype = userDTO.getUsertype();
+		if(usertype.equals(Usertype.DRIVER)){
+			printName = userDTO.getDriver().getName() +" "+userDTO.getDriver().getSurname(); 
+		}else if(usertype.equals(Usertype.PASSENGER)){
+			printName = userDTO.getPassenger().getName()+" "+userDTO.getPassenger().getSurname(); 
+		}else{
+			printName = usertype.toString(); 
+ 		}
 	}
 	
 %>
@@ -38,14 +46,16 @@
 <div class="navbar">
   <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="/homeadmin.jsp">Home</a>
   
-  <% if(usertype!= null && !usertype.equals(Usertype.DRIVER)){  %>  
+  <% if(usertype!= null && !usertype.equals(Usertype.DRIVER) && !usertype.equals(Usertype.PASSENGER)){  %>  
   	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a> 
   <% } %>
   
-  <a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
-<a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>
+  <% if(usertype!= null && !usertype.equals(Usertype.PASSENGER)){  %>
+  	<a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
+  <% } %>
+  <!--<a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>-->
   <!--<a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="cities">Cities</a>-->
  <a <% if(confronto.equals("travel")) out.println("class=\"active\""); %> href="/travel/getall">Travel</a>
- <a id="username"><%=usertype %></a>
+ <a id="username"><%=printName %></a>
   <a href="/user/logout" id="logout">Logout</a>
 </div>

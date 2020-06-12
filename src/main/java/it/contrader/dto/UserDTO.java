@@ -1,6 +1,7 @@
 package it.contrader.dto;
 
 import it.contrader.model.Driver;
+import it.contrader.model.Passenger;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +22,7 @@ public class UserDTO {
 	private Usertype usertype;
 	
 	private Driver driver; 
+	
+	private Passenger passenger;  
 	
 }

@@ -28,7 +28,9 @@ public class Truck {
 	@Column(unique = true)
 	private String licensePlate;
 	
-	@ManyToOne(cascade = CascadeType.MERGE) 
+	private String model;
+	
+	@ManyToOne(cascade = CascadeType.REFRESH) 
 	@JoinColumn(name = "idDriver", referencedColumnName = "id") 
 	private Driver driver ;
 
