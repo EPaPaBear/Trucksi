@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import it.contrader.dto.TravelDTO;
+import it.contrader.model.City;
 import it.contrader.model.Passenger;
 import it.contrader.model.Truck;
 import it.contrader.service.CityService;
@@ -78,9 +79,11 @@ public class TravelController {
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@RequestParam("traveldate") String traveldate,
+		//	@RequestParam("traveldate") String traveldate,
 			@RequestParam("passenger") Passenger passenger,
-			@RequestParam("truck") Truck truck)
+			@RequestParam("truck") Truck truck,
+			@RequestParam("city") City city)
+			
 	 {
 		TravelDTO dto = new TravelDTO();
 		dto.setTraveldate(LocalDateTime.parse(traveldate));

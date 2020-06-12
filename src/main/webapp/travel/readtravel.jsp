@@ -30,12 +30,15 @@
 				<th>Travel Date</th>
 				<th>Passenger</th>
 				<th>Truck</th>
+				<th>City</th>
+				
 			</tr>
 			<tr>
 				<td><%=t.getId()%></td>
 				<td><%=t.getTraveldate()%></td>
 				<td><%=t.getPassenger()%></td>
 				<td><%=t.getTruck()%></td>
+				<td><%=t.getCity() %></td>
 			</tr>
 		</table>
 
