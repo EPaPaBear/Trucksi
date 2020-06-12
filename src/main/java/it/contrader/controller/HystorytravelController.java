@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.converter.CityConverter;
+import it.contrader.converter.UserConverter;
 import it.contrader.dto.CityDTO;
 import it.contrader.dto.HystorytravelDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.CityService;
 import it.contrader.service.HystorytravelService;
+import it.contrader.service.TruckService;
 import it.contrader.utils.StringtoTime;
 
 
@@ -32,7 +35,8 @@ public class HystorytravelController {
 	private HystorytravelService service;
 	@Autowired
 	private CityService serviceC;
-	
+	@Autowired
+	private TruckService serviceT;
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
@@ -79,9 +83,12 @@ public class HystorytravelController {
 			@RequestParam("timedeparture") String tm,
 			@RequestParam("timearrival") String at
 			) {
+		UserConverter userConverter = new UserConverter();
+		UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
+		userDTO.getId();
 		
 		HystorytravelDTO dto = new HystorytravelDTO();
-		
+		dto.setUser(userConverter.toEntity(userDTO));
 		dto.setTimedeparture(StringtoTime.convert(tm));
 		
 		dto.setTimearrival(StringtoTime.convert(at));
@@ -119,6 +126,7 @@ public class HystorytravelController {
 		request.getSession().setAttribute("listH", service.getAll());
 		/*get all city */
 		request.getSession().setAttribute("listC", serviceC.getAll());
+		request.getSession().setAttribute("listT", serviceT.getAll());
 	}
 }
 

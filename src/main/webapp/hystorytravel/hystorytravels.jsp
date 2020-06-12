@@ -1,3 +1,5 @@
+<%@page import="it.contrader.dto.TruckDTO"%>
+<%@page import="it.contrader.model.Truck"%>
 <%@page import="it.contrader.service.CityService"%>
 <%@page import="it.contrader.dto.CityDTO"%>
 <%@page import="it.contrader.model.City"%>
@@ -9,7 +11,9 @@
 		<%
 			List<HystorytravelDTO> list = (List<HystorytravelDTO>) request.getSession().getAttribute("listH"); 
 			List<CityDTO> listC = (List<CityDTO>) request.getSession().getAttribute("listC");
+			List<TruckDTO> listT = (List<TruckDTO>) request.getSession().getAttribute("listT");
 			CityService serviceC = new CityService();
+			
 			
 		%>
 
@@ -17,12 +21,13 @@
 
 		<table>
 			<tr>
-				<th>Descrizione</th>
-				<th>NomeTeam</th>
+				<th>id</th>
+				<th>Modello Veicolo</th>
 				<th>Città di partenza</th>
 				<th>Orario di partenza </th>
 				<th>CIttà di arrivo</th>
 				<th>Arrival time</th>
+				<th> Driver Name</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -31,13 +36,14 @@
 			%>
 			<tr>
 				<td>
-					<a href="/truck/read?id=<%=t.getIdt()%>"> <%=t.getDescrizione()%></a>  
+					<a href="/truck/read?id=<%=t.getIdt()%>"><%=t.getIdt() %> </a>  
 				</td>
-				<td> <%=t.getNometeam() %> </td>
+				<td><%=t.getTruck().getModel()%>  </td>
 				<td> <%=t.getCitydeparture().getCityname() %></td>
 				<td> <%=t.getTimedeparture() %></td>
 				<td> <%=t.getCityarrive().getCityname() %> </td>
 				<td> <%=t.getTimearrival() %></td>
+				<td> <%=t.getUser().getUsername() %></td>
 				
 				<td><a href="/truck/preupdate?id=<%=t.getIdt()%>">Edit</a></td>
 				<td><a href="/truck/delete?id=<%=t.getIdt()%>">Delete</a></td>
@@ -47,19 +53,41 @@
 				}
 			%>
 		</table>
+	
 
 
-
-		<form id="floatright" action="/hystorytravel/insert" method="post">
+		<form id="floatright" name="form" action="/hystorytravel/insert" method="post" >
 		
+		<!--  se sei admin tutti i driver  -->
+	
+	<!--  truck select -->
+	<div class="row">
+	    <div class="col-25">
+	      <label for="city"> Select Truck:</label>
+	     </div>
+	     <div class="col-75">
+			<select name="truck" id="truck" required>
+			 <option value="">None</option>
+				<%for (TruckDTO ltt : listT) { %>
+  					<option value="<%=ltt.getId()%>" > <%=ltt.getModel() %></option>
+				<%}%>
+			</select>
+	    </div>
+	</div>
+<!--  departure city -->
 		
+
+		<!--  select su truck    -->
+		<!--  select travel  -->
+	
 <!--  departure city -->
 	<div class="row">
 	    <div class="col-25">
 	      <label for="city"> Departure City:</label>
 	     </div>
 	     <div class="col-75">
-			<select name="citydeparture" id="city" required>
+			<select name="citydeparture" id="citydeparture" required>
+			 <option value="">None</option>
 				<%for (CityDTO ltc : listC) { %>
   					<option value="<%=ltc.getId()%>" > <%=ltc.getCityname() %></option>
 				<%}%>
@@ -85,6 +113,7 @@
 	     </div>
 	     <div class="col-75">
 			<select name="cityarrive" id="city" required>
+			 <option value="">None</option>
 				<%for (CityDTO ltc : listC) { %>
   					<option value="<%=ltc.getId()%>" > <%=ltc.getCityname() %></option>
 				<%}%>

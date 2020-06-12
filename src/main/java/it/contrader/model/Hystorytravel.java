@@ -54,7 +54,11 @@ public class Hystorytravel {
 	@OneToOne( cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idcityarrive", referencedColumnName = "id")  
 	private City cityarrive;
-
-
+	@OneToOne( cascade=CascadeType.MERGE)
+	@JoinColumn(name = "iduser", referencedColumnName = "id")  
+	private User user;
+	@OneToOne( cascade=CascadeType.MERGE)
+	@JoinColumn(name = "idtruck", referencedColumnName = "id")  
+	private Truck truck;
 
 }
