@@ -8,16 +8,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 import it.contrader.dto.TravelDTO;
 import it.contrader.model.Passenger;
 import it.contrader.model.Truck;
 import it.contrader.service.TravelService;
+import it.contrader.service.TruckService;
+
+
 
 @Controller
 @RequestMapping("/travel")
 public class TravelController {
-	private String pathFolder = "travel/";
+	private String pathFolder = "/travel/";
+	@Autowired
+	private TruckService serviceT;
 
 	@Autowired
 	private TravelService service;
@@ -44,14 +50,14 @@ public class TravelController {
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
 			@RequestParam("id") Long id,
-			@RequestParam("traveldate") Date traveldate,
+			@RequestParam("traveldate") String traveldate,
 			@RequestParam("passenger") Passenger passenger,
 			@RequestParam("truck") Truck truck)
 		{
 
 		TravelDTO dto = new TravelDTO();
 		dto.setId(id);
-		dto.setTraveldate(traveldate);
+		dto.setTraveldate(LocalDateTime.parse(traveldate));
 		dto.setPassenger(passenger);
 		dto.setTruck(truck);
 		service.update(dto);
@@ -62,12 +68,12 @@ public class TravelController {
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@RequestParam("traveldate") Date traveldate,
+			@RequestParam("traveldate") String traveldate,
 			@RequestParam("passenger") Passenger passenger,
 			@RequestParam("truck") Truck truck)
 	 {
 		TravelDTO dto = new TravelDTO();
-		dto.setTraveldate(traveldate);
+		dto.setTraveldate(LocalDateTime.parse(traveldate));
 		dto.setPassenger(passenger);
 		dto.setTruck(truck);
 		service.insert(dto);
@@ -83,5 +89,7 @@ public class TravelController {
 
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("listT", service.getAll());
+		request.getSession().setAttribute("TruckList", serviceT.getAll());
+
 	}
 }

@@ -3,6 +3,8 @@ package it.contrader.dto;
 import lombok.AllArgsConstructor; 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
 import javax.persistence.Column;
@@ -18,7 +20,7 @@ import it.contrader.model.Truck;
 
 public class TravelDTO {
 	private Long id;
-	private Date traveldate;
+	private LocalDateTime traveldate;
 	private Passenger passenger;
 	private Truck truck;
 	//@ManyToOne

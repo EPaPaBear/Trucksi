@@ -13,7 +13,7 @@ public class PassengerConverter extends AbstractConverter<Passenger, PassengerDT
 	public Passenger toEntity(PassengerDTO passengerDTO) {
 		Passenger passenger = null;
 		if (passengerDTO != null) {
-			passenger = new Passenger(passengerDTO.getId(), passengerDTO.getName(), passengerDTO.getSurname(), passengerDTO.getAge(), passengerDTO.getPhone(), passengerDTO.getUser());
+			passenger = new Passenger(passengerDTO.getId(), passengerDTO.getName(), passengerDTO.getSurname(), passengerDTO.getAge(), passengerDTO.getPhone(), passengerDTO.getUser(), null);
 		}
 		return passenger;
 	}
