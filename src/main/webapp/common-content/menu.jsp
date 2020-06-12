@@ -44,17 +44,17 @@
 %>
 
 <div class="navbar">
-  <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="/homeadmin.jsp">Home</a>
+ <a <% if(confronto.equals("home")) out.println("class=\"active\""); %> href="/homeadmin.jsp">Home</a>
   
-  <% if(usertype!= null && !usertype.equals(Usertype.DRIVER) && !usertype.equals(Usertype.PASSENGER)){  %>  
-  	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a> 
-  <% } %>
+ <% if(usertype!= null && !usertype.equals(Usertype.DRIVER) && !usertype.equals(Usertype.PASSENGER)){  %>  
+ 	<a <% if(confronto.equals("user")) out.println("class=\"active\""); %> href="/user/getall">Users</a> 
+ <% } %>
   
-  <% if(usertype!= null && !usertype.equals(Usertype.PASSENGER)){  %>
-  	<a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
-  <% } %>
-  <a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a>
-  <a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="/city/getall">Cities</a>
+ <% if(usertype!= null && !usertype.equals(Usertype.PASSENGER)){  %>
+ 	<a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
+ <% } %>
+ <a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a> 
+ <a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="cities">Cities</a> 
  <a <% if(confronto.equals("travel")) out.println("class=\"active\""); %> href="/travel/getall">Travel</a>
  <a id="username"><%=printName %></a>
   <a href="/user/logout" id="logout">Logout</a>

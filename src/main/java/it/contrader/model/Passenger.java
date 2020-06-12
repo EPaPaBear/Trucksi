@@ -34,5 +34,8 @@ public class Passenger {
 	@OneToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "idUser", referencedColumnName = "id")  
 	private User user;
-
+	@ManyToOne(cascade = CascadeType.MERGE) 
+	@JoinColumn(name = "idDriver", referencedColumnName = "id") 
+	private Truck truck ;
+	
 }

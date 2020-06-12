@@ -13,7 +13,7 @@ public class TravelConverter extends AbstractConverter<Travel, TravelDTO> {
 	public Travel toEntity(TravelDTO travelDTO) {
 		Travel travel = null;
 		if (travelDTO != null) {
-			travel = new Travel(travelDTO.getId(), travelDTO.getTraveldate(), travelDTO.getPassenger(), travelDTO.getTruck());
+			travel = new Travel(travelDTO.getId(), travelDTO.getTraveldate(), travelDTO.getPassenger(), travelDTO.getTruck(), travelDTO.getCity());
 		}
 		return travel;
 	}
@@ -22,7 +22,7 @@ public class TravelConverter extends AbstractConverter<Travel, TravelDTO> {
 	public TravelDTO toDTO(Travel travel) {
 		TravelDTO travelDTO = null;
 		if (travel != null) {
-			travelDTO = new TravelDTO(travel.getId(), travel.getTraveldate(),travel.getPassenger(),travel.getTruck());
+			travelDTO = new TravelDTO(travel.getId(), travel.getTraveldate(),travel.getPassenger(),travel.getTruck(),travelDTO.getCity());
 
 		}
 		return travelDTO;
