@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.converter.CityConverter;
+import it.contrader.converter.TruckConverter;
 import it.contrader.converter.UserConverter;
 import it.contrader.dto.CityDTO;
 import it.contrader.dto.HystorytravelDTO;
+import it.contrader.dto.TruckDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.City;
+import it.contrader.model.Truck;
+import it.contrader.model.User;
 import it.contrader.service.CityService;
 import it.contrader.service.HystorytravelService;
 import it.contrader.service.TruckService;
@@ -78,37 +83,23 @@ public class HystorytravelController {
 	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, 
-			@RequestParam("citydeparture") long cd,
-			@RequestParam("cityarrive") long ca,
+			@RequestParam("citydeparture") City cd,
+			@RequestParam("cityarrive") City ca,
 			@RequestParam("timedeparture") String tm,
-			@RequestParam("timearrival") String at
+			@RequestParam("timearrival") String at,
+			@RequestParam("truck") Truck truk
 			) {
+	
 		UserConverter userConverter = new UserConverter();
 		UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
 		userDTO.getId();
-		
 		HystorytravelDTO dto = new HystorytravelDTO();
 		dto.setUser(userConverter.toEntity(userDTO));
 		dto.setTimedeparture(StringtoTime.convert(tm));
-		
+		dto.setTruck(truk);
 		dto.setTimearrival(StringtoTime.convert(at));
-		CityDTO dtoCd = new CityDTO();
-		
-		dtoCd.setId(cd);
-		CityConverter cc = new CityConverter();
-		cc.toEntity(dtoCd);
-		dto.setCitydeparture(cc.toEntity(dtoCd));
-		
-		CityDTO dtoCa = new CityDTO();
-		
-		dtoCa.setId(ca);
-		CityConverter cca = new CityConverter();
-		cca.toEntity(dtoCa);
-		dto.setCityarrive(cca.toEntity(dtoCa));
-		
-	//	dto.setNometeam(nometeam);
-	//	dto.setDescrizione(descrizione);
-	//	dto.setNumeroutenti(numeroutenti);
+		dto.setCitydeparture(cd);
+		dto.setCityarrive(ca);
 		service.insert(dto);
 		setAll(request);
 		return "hystorytravel/hystorytravels";

@@ -34,7 +34,7 @@
 			</tr>
 			<%
 				for (HystorytravelDTO t : list) {
-			%>
+		%>
 			<tr>
 				<td>
 					<a href="/truck/read?id=<%=t.getIdt()%>"><%=t.getIdt() %> </a>  
