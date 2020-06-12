@@ -20,7 +20,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @Entity
-@ToString(exclude= {"ht"})
+//@ToString(exclude= {"ht"})
 public class City {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class City {
 	//@ManyToOne(cascade=CascadeType.MERGE)
 	//@JoinColumn(name="idhystorytravel", referencedColumnName="idt")
 	//private Hystorytravel ht;
-	@OneToOne( cascade = CascadeType.MERGE)  
-	private Hystorytravel ht; 
+	//@OneToOne( cascade = CascadeType.MERGE)  
+	//private Hystorytravel ht; 
 
 }

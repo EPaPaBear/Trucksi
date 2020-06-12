@@ -24,6 +24,7 @@
 				<th>id</th>
 				<th>Modello Veicolo</th>
 				<th>Città di partenza</th>
+				
 				<th>Orario di partenza </th>
 				<th>CIttà di arrivo</th>
 				<th>Arrival time</th>
