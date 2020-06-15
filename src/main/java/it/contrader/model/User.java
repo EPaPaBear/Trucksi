@@ -10,11 +10,11 @@ import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 public class User {
 
@@ -34,11 +34,13 @@ public class User {
 	private Usertype usertype; 
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
-	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
+	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)   
 	private Driver driver;  
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
 	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
 	private Passenger passenger;   
 	
+	private boolean active = true;
+ 	
 }

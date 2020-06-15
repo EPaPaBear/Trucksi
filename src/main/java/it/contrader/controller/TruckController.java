@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.DriverDTO;
 import it.contrader.dto.TruckDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.Driver;
 import it.contrader.model.User.Usertype;
 import it.contrader.service.DriverService;
 import it.contrader.service.TruckService;
@@ -43,27 +44,24 @@ public class TruckController {
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id)); 
-		request.getSession().setAttribute("listD", driverService.getAll()); 
+		request.getSession().setAttribute("listD", driverService.getAll());  
 		return pathFolder+"updatetruck";
 	}
 
+	//Quando prendo driver dal front, li lo passo come intero, qui invece è come se si crea lui al runtime
+	//un oggetto driver e gli setta l'id passato dal front
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, 
 			@RequestParam("id") Long id,
 			@RequestParam("model") String model,
 			@RequestParam("licensePlate") String licensePlate,
-			@RequestParam("driver") String driver) {
+			@RequestParam("driver") Driver driver) {
 		
-		//Converto i valori che mi servono interi
-	    int idDriver = (driver!="") ? Integer.parseInt(driver) : 0;
-	    DriverDTO driverDTO = new DriverDTO();
-	    driverDTO = driverService.read(idDriver);
-
 		TruckDTO dto = new TruckDTO();
 		dto.setId(id);
 		dto.setLicensePlate(licensePlate);
 		dto.setModel(model);
-		dto.setDriver(driverService.convertDriverDTO(driverDTO)); 
+		dto.setDriver(driver);
 		service.update(dto);
 		setAll(request);
 		return pathFolder+"trucks";
@@ -74,17 +72,13 @@ public class TruckController {
 	public String insert(HttpServletRequest request,
 			@RequestParam("model") String model,
 			@RequestParam("licensePlate") String licensePlate,
-			@RequestParam("driver") String driver
+			@RequestParam("driver") Driver driver
 			) {
-		//Converto i valori che mi servono interi
-	    int idDriver = (driver!="") ? Integer.parseInt(driver) : 0;
-	    DriverDTO driverDTO = new DriverDTO();
-	    driverDTO = driverService.read(idDriver);
 	    
 		TruckDTO dto = new TruckDTO();
 		dto.setLicensePlate(licensePlate);
 		dto.setModel(model);
-		dto.setDriver(driverService.convertDriverDTO(driverDTO)); 
+		dto.setDriver(driver); 
 		service.insert(dto);
 		setAll(request);
 		return pathFolder+"trucks";

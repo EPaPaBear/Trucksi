@@ -1,50 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO"%>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="User Read">
-<meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
-<title>Read User</title>
-</head>
-<body>
-	<%@ include file="./css/header.jsp"%>
-	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a> <a class="active"
-			href="/user/getall">Users</a> <a href="/user/logout" id="logout">Logout</a>
-	</div>
-	<br>
-
-	<div class="main">
-		<%
-			UserDTO u = (UserDTO) request.getSession().getAttribute("dto");
-		%>
+<%@ include file="/css/header2.jsp"%>
+<br>
+<div class="main">
+	<%
+		UserDTO u = (UserDTO) request.getSession().getAttribute("dto");
+	%>
 
 
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>Username</th>
-				<th>Password</th>
-				<th>Usertype</th>
-			</tr>
-			<tr>
-				<td><%=u.getId()%></td>
-				<td><%=u.getUsername()%></td>
-				<td><%=u.getPassword()%></td>
-				<td><%=u.getUsertype()%></td>
-			</tr>
-		</table>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Usertype</th>
+			<% if(u.getUsertype().toString().equals("DRIVER")){ %>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Phone</th>
+				<th>Driver License</th>
+				<th>Age</th>
+			<% } %>
+			
+			<% if(u.getUsertype().toString().equals("PASSENGER")){ %>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Phone</th>
+				<th>Age</th>
+			<% } %>
+		</tr>
+		<tr>
+			<td><%=u.getId()%></td>
+			<td><%=u.getUsername()%></td>
+			<td><%=u.getPassword()%></td>
+			<td><%=u.getUsertype()%></td>
+			<% if(u.getUsertype().toString().equals("DRIVER")){ %>
+				<td><%=u.getDriver().getName() %></td>
+				<td><%=u.getDriver().getSurname() %></td>
+				<td><%=u.getDriver().getPhone() %></td>
+				<td><%=u.getDriver().getDriverLicense() %></td>
+				<td><%=u.getDriver().getAge() %></td>
+			<% } %>
+			
+			<% if(u.getUsertype().toString().equals("PASSENGER")){ %>
+				<td><%=u.getPassenger().getName() %></td>
+				<td><%=u.getPassenger().getSurname() %></td>
+				<td><%=u.getPassenger().getPhone() %></td>
+				<td><%=u.getPassenger().getAge() %></td>
+			<% } %>
+		</tr>
+	</table>
 
-		<br> <br> <br> <br> <br> <br> <br>
-		<br> <br> <br> <br> <br> <br> <br>
+	<br> <br> <br> <br> <br> <br> <br>
+	<br> <br> <br> <br> <br> <br> <br>
 
 
-	</div>
+</div>
 
-	<%@ include file="./css/footer.jsp"%>
-</body>
-</html>
+<%@ include file="/css/footer2.jsp"%>

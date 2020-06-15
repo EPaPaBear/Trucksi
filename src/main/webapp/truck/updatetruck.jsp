@@ -25,7 +25,7 @@ for (DriverDTO d : listD) {
 }
 %>
 
-<form id="floatright" action="/truck/update" method="post">
+<form id="floatright" action="/truck/update" method="post"> 
 			<div class="row">
 				<div class="col-25">
 					<label for="model">Model</label>
