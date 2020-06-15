@@ -1,6 +1,8 @@
 package it.contrader.controller;
 
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +40,12 @@ public class TravelController {
 	@Autowired
 	private TravelService service;
 	@Autowired
-	private CityService serviceC;
-	@Autowired
+	//private CityService serviceC;
+	//@Autowired
 	private TruckService serviceT;
 	// passenger
-	@Autowired
-	private PassengerService serviceP;
+	//@Autowired
+	//private PassengerService serviceP;
 	
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -61,10 +63,11 @@ public class TravelController {
 	
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
+		
 		request.getSession().setAttribute("list", service.getAll());
-		request.getSession().setAttribute("listC", serviceC.getAll());
+		//request.getSession().setAttribute("listC", serviceC.getAll());
 		request.getSession().setAttribute("listT", serviceT.getAll());
-		request.getSession().setAttribute("listP", serviceP.getAll());
+		//request.getSession().setAttribute("listP", serviceP.getAll());
 		return "travel/updatetravel";
 	}
 
@@ -90,12 +93,13 @@ public class TravelController {
 	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, 
-			@RequestParam("citydeparture") City cd,
-			@RequestParam("cityarrive") City ca,
+		//	@RequestParam("citydeparture") City cd,
+		//	@RequestParam("cityarrive") City ca,
 		//	@RequestParam("timedeparture") String tm,
 	//		@RequestParam("timearrival") String at,
-			@RequestParam("truck") Truck truk,
-			@RequestParam("passenger") Passenger pass
+			@RequestParam("date") String date,
+			@RequestParam("truck") Truck truk
+		//	@RequestParam("passenger") Passenger pass
 			) {
 	
 	//	UserConverter userConverter = new UserConverter();
@@ -106,11 +110,12 @@ public class TravelController {
 	
 //		dto.setTimedeparture(StringtoTime.convert(tm));
 		dto.setTruck(truk);
+		dto.setDate(LocalDateTime.parse(date));
 	
 //		dto.setTimearrival(StringtoTime.convert(at));
-		dto.setCitydeparture(cd);
-		dto.setCityarrive(ca);
-		dto.setPassenger(pass);
+	//	dto.setCitydeparture(cd);
+	//	dto.setCityarrive(ca);
+	//	dto.setPassenger(pass);
 		service.insert(dto);
 		setAll(request);
 		return "travel/travels";
@@ -124,9 +129,9 @@ public class TravelController {
 	
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("list", service.getAll());
-		request.getSession().setAttribute("listC", serviceC.getAll());
+	//	request.getSession().setAttribute("listC", serviceC.getAll());
 		request.getSession().setAttribute("listT", serviceT.getAll());
-		request.getSession().setAttribute("listP", serviceP.getAll());
+	//	request.getSession().setAttribute("listP", serviceP.getAll());
 	}
 }
 

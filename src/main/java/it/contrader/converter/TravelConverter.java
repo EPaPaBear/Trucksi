@@ -21,43 +21,84 @@ public class TravelConverter extends AbstractConverter<Travel, TravelDTO> {
 					travelDTO.getNometeam(),
 					travelDTO.getDescrizione(),
 					travelDTO.getNumeroutenti(),
-					travelDTO.getNumeroteam(), 
-					
-					
-					travelDTO.getCitydeparture(), 
-					travelDTO.getCityarrive(),
-					travelDTO.getUser(),
+					travelDTO.getNumeroteam(),
 					travelDTO.getTruck(),
-					travelDTO.getPassenger()
-				//	travelDTO.getDate()
-					);
-			
+					travelDTO.getDate()
+				);
 		}
 		return travel;
+		/*
+		 * 			travelDTO.getId(),
+					travelDTO.getNometeam(),
+					travelDTO.getDescrizione(),
+					travelDTO.getNumeroutenti(),
+					travelDTO.getNumeroteam(),
+					travelDTO.getTruck(),
+					travelDTO.getDate()
+		 * 
+		 * 
+		 * 
+		 */
 	}
-
-	
-	
+/*
+ * 					travelDTO.getId(),
+					travelDTO.getNometeam(),
+					travelDTO.getDescrizione(),
+					travelDTO.getNumeroutenti(),
+					travelDTO.getNumeroteam(), 
+//					travelDTO.getTimedeparture(), 
+					//	travelDTO.getTimearrival(),
+				//	travelDTO.getCitydeparture(), 
+					//travelDTO.getCityarrive(),
+					//travelDTO.getUser(),
+					travelDTO.getTruck()
+				//	travelDTO.getPassenger()
+				//	travelDTO.getDate()
+ * 
+ * 
+ * 
+ * 
+ */
 	@Override
 	public TravelDTO toDTO(Travel t) {
 		TravelDTO tDTO = null;
 		if( t != null) {
 			tDTO = new TravelDTO(
 					t.getId(),
+					t.getNometeam(),
+					t.getDescrizione(),
+					t.getNumeroutenti(),
+					t.getNometeam(),
+					t.getTruck(),
+					t.getDate());	
+			
+			/*		t.getId(),
+					t.getNometeam(),
+					t.getDescrizione(),
+					t.getNumeroutenti(),
+					t.getNumeroteam(),
+					t.getTruck(),
+					t.getDate()
+			 * 
+			 * 
+			 */
+			
+			
+			/*
+			 * t.getId(),
 					t.getNometeam(), 
 					t.getDescrizione(),
 					t.getNumeroutenti(), 
 					t.getNumeroteam(), 
-					
-				
+					//		t.getTimedeparture(),
+					//		t.getTimearrival(),
 					t.getCitydeparture(),
 					t.getCityarrive(),
 					t.getUser(),
 					t.getTruck(),
 					t.getPassenger()
 				//	t.getDate()
-					
-					);
+			 */
 		}
 		return tDTO;
 	}

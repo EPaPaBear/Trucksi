@@ -31,7 +31,7 @@
 %>
 
 
-<form id="floatright" name="form" action="/travel/insert" method="post" >
+<form id="floatright" name="form" action="/travel/update" method="post" >
 <!--  truck select -->
 	<div class="row">
 	    <div class="col-25">

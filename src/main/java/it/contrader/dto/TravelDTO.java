@@ -1,5 +1,6 @@
 package it.contrader.dto;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 
@@ -25,10 +26,11 @@ public class TravelDTO {
 	private String numeroteam;
 //	private Time timedeparture;
 //	private Time timearrival;
-	private City citydeparture;
-	private City cityarrive;
-	private User user;
+//	private City citydeparture;
+//	private City cityarrive;
+//	private User user;
 	private Truck truck;
-	private Passenger passenger;
+	private LocalDateTime date;
+	//private Passenger passenger;
 	//private LocalDateTime date;
 }

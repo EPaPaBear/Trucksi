@@ -1,5 +1,6 @@
 package it.contrader.model;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -49,7 +50,7 @@ public class Travel {
 
 //	private Time timearrival;
 
-	@OneToOne( cascade=CascadeType.MERGE)
+/*	@OneToOne( cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idcitydeparture", referencedColumnName = "id")  
 	private City citydeparture;
 	
@@ -63,16 +64,20 @@ public class Travel {
 	@JoinColumn(name = "iduser", referencedColumnName = "id")  
 	private User user;
 	
-	
+*/
+
 	@OneToOne  ( cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idtruck", referencedColumnName = "id")  
 	private Truck truck;
 	
+	private LocalDateTime date;
+/*
 
 	@OneToOne( cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idpassenger", referencedColumnName = "id")  
 	private Passenger passenger;
 	
+*/
 	//private LocalDateTime date;
 	
 }
