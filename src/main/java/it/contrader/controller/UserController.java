@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.model.User;
 import it.contrader.model.User.Usertype;
 
 import it.contrader.dto.UserDTO;
@@ -44,6 +45,7 @@ public class UserController {
 			@RequestParam(value = "password", required = true) String password) {
 
 		UserDTO userDTO = service.findByUsernameAndPassword(username, password);
+		if(userDTO == null || !userDTO.isActive() ) return "index"; //If user not found OR is in-active return to index
 		request.getSession().setAttribute("user", userDTO);
 
 		switch (userDTO.getUsertype()) {
@@ -71,9 +73,13 @@ public class UserController {
 		return "users";
 	}
 
-	@GetMapping("/delete")
-	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
-		service.delete(id);
+	@GetMapping("/active")
+	public String active(HttpServletRequest request, @RequestParam("id") Long id) {
+		
+		UserDTO dto = new UserDTO();
+		dto = service.read(id);
+		dto.setActive(!dto.isActive());
+		service.update(dto);
 		setAll(request);
 		return "users";
 	}
@@ -85,30 +91,59 @@ public class UserController {
 	}
 
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
-
+	public String update(HttpServletRequest request, 
+			 @RequestParam("id") Long id,
+			 @RequestParam(value = "username", required = true) String username,
+			 @RequestParam(value = "password", required = true) String password,
+			 @RequestParam(value = "usertype", required = true) Usertype usertype,
+			 @RequestParam("idDriver") Long idDriver,
+			 @RequestParam("nameD") String nameD,
+			 @RequestParam("surnameD") String surnameD,
+			 @RequestParam("phoneD") String phoneD,
+			 @RequestParam("ageD") int ageD,
+			 @RequestParam("driverLicense") String driverLicense,
+			 @RequestParam("idPassenger") Long idPassenger,
+			 @RequestParam("nameP") String nameP,
+			 @RequestParam("surnameP") String surnameP,
+			 @RequestParam("phoneP") String phoneP,
+			 @RequestParam("ageP") int ageP  ) {  
+		
 		UserDTO dto = new UserDTO();
 		dto.setId(id);
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
-		service.update(dto);
+		service.update(dto); 
+		
+		if(dto.getUsertype().equals(Usertype.DRIVER)) { 
+			
+			DriverDTO driverDTO = new DriverDTO(); 
+			driverDTO.setId(idDriver);
+			driverDTO.setName(nameD);
+			driverDTO.setSurname(surnameD);
+			driverDTO.setDriverLicense(driverLicense);
+			driverDTO.setPhone(phoneD);
+			driverDTO.setAge(ageD);
+			driverDTO.setUser(service.convertUserDTO(dto));   
+			
+			driverService.update(driverDTO);  
+			
+		}else if(dto.getUsertype().equals(Usertype.PASSENGER)) {
+			PassengerDTO passengerDTO = new PassengerDTO();
+			passengerDTO.setId(idPassenger);
+			passengerDTO.setName(nameP);
+			passengerDTO.setSurname(surnameP);
+			passengerDTO.setPhone(phoneP);
+			passengerDTO.setAge(ageP);
+			passengerDTO.setUser(service.convertUserDTO(dto)); 
+			
+			passengerService.update(passengerDTO);
+			
+		}
+		
 		setAll(request);
 		return "users";
 
-	}
-
-	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
-		UserDTO dto = new UserDTO();
-		dto.setUsername(username);
-		dto.setPassword(password);
-		dto.setUsertype(usertype);
-		service.insert(dto);
-		setAll(request);
-		return "users";
 	}
 
 	@GetMapping("/read")
@@ -123,11 +158,12 @@ public class UserController {
 		return "index";
 	}
 	
-	@PostMapping("/singin") 
+	@PostMapping("/insert") 
 	public String singin(HttpServletRequest request,
 			 @RequestParam(value = "username", required = true) String username,
 			 @RequestParam(value = "password", required = true) String password,
 			 @RequestParam(value = "usertype", required = true) Usertype usertype,
+			 @RequestParam("whereTo") String whereTo,
 			 @RequestParam("nameD") String nameD,
 			 @RequestParam("surnameD") String surnameD,
 			 @RequestParam("phoneD") String phoneD,
@@ -141,9 +177,8 @@ public class UserController {
 			 @RequestParam("ageP") String agePassenger  
 			) {
 		
-		//Converto i valori che mi servono interi
-		int ageD = (ageDriver!="") ? Integer.parseInt(ageDriver) : 0;
-		int ageP = (agePassenger!="") ? Integer.parseInt(agePassenger) : 0; 
+		int ageD = (ageDriver != "") ? Integer.parseInt(ageDriver) : 0;
+		int ageP = (agePassenger != "") ? Integer.parseInt(agePassenger) : 0;
 		
 		//Come prima cosa mi creo un utente nel db
 		UserDTO dto = new UserDTO();
@@ -153,8 +188,6 @@ public class UserController {
 		
 		//Mi salvo il risultato della insert che mi ritorna un dto, cosi gli aggiorno l'id
 		dto=service.insert(dto);
-		//Long idNewUser = dto.getId(); 
-		
 		
 		if(dto.getUsertype().equals(Usertype.DRIVER)) { 
 			//Mi creo un oggetto driver
@@ -188,8 +221,8 @@ public class UserController {
 			
 			passengerService.insert(passengerDTO);
 		}
-		
- 		return "index";
+		setAll(request); 
+ 		return whereTo;
 	}
 
 	private void setAll(HttpServletRequest request) {

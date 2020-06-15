@@ -1,6 +1,6 @@
 <%@include file="css/header2.jsp"%>
 
-	<form action="/user/singin" method="post" class="singin" name="singin">
+	<form action="/user/insert" method="post" class="singin" name="singin">
 		<h1>SING IN</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> 
@@ -29,7 +29,7 @@
 			<input type="text" name="driverLicense" id="driverLicense" placeholder="Driver License">
 			
 			<label for="ageD">Age</label>
-			<input type="text" name="ageD" id="ageD" placeholder="Age">
+			<input type="number" name="ageD" id="ageD" placeholder="Age" min="0">
 			
 			<label for="model">Model</label>
 			<input type="text" name="model" id="model" placeholder="Model" onchange="checkTruck()"> 
@@ -49,11 +49,10 @@
 			<input type="text" name="phoneP" id="phoneP" placeholder="Phone">
 			
 			<label for="ageP">Age</label>
-			<input type="text" name="ageP" id="ageP" placeholder="Age">
+			<input type="number" name="ageP" id="ageP" placeholder="Age" min="0">
 		</div>
 		
-		
-		<input type="hidden" name="richiesta" value="login">
+		<input type="hidden" value="index" name="whereTo">
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sing In</button>
 	</form>
 	

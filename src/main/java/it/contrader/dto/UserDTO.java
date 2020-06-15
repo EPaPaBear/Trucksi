@@ -25,4 +25,6 @@ public class UserDTO {
 	
 	private Passenger passenger;  
 	
+	private boolean active = true; 
+	
 }
