@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,6 +43,7 @@ public class User {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
 	private Passenger passenger;   
 	
+	@Column(nullable = false,columnDefinition = "BOOLEAN")
 	private boolean active = true;
  	
 }
