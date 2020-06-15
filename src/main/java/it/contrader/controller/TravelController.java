@@ -40,13 +40,10 @@ public class TravelController {
 		
 	@Autowired
 	private TravelService service;
+
 	@Autowired
-	//private CityService serviceC;
-	//@Autowired
 	private TruckService serviceT;
-	// passenger
-	//@Autowired
-	//private PassengerService serviceP;
+
 	
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -64,66 +61,43 @@ public class TravelController {
 	
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
-		
 		request.getSession().setAttribute("list", service.getAll());
-		//request.getSession().setAttribute("listC", serviceC.getAll());
 		request.getSession().setAttribute("listT", serviceT.getAll());
-		//request.getSession().setAttribute("listP", serviceP.getAll());
 		return "travel/updatetravel";
 	}
 
 	
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("nometeam") String nometeam,
-		@RequestParam("descrizione") String descrizione , @RequestParam("numeroutenti") String numeroutenti	) {
+		@RequestParam("descrizione") String descrizione , @RequestParam("numeroutenti") String numeroutenti,	
+		@RequestParam("date") String date,
+		@RequestParam("truck") Truck truck ) {
 		
-		
+	
+
 		TravelDTO dto = new TravelDTO();
 		dto.setId(id);
 		dto.setNometeam(nometeam);
 		dto.setDescrizione(descrizione);
 		dto.setNumeroutenti(numeroutenti);
+		dto.setTruck(truck);
+		Date dates = Date.valueOf(date);
+		dto.setDate(dates);
 		service.update(dto);
 		setAll(request);
 		return "travel/travels";
 	}
-	
-	//@RequestParam("nometeam") String nometeam,
-	//@RequestParam("descrizione") String descrizione, 
-	//@RequestParam("numeroutenti") String numeroutenti
-	
+		
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, 
-		//	@RequestParam("citydeparture") City cd,
-		//	@RequestParam("cityarrive") City ca,
-		//	@RequestParam("timedeparture") String tm,
-	//		@RequestParam("timearrival") String at,
 			@RequestParam("date") String date,
 			@RequestParam("truck") Truck truk
-		//	@RequestParam("passenger") Passenger pass
 			) {
-	
-	//	UserConverter userConverter = new UserConverter();
-		//UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
-		//userDTO.getId();
 		TravelDTO dto = new TravelDTO();
-	//	dto.setUser(userConverter.toEntity(userDTO));
-		/*
-		 * 
-		 * Date dates =Date.valueOf(date);
-	    	dto.setDate(dates);
-		 * 
-		 * 
-		 */
-//		dto.setTimedeparture(StringtoTime.convert(tm));
+
 		dto.setTruck(truk);
 		Date dates = Date.valueOf(date);
 		dto.setDate(dates);
-	
-//		dto.setTimearrival(StringtoTime.convert(at));
-	//	dto.setCitydeparture(cd);
-	//	dto.setCityarrive(ca);
-	//	dto.setPassenger(pass);
 		service.insert(dto);
 		setAll(request);
 		return "travel/travels";
@@ -137,9 +111,7 @@ public class TravelController {
 	
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("list", service.getAll());
-	//	request.getSession().setAttribute("listC", serviceC.getAll());
 		request.getSession().setAttribute("listT", serviceT.getAll());
-	//	request.getSession().setAttribute("listP", serviceP.getAll());
 	}
 }
 

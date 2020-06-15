@@ -31,29 +31,17 @@
 
 		<table>
 			<tr>
-				<th>id</th>
-				<th>Passenger's Name</th>
-				<th>Departure</th>
-				<th>Arrival</th>
 				<th>Vehicle Model</th>
 				<th>Date</th>
+				<th>Hystory Travel</th>
 			</tr>
 			<%
 				for (TravelDTO t : list) {
 		%>
 			<tr>
-				<td>
-					<a href="/travel/read?id=<%=t.getId()%>"><%=t.getId() %> </a>  
-				</td>
-				<td><%=t.getPassenger().getName() %></td>
-				<td> <%=t.getCitydeparture().getCityname() %></td>
-				<td> <%=t.getCityarrive().getCityname() %></td>
-				<td><%=t.getTruck().getModel()%>  </td>
-				<td></td>
-				
-				<td><a href="/travel/preupdate?id=<%=t.getId()%>">Edit</a></td>
-				<td><a href="/travel/delete?id=<%=t.getId()%>">Delete</a></td>
-
+				<td><%=t.getTruck().getModel()%></td>
+				<td><%=t.getDate()%></td>
+				<td><%//= %></td>
 			</tr>
 			<%
 				}
