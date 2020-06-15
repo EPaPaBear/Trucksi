@@ -70,7 +70,7 @@ public class Travel {
 	@JoinColumn(name = "idtruck", referencedColumnName = "id")  
 	private Truck truck;
 	
-	private LocalDateTime date;
+	private Date date;
 /*
 
 	@OneToOne( cascade=CascadeType.MERGE)

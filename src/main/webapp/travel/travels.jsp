@@ -12,6 +12,7 @@
 		<%
 			List<TravelDTO> list = (List<TravelDTO>) request.getSession().getAttribute("list"); 
 			List<TruckDTO> listT = (List<TruckDTO>) request.getSession().getAttribute("listT");	
+			
 		%>
 
 		<br>
@@ -20,6 +21,10 @@
 			<tr>
 				<th>Vehicle Model</th>
 				<th>Date</th>
+				<th>Hystory Travel</th>
+				<th>Edit</th>
+				<th>Delete</th>
+				
 			</tr>
 			<%
 				for (TravelDTO t : list) {
@@ -27,7 +32,7 @@
 			<tr>
 				<td><%=t.getTruck().getModel()%></td>
 				<td><%=t.getDate()%></td>
-				<td><%//=t.getTruck().getModel()%></td>
+				<td><a href="/hystorytravel/inserthystory?id=<%=t.getId()%>">Insert Hystory</a></td>
 				<td><a href="/travel/preupdate?id=<%=t.getId()%>">Edit</a></td>
 				<td><a href="/travel/delete?id=<%=t.getId()%>">Delete</a></td>
 			</tr>
@@ -54,14 +59,15 @@
 			</select>
 	    </div>
 </div>
+
 <div class="row">
 		<div class="col-25">
 		 <label for="date">Date</label>
 		</div>
 		<div class="col-75">
-		 <input type="datetime-local" id="date" name="date">
+		 <input type="date" id="date" name="date">
 		</div>
-	</div>
+</div>
 
 <button type="submit">Insert</button>
 </form>

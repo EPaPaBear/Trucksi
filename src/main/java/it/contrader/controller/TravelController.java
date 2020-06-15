@@ -1,6 +1,7 @@
 package it.contrader.controller;
 
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
@@ -107,10 +108,17 @@ public class TravelController {
 		//userDTO.getId();
 		TravelDTO dto = new TravelDTO();
 	//	dto.setUser(userConverter.toEntity(userDTO));
-	
+		/*
+		 * 
+		 * Date dates =Date.valueOf(date);
+	    	dto.setDate(dates);
+		 * 
+		 * 
+		 */
 //		dto.setTimedeparture(StringtoTime.convert(tm));
 		dto.setTruck(truk);
-		dto.setDate(LocalDateTime.parse(date));
+		Date dates = Date.valueOf(date);
+		dto.setDate(dates);
 	
 //		dto.setTimearrival(StringtoTime.convert(at));
 	//	dto.setCitydeparture(cd);

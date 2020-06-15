@@ -30,7 +30,10 @@ public class TravelDTO {
 //	private City cityarrive;
 //	private User user;
 	private Truck truck;
-	private LocalDateTime date;
+	private Date date;
 	//private Passenger passenger;
+	
+	
+	
 	//private LocalDateTime date;
 }
