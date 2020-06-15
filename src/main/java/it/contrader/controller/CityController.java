@@ -30,13 +30,13 @@ public class CityController {
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "city/cities";
+		return pathFolder+"cities";
 	}
 
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updatecity";
+		return pathFolder+"updatecity";
 	}
 
 	@PostMapping("/update")
@@ -49,7 +49,7 @@ public class CityController {
 		dto.setCityname(cityname);
 		service.update(dto);
 		setAll(request);
-		return "cities";
+		return pathFolder+"cities";
 
 	}
 
@@ -61,13 +61,13 @@ public class CityController {
 		dto.setCityname(cityname);
 		service.insert(dto);
 		setAll(request);
-		return "city/cities";
+		return pathFolder+"cities";
 	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readcity";
+		return pathFolder+"readcity";
 	}
 
 	private void setAll(HttpServletRequest request) {

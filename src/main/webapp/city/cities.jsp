@@ -4,7 +4,7 @@
 	
 	<div class="main">
 		<%
-			List<CityDTO> list = (List<CityDTO>) request.getSession().getAttribute("listC"); 
+			List<CityDTO> list = (List<CityDTO>) request.getSession().getAttribute("listC");
 		%>
 
 		<br>
@@ -23,7 +23,6 @@
 					<a href="/city/read?id=<%=t.getId()%>"> <%=t.getCityname()%></a>  
 				</td>
 				<td><a href="/city/preupdate?id=<%=t.getId()%>">Edit</a></td>
-
 
 				<td><a href="/city/delete?id=<%=t.getId()%>">Delete</a></td>
 
