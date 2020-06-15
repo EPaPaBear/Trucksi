@@ -54,7 +54,7 @@
  	<a <% if(confronto.equals("truck")) out.println("class=\"active\""); %> href="/truck/getall">Trucks</a>
  <% } %>
  <a <% if(confronto.equals("hystorytravel")) out.println("class=\"active\""); %> href="/hystorytravel/getall">Hystorytravel</a> 
- <a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="cities">Cities</a> 
+ <a <% if(confronto.equals("city")) out.println("class=\"active\""); %> href="/city/getall">Cities</a> 
  <a <% if(confronto.equals("travel")) out.println("class=\"active\""); %> href="/travel/getall">Travel</a>
  <a id="username"><%=printName %></a>
   <a href="/user/logout" id="logout">Logout</a>

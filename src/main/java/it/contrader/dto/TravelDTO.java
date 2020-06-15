@@ -1,30 +1,34 @@
 package it.contrader.dto;
 
-import lombok.AllArgsConstructor; 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import java.sql.Time;
 import java.time.LocalDateTime;
-import java.util.*;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import it.contrader.model.City;
 import it.contrader.model.Passenger;
 import it.contrader.model.Truck;
+import it.contrader.model.User;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class TravelDTO {
+
 	private Long id;
-	private LocalDateTime traveldate;
-	private Passenger passenger;
+	
+	private String nometeam;
+	
+	private String descrizione;
+	private String numeroutenti;
+	private String numeroteam;
+//	private Time timedeparture;
+//	private Time timearrival;
+	private City citydeparture;
+	private City cityarrive;
+	private User user;
 	private Truck truck;
-	private City city;
-	//@ManyToOne
-	//private Historytravel history;
+	private Passenger passenger;
+	//private LocalDateTime date;
 }
