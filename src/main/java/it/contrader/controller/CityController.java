@@ -30,7 +30,7 @@ public class CityController {
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "cities";
+		return "city/cities";
 	}
 
 	@GetMapping("/preupdate")

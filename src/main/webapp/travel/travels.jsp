@@ -12,7 +12,6 @@
 		<%
 			List<TravelDTO> list = (List<TravelDTO>) request.getSession().getAttribute("list"); 
 			List<TruckDTO> listT = (List<TruckDTO>) request.getSession().getAttribute("listT");	
-			
 		%>
 
 		<br>
@@ -33,7 +32,7 @@
 				<td><%=t.getTruck().getModel()%></td>
 				<td><%=t.getDate()%></td>
 				<td><a href="/hystorytravel/inserthystory?id=<%=t.getId()%>">Insert Hystory</a></td>
-				<td><a href="/travel/preupdate?id=<%=t.getId()%>">Edit</a></td>
+			  <td><a href="/travel/preupdate?id=<%=t.getId()%>">Edit</a></td>
 				<td><a href="/travel/delete?id=<%=t.getId()%>">Delete</a></td>
 			</tr>
 			<%
@@ -41,8 +40,6 @@
 			%>
 		</table>
 	
-
-
 <form id="floatright" name="form" action="/travel/insert" method="post" >
 <!--  truck select -->
 
@@ -71,7 +68,6 @@
 
 <button type="submit">Insert</button>
 </form>
-
 </div>
 <br>
 <%@ include file="/css/footer2.jsp"%>
