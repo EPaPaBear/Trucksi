@@ -17,10 +17,8 @@
 </head>
 
 <body>
-	<%@include file="css/header.jsp"%>
+	<%@include file="css/header2.jsp"%>
 	
-	<%@include file="common-content/menu.jsp" %>
-
 	<div class="main">
 		<h1>Welcome ${user.getUsername()}</h1>
 

@@ -10,7 +10,7 @@
 	
 	<div class="main">
 		<%
-		//	List<HystorytravelDTO> list = (List<HystorytravelDTO>) request.getSession().getAttribute("listH"); 
+		//List<HystorytravelDTO> list = (List<HystorytravelDTO>) request.getSession().getAttribute("listH"); 
 			List<CityDTO> listM = (List<CityDTO>) request.getSession().getAttribute("listM");
 			List<TruckDTO> listT = (List<TruckDTO>) request.getSession().getAttribute("listT");
 		//	CityService serviceC = new CityService();
@@ -26,7 +26,16 @@
 
 
 		<form id="floatright" name="form" action="/hystorytravel/inserth" method="post" >
-		
+			<div class="row">
+	    <div class="col-25">
+	      <label for="city"> Date selected:</label>
+	     </div>
+	     <div class="col-75">
+			<input type="text" value="<%=tr.getDate()%>" readonly>
+			
+			
+	    </div>
+	</div>
 		<!--  se sei admin tutti i driver  -->
 	 <input type="hidden" id="custId" name="id" value="<%=tr.getId()%>">
 	<!--  truck select -->

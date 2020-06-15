@@ -13,7 +13,7 @@
 			List<HystorytravelDTO> list = (List<HystorytravelDTO>) request.getSession().getAttribute("listH"); 
 			List<CityDTO> listC = (List<CityDTO>) request.getSession().getAttribute("listC");
 			List<TruckDTO> listT = (List<TruckDTO>) request.getSession().getAttribute("listT");
-
+			List<TravelDTO> listTr = (List<TravelDTO>) request.getSession().getAttribute("listTr");
 			CityService serviceC = new CityService();
 			
 			
@@ -62,7 +62,19 @@
 		<form id="floatright" name="form" action="/hystorytravel/insert" method="post" >
 		
 		<!--  se sei admin tutti i driver  -->
-	
+		<div class="row">
+	    <div class="col-25">
+	      <label for="travel"> Select Travel Date:</label>
+	     </div>
+	     <div class="col-75">
+			<select name="travel" id="travel" required>
+			 <option value="">None</option>
+				<%for (TravelDTO ltt : listTr) { %>
+  					<option value="<%=ltt.getId()%>" > <%=ltt.getDate() %></option>
+				<%}%>
+			</select>
+	    </div>
+	</div>
 	<!--  truck select -->
 	<div class="row">
 	    <div class="col-25">

@@ -129,7 +129,7 @@ public class HystorytravelController {
 			@RequestParam("timedeparture") String tm,
 			@RequestParam("timearrival") String at,
 			@RequestParam("truck") Truck truk,
-			@RequestParam(value = "id", required=false)  Travel travel
+			@RequestParam("travel") Travel travel
 			) {
 	
 		UserConverter userConverter = new UserConverter();
@@ -142,6 +142,7 @@ public class HystorytravelController {
 		dto.setTimearrival(StringtoTime.convert(at));
 		dto.setCitydeparture(cd);
 		dto.setCityarrive(ca);
+		dto.setTravel(travel);
 		service.insert(dto);
 		setAll(request);
 		return "hystorytravel/hystorytravels";
@@ -161,7 +162,7 @@ public class HystorytravelController {
 		request.getSession().setAttribute("listC", serviceC.getAll());
 		request.getSession().setAttribute("listM", serviceC.getAll());
 		request.getSession().setAttribute("listT", serviceT.getAll());
-		
+		request.getSession().setAttribute("listTr", serviceTr.getAll());
 	}
 }
 
