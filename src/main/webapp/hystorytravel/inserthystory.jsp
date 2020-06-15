@@ -1,4 +1,4 @@
-<%@page import="it.contrader.dto.TravelDTO"%>
+<%@page import="it.contrader.model.Travel"%>
 <%@page import="it.contrader.dto.TruckDTO"%>
 <%@page import="it.contrader.model.Truck"%>
 <%@page import="it.contrader.service.CityService"%>
@@ -10,59 +10,25 @@
 	
 	<div class="main">
 		<%
-			List<HystorytravelDTO> list = (List<HystorytravelDTO>) request.getSession().getAttribute("listH"); 
-			List<CityDTO> listC = (List<CityDTO>) request.getSession().getAttribute("listC");
+		//	List<HystorytravelDTO> list = (List<HystorytravelDTO>) request.getSession().getAttribute("listH"); 
+			List<CityDTO> listM = (List<CityDTO>) request.getSession().getAttribute("listM");
 			List<TruckDTO> listT = (List<TruckDTO>) request.getSession().getAttribute("listT");
-
-			CityService serviceC = new CityService();
+		//	CityService serviceC = new CityService();
+			Travel tr =  (Travel) request.getSession().getAttribute("TravelID");
 			
 			
 		%>
 
 		<br>
 
-		<table>
-			<tr>
-				<th>id</th>
-				<th>Modello Veicolo</th>
-				<th>Città di partenza</th>
-				
-				<th>Orario di partenza </th>
-				<th>CIttà di arrivo</th>
-				<th>Arrival time</th>
-				 <th colspan="2"> Travel Date</th>
-				<th> Driver Name</th>
-				
-			</tr>
-			<%
-				for (HystorytravelDTO t : list) {
-		%>
-			<tr>
-				<td>
-					<a href="/truck/read?id=<%=t.getIdt()%>"><%=t.getIdt() %> </a>  
-				</td>
-				<td><%=t.getTruck().getModel()%>  </td>
-				<td> <%=t.getCitydeparture().getCityname() %></td>
-				<td> <%=t.getTimedeparture() %></td>
-				<td> <%=t.getCityarrive().getCityname() %> </td>
-				<td> <%=t.getTimearrival() %></td>
-				<td  colspan="2" > <%=t.getTravel().getDate() %> </td>
-				<td> <%=t.getUser().getUsername() %></td>
-			<!--  	<td><a href="/truck/preupdate?id=<%=t.getIdt()%>">Edit</a></td>
-				<td><a href="/truck/delete?id=<%=t.getIdt()%>">Delete</a></td> -->
-
-			</tr>
-			<%
-				}
-			%>
-		</table>
+	
 	
 
 
-		<form id="floatright" name="form" action="/hystorytravel/insert" method="post" >
+		<form id="floatright" name="form" action="/hystorytravel/inserth" method="post" >
 		
 		<!--  se sei admin tutti i driver  -->
-	
+	 <input type="hidden" id="custId" name="id" value="<%=tr.getId()%>">
 	<!--  truck select -->
 	<div class="row">
 	    <div class="col-25">
@@ -91,7 +57,7 @@
 	     <div class="col-75">
 			<select name="citydeparture" id="citydeparture" required>
 			 <option value="">None</option>
-				<%for (CityDTO ltc : listC) { %>
+				<%for (CityDTO ltc : listM) { %>
   					<option value="<%=ltc.getId()%>" > <%=ltc.getCityname() %></option>
 				<%}%>
 			</select>
@@ -117,7 +83,7 @@
 	     <div class="col-75">
 			<select name="cityarrive" id="city" required>
 			 <option value="">None</option>
-				<%for (CityDTO ltc : listC) { %>
+				<%for (CityDTO ltc : listM) { %>
   					<option value="<%=ltc.getId()%>" > <%=ltc.getCityname() %></option>
 				<%}%>
 			</select>

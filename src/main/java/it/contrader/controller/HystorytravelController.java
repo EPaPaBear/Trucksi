@@ -23,10 +23,12 @@ import it.contrader.dto.HystorytravelDTO;
 import it.contrader.dto.TruckDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.City;
+import it.contrader.model.Travel;
 import it.contrader.model.Truck;
 import it.contrader.model.User;
 import it.contrader.service.CityService;
 import it.contrader.service.HystorytravelService;
+import it.contrader.service.TravelService;
 import it.contrader.service.TruckService;
 import it.contrader.utils.StringtoTime;
 
@@ -42,6 +44,9 @@ public class HystorytravelController {
 	private CityService serviceC;
 	@Autowired
 	private TruckService serviceT;
+	@Autowired
+	private TravelService serviceTr;
+
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
@@ -80,14 +85,51 @@ public class HystorytravelController {
 	//@RequestParam("nometeam") String nometeam,
 	//@RequestParam("descrizione") String descrizione, 
 	//@RequestParam("numeroutenti") String numeroutenti
+	//inserthystory
+	@GetMapping("/inserthystory")
+	public String inserthystory (HttpServletRequest request,
+			@RequestParam("id") Travel travel ) {
+		setAll(request);
+		request.getSession().setAttribute("TravelID", travel );
+		
+		
+		return "/hystorytravel/inserthystory";
+	}
 	
+	@PostMapping("/inserth")
+	public String inserth(HttpServletRequest request, 
+			@RequestParam("id") Travel travel,
+			@RequestParam("citydeparture") City cd,
+			@RequestParam("cityarrive") City ca,
+			@RequestParam("timedeparture") String tm,
+			@RequestParam("timearrival") String at,
+			@RequestParam("truck") Truck truk
+			) {
+	
+		UserConverter userConverter = new UserConverter();
+		UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
+		userDTO.getId();
+		HystorytravelDTO dto = new HystorytravelDTO();
+		dto.setUser(userConverter.toEntity(userDTO));
+		dto.setTimedeparture(StringtoTime.convert(tm));
+		dto.setTruck(truk);
+		dto.setTimearrival(StringtoTime.convert(at));
+		dto.setCitydeparture(cd);
+		dto.setCityarrive(ca);
+		dto.setTravel(travel);
+		service.insert(dto);
+		setAll(request);
+		return "hystorytravel/hystorytravels";
+		
+	}
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, 
 			@RequestParam("citydeparture") City cd,
 			@RequestParam("cityarrive") City ca,
 			@RequestParam("timedeparture") String tm,
 			@RequestParam("timearrival") String at,
-			@RequestParam("truck") Truck truk
+			@RequestParam("truck") Truck truk,
+			@RequestParam(value = "id", required=false)  Travel travel
 			) {
 	
 		UserConverter userConverter = new UserConverter();
@@ -117,7 +159,9 @@ public class HystorytravelController {
 		request.getSession().setAttribute("listH", service.getAll());
 		/*get all city */
 		request.getSession().setAttribute("listC", serviceC.getAll());
+		request.getSession().setAttribute("listM", serviceC.getAll());
 		request.getSession().setAttribute("listT", serviceT.getAll());
+		
 	}
 }
 

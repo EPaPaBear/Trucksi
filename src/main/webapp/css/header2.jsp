@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="header">SAMPLE Project</div>
+	<div class="header">Trucksi</div>
 	<% 
 		String get_uri = request.getRequestURI();
 		boolean stampa = true ;
