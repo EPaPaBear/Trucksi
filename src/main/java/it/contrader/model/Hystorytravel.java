@@ -27,7 +27,7 @@ import lombok.ToString;
 @Data
 @Entity
 
-// @ToString(exclude= {"city"})
+@ToString(exclude= {"city"})
 public class Hystorytravel {
 	
 	@Id 
@@ -66,3 +66,4 @@ public class Hystorytravel {
 	private Travel travel;
 
 }
+
