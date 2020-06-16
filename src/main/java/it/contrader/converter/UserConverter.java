@@ -6,24 +6,15 @@ import it.contrader.dto.UserDTO;
 
 import it.contrader.model.User;
 
-/**
- * Questa classe implementa i metodi di conversione dell'entità {@link User} a {@link UserDTO}
- * e viceversa.
- *  
- * @author Vittorio Valent
- * @author Girolamo Murdaca
- * 
- *@see AbstractConverter
- *@see Converter
- */
+
 @Component
 public class UserConverter extends AbstractConverter<User,UserDTO> {
 
 	@Override
-	public User toEntity(UserDTO userDTO) {
+	public User toEntity(UserDTO userDTO) { 
 		User user = null;
-		if (userDTO != null) {
-			user = new User(userDTO.getId(),userDTO.getUsername(),userDTO.getPassword(),userDTO.getUsertype());			
+		if (userDTO != null) { 
+			user = new User(userDTO.getId(), userDTO.getUsername(), userDTO.getPassword(), userDTO.getUsertype(), userDTO.getDriver(), userDTO.getPassenger(), userDTO.isActive());
 		}
 		return user;
 	}
@@ -32,9 +23,9 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 	public UserDTO toDTO(User user) {
 		UserDTO userDTO = null;
 		if (user != null) {
-			userDTO = new UserDTO(user.getId(),user.getUsername(),user.getPassword(),user.getUsertype());
-			
+			userDTO = new UserDTO(user.getId(), user.getUsername(), user.getPassword(), user.getUsertype(), user.getDriver(), user.getPassenger(), user.isActive());
 		}
 		return userDTO;
 	}
+	
 }

@@ -3,7 +3,6 @@ package it.contrader.dto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,21 +11,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class UserDTO {
+public class PassengerDTO {
 
 	private long id;
 	
-	private String username;
+	private String name;
 	
-	private String password;
-
-	private Usertype usertype;
+	private String surname;
 	
-	private DriverDTO driver;  
+	private int age;
 	
-	private PassengerDTO passenger;
+	private String phone;
 	
-	private boolean active = true;
+	private UserDTO user;
+	
+	private TruckDTO truck ;
 	
 
 }

@@ -25,5 +25,9 @@ public class UserService extends AbstractService<User, UserDTO> {
 	public UserDTO findByUsernameAndPassword(String username, String password) {
 		return converter.toDTO(((UserRepository) repository).findByUsernameAndPassword(username, password));
 	}
+	
+	public User convertUserDTO(UserDTO userDTO) {
+		return converter.toEntity(userDTO);
+	}
 
 }

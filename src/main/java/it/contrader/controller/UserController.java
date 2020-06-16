@@ -32,8 +32,7 @@ public class UserController extends AbstractController<UserDTO>{
 	
 	@Autowired
 	private UserService userService;
-
-
+	
 	/**
 	 * Riceve una request di tipo POST dal server Angular
 	 * con un {@link LoginDTO} nel Body.

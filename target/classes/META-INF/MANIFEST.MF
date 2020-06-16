@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: SAMPLE
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Vittorio
+Built-By: PeterTorac
 Implementation-Vendor-Id: SAMPLE
-Build-Jdk: 1.8.0_212
+Build-Jdk: 1.8.0_251
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/Project
 Created-By: Maven Integration for Eclipse

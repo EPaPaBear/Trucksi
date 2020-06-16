@@ -1,26 +1,13 @@
 package it.contrader.model;
 
-import javax.persistence.Entity;
-
 import javax.persistence.*;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-
+import it.contrader.dto.DriverDTO;
+import it.contrader.dto.PassengerDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * 
- * Model dell'entità User. Contiene l'enum che definisce gli usertype (salvati come interi
- * a partire da 0 sul db).
- * 
- * @author Vittorio Valent
- * @author Girolamo Murdaca
- * 
- * @see UserDTO
- */
 @Data
 @Entity
 @AllArgsConstructor
@@ -28,19 +15,29 @@ import lombok.NoArgsConstructor;
 public class User {
 	
 	public enum Usertype {
-		ADMIN,
-		USER
+		ADMIN, USER, DRIVER, PASSENGER
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@Column(unique = true)
 	private String username;
-	
+
 	private String password;
 
-	private Usertype usertype;
+	private Usertype usertype; 
+	
+	//mappedBy -> creo una connessione bidirezionale tra user e driver
+	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)   
+	private DriverDTO driver;  
+	
+	//mappedBy -> creo una connessione bidirezionale tra user e driver
+	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
+	private PassengerDTO passenger;   
+	
+	@Column(nullable = false,columnDefinition = "BOOLEAN")
+	private boolean active = true;
 	
 }
