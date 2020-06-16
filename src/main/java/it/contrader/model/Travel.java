@@ -5,13 +5,13 @@ import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import it.contrader.dto.TruckDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,8 +31,8 @@ public class Travel {
 	@Column(unique = true)
 	private Date date;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH) 
-	@JoinColumn(name = "idtruck", referencedColumnName = "id") 
-	private TruckDTO truck ;
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@JoinColumn(name = "idTruck", referencedColumnName = "id") 
+	private Truck truck ;
 
 }

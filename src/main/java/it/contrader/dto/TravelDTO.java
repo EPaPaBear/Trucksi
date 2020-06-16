@@ -20,7 +20,7 @@ public class TravelDTO {
 	
 	private Date date;
 	
-	private TruckDTO truck;
+	private TruckDTO truckDTO;
 	
 
 }
