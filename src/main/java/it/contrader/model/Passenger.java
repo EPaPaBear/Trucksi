@@ -28,10 +28,10 @@ public class Passenger {
 	
 	@OneToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "idUser", referencedColumnName = "id")  
-	private UserDTO user;
+	private User user;
 	
 	@ManyToOne(cascade = CascadeType.MERGE) 
-	@JoinColumn(name = "idDriver", referencedColumnName = "id") 
-	private TruckDTO truck ;
+	@JoinColumn(name = "idTruck", referencedColumnName = "id") 
+	private Truck truck ;
 	
 }

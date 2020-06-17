@@ -19,7 +19,5 @@ public class TruckDTO {
 	
 	private String model;
 
-	private DriverDTO driver ;
-	
-
+	private DriverDTO driver;
 }

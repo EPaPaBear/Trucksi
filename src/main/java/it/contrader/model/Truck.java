@@ -20,7 +20,7 @@ import lombok.ToString;
 @Data
 @Entity
 @ToString(exclude = {"driver"})
-public class Truck {
+public class Truck{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +31,17 @@ public class Truck {
 	
 	private String model;
 	
+	/*
 	@ManyToOne(cascade = CascadeType.REFRESH) 
-	@JoinColumn(name = "idDriver", referencedColumnName = "id") 
+	@JoinColumn(name = "idriver", referencedColumnName = "id") 
 	private DriverDTO driver ;
+	*/
+	
+	@ManyToOne(cascade = CascadeType.REFRESH) 
+	@JoinColumn(name = "idriver", referencedColumnName = "id") 
+	private Driver driver ;
+	
+	
+	
 
 }

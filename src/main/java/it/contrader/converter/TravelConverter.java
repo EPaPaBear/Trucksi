@@ -39,8 +39,5 @@ public class TravelConverter extends AbstractConverter<Travel, TravelDTO>{
 		}
 		return travelDTO;
 	}
-	
-	
-
 
 }
