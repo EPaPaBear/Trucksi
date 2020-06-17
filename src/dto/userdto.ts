@@ -1,5 +1,4 @@
 import { Usertype } from './usertype';
-
 /**
  * Classe DTO di User. DEVE essere uguale (stesso nome classe, stessi attributi e stessi nomi) a
  * quello nel backend. 
@@ -17,6 +16,13 @@ export class UserDTO {
    password: string;
 
    usertype: Usertype;
+ /*
+   driver:  DriverDTO; 
+   
+   passenger : PassengerDTO;
+*/
+   active :boolean = true;
+
 
 }
 

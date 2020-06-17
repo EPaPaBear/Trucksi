@@ -1,4 +1,6 @@
 export enum Usertype {
     ADMIN,
-    USER
+    USER,
+    DRIVER,
+    PASSENGER
 }
