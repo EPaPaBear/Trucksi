@@ -31,11 +31,11 @@ public class User {
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
 	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)   
-	private DriverDTO driver;  
+	private Driver driver;  
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
 	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
-	private PassengerDTO passenger;   
+	private Passenger passenger;   
 	
 	@Column(nullable = false,columnDefinition = "BOOLEAN")
 	private boolean active = true;
