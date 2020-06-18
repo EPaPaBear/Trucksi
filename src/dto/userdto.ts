@@ -16,9 +16,8 @@ export class UserDTO {
    password: string;
 
    usertype: Usertype;
- /*
+   /*
    driver:  DriverDTO; 
-   
    passenger : PassengerDTO;
 */
    active :boolean = true;
