@@ -31,4 +31,5 @@ public class HystorytravelDTO {
 //	private User user;
 //	private Truck truck;
 	private Travel travel;
+	private Truck truck;
 }

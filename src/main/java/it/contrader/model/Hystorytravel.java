@@ -64,6 +64,9 @@ public class Hystorytravel {
 	@JoinColumn(name = "idtravel", referencedColumnName = "id")  
 	
 	private Travel travel;
+	
+	@OneToOne
+	private Truck truck;
 
 }
 

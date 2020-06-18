@@ -48,7 +48,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 				userDTO.setPassenger(passengerConverter.toDTO(user.getPassenger()));
 			}
 			if(user.getDriver()!=null) {
-				userDTO.setDriver(driverConverter.toDTO(user.getDriver()));
+			//	userDTO.setDriver(driverConverter.toDTO(user.getDriver()));
 			}
 		
 			userDTO.setUsername(user.getUsername());		

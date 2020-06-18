@@ -30,7 +30,8 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 					HystorytravelDTO.getNumeroteam(), 
 					HystorytravelDTO.getTimedeparture(), 
 					HystorytravelDTO.getTimearrival(),
-					HystorytravelDTO.getTravel()
+					HystorytravelDTO.getTravel(),
+					HystorytravelDTO.getTruck()
 					);
 		//	Hystorytravel = new Hystorytravel(HystorytravelDTO.getIdt(), HystorytravelDTO.getNometeam(), HystorytravelDTO.getDescrizione(), HystorytravelDTO.getNumeroutenti(), HystorytravelDTO.getNumeroteam());
 			
@@ -57,7 +58,8 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 					ht.getNumeroteam(), 
 					ht.getTimedeparture(),
 					ht.getTimearrival(),
-					ht.getTravel()
+					ht.getTravel(),
+					ht.getTruck()
 					);
 		}
 		return htDTO;
