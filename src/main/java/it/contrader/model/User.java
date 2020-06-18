@@ -37,6 +37,7 @@ public class User {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
 	private Passenger passenger;   
 	
+	
 	@Column(nullable = false,columnDefinition = "BOOLEAN")
 	private boolean active = true;
 	
