@@ -6,7 +6,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
-
+import { TravelComponent } from './travel/travel.component';
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
  * l'admin. Questo modulo importa AdminRoutingModule.
