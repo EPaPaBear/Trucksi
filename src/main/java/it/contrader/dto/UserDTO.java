@@ -1,6 +1,7 @@
 package it.contrader.dto;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import it.contrader.model.User.Usertype;
@@ -25,6 +26,7 @@ public class UserDTO {
 	private DriverDTO driver;  
 	
 	private PassengerDTO passenger;
+	
 	
 	private boolean active = true;
 	
