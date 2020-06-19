@@ -23,6 +23,7 @@ public class TravelConverter extends AbstractConverter<Travel, TravelDTO>{
 			}
 			travel.setDate(travelDTO.getDate());	
 		}
+		System.out.println("Travel:" + travel);
 		return travel;
 	}
 
