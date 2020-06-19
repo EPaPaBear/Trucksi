@@ -41,11 +41,11 @@ public class TravelController extends AbstractController<TravelDTO>{
 	public List<TravelDTO> getAllByTruck(@RequestBody TruckDTO truckDTO){
 		return travelService.getAllByTruck(truckDTO);
 		
-		*/
-	
+	*/
+	/*
 	@GetMapping
 	Iterable<TravelDTO> getall( ){
 		return travelService.getAll();
 	}
-	
+	*/
 }

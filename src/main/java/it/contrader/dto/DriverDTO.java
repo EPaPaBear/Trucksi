@@ -29,7 +29,7 @@ public class DriverDTO {
 	
 	//private List<TruckDTO> truckList;
 	
-	private UserDTO user;
+	//private UserDTO user;
 	
 
 }

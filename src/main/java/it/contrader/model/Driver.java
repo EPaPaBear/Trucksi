@@ -32,14 +32,16 @@ public class Driver {
 	private String phone; 
 	
 	private int age; 
-/*	
+	
+	/*
 	@OneToMany(mappedBy = "driver", cascade = CascadeType.REFRESH)	 
-	private List<TruckDTO> truckList;
-*/
+	private List<TruckD truckList;*/
+
 	//cascade -> propaga tutte le operazione dal padre a tutti i figli(tutte le tabbelle collegate)
 	//joinColumn -> va definito dove si vuole la chiave esterna
 		//name -> nome della colonna dentro driver
 		//referencedColumnName -> colonna dalla quale prendere il valore di user, per metterla in name
+	
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idUser", referencedColumnName = "id")  
 	private User user;

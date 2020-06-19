@@ -20,10 +20,11 @@ public class DriverConverter extends AbstractConverter<Driver, DriverDTO> {
 		if(driverDTO != null) {
 			driver = new Driver();
 			driver.setId(driverDTO.getId());
+		/*
 			if(driverDTO.getUser() != null) {
 				driver.setUser(userConverter.toEntity(driverDTO.getUser()));
 			}
-			
+			*/
 			/*if(driverDTO.getTruckList() != null) {
 				driver.setTruckList(truckConverter.toEntityList(driver.getTruckList()));
 			}
@@ -44,9 +45,12 @@ public class DriverConverter extends AbstractConverter<Driver, DriverDTO> {
 		if (driver != null) {
 			driverDTO = new DriverDTO();
 			driverDTO.setId(driver.getId());
+			/*
 			if(driver.getUser() != null) {
 				driverDTO.setUser(userConverter.toDTO(driver.getUser()));
 			}
+			*/ 
+			
 			/*
 			if(driver.getTruckList()!= null) {
 				driverDto.setTruckList(truckConverter.toDTO(driver.getTruck()));

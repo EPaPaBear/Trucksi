@@ -20,18 +20,20 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 		if(userDTO != null) {
 			user = new User();
 			user.setId(userDTO.getId());
+			user.setUsername(userDTO.getUsername());
+			user.setPassword(userDTO.getPassword());	
+			user.setUsertype(userDTO.getUsertype());	
+			user.setActive(userDTO.isActive());
+		/*
 			if(userDTO.getPassenger() != null ) {
 				user.setPassenger(passengerConverter.toEntity(userDTO.getPassenger()));
 			}
 			if(userDTO.getDriver() != null ) {
 				user.setDriver(driverConverter.toEntity(userDTO.getDriver()));
 			}
-			
-			user.setUsername(userDTO.getUsername());
-			user.setPassword(userDTO.getPassword());	
-			user.setUsertype(userDTO.getUsertype());	
-			user.setActive(userDTO.isActive());
-			
+		*/
+	
+		
 			
 		}
 		return user;
@@ -43,6 +45,10 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 		if(user!= null) {
 			userDTO = new UserDTO();
 			userDTO.setId(user.getId());
+			userDTO.setUsername(user.getUsername());		
+			userDTO.setPassword(user.getPassword());		
+			userDTO.setUsertype(user.getUsertype());
+			userDTO.setActive(user.isActive());
 		
 			if(user.getPassenger()!=null) {
 				userDTO.setPassenger(passengerConverter.toDTO(user.getPassenger()));
@@ -50,11 +56,8 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 			if(user.getDriver()!=null) {
 				userDTO.setDriver(driverConverter.toDTO(user.getDriver()));
 			}
-		
-			userDTO.setUsername(user.getUsername());		
-			userDTO.setPassword(user.getPassword());		
-			userDTO.setUsertype(user.getUsertype());
-			userDTO.setActive(user.isActive());
+
+			
 		}
 		return userDTO;
 	}
