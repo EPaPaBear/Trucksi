@@ -17,24 +17,25 @@ import it.contrader.dto.PassengerDTO;
 import it.contrader.service.HystorytravelService;
 
 @RestController
-@RequestMapping("/api/v1/hystorytravel")
+@RequestMapping("/hystorytravel")
 public class HystorytravelController  extends AbstractController<HystorytravelDTO> {
 	
 	@Autowired
 	private HystorytravelService htService;
-	@GetMapping("/{id}")
-	HystorytravelDTO getByID (@PathVariable Long id ){
-		return htService.read(id);
-	}
-	@GetMapping
-	Iterable<HystorytravelDTO> getall ( ){
-		return htService.getAll();
-	}
+//	@GetMapping("/{id}")
+//	HystorytravelDTO getByID (@PathVariable Long id ){
+//		return htService.read(id);
+//	}
+//	@GetMapping("/test")
+//	Iterable<HystorytravelDTO> getall ( ){
+//		return htService.getAll();
+//	}
+//	
+//	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
+//	public HystorytravelDTO addHystorytravel(@RequestBody HystorytravelDTO htdto) {
+//	    //code
+//		htService.insert(htdto);
+//		return htdto;
+//	}
 	
-	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public HystorytravelDTO addHystorytravel(@RequestBody HystorytravelDTO htdto) {
-	    //code
-		htService.insert(htdto);
-		return htdto;
-	}
 }
