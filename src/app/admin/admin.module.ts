@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { TravelComponent } from './travel/travel.component';
+import { HystorytravelComponent } from './hystorytravel/hystorytravel.component';
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
  * l'admin. Questo modulo importa AdminRoutingModule.
@@ -16,7 +17,7 @@ import { TravelComponent } from './travel/travel.component';
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent, HystorytravelComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
