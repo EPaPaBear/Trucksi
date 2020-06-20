@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
 import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
+import { Usertype } from 'src/dto/usertype';
 
 /**
  * Questa component si occupa di mostrare i dettagli di un utente (in questo caso aggiunge solo l'ID
@@ -21,6 +22,9 @@ import { UserDTO } from 'src/dto/userdto';
 })
 export class UserDetailsComponent extends AbstractCrudComponent<UserDTO> implements OnInit {
 
+  private userType = Usertype;
+  public userTypeOptions = [];
+
   /**
    * Qui prende in input il valore di dto
    */
@@ -31,6 +35,7 @@ export class UserDetailsComponent extends AbstractCrudComponent<UserDTO> impleme
   }
 
   ngOnInit() {
+    this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
 
 }

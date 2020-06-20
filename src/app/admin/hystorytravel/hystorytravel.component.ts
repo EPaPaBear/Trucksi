@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
 import { HystorytravelDTO } from 'src/dto/hystorytraveldto';
-import { UserService } from 'src/service/user.service';
-import { HystorytravelService } from 'src/service/hystorytravelservice';
+import { HystorytravelService } from 'src/service/hystorytravel.service';
 
 @Component({
   selector: 'app-hystorytravel',
@@ -11,7 +10,7 @@ import { HystorytravelService } from 'src/service/hystorytravelservice';
 })
 export class HystorytravelComponent extends AbstractCrudComponent<HystorytravelDTO> implements OnInit {
 
-  constructor(service: HystorytravelService) { 
+  constructor(service: HystorytravelService) {
     super(service);
   }
 
@@ -21,25 +20,25 @@ export class HystorytravelComponent extends AbstractCrudComponent<HystorytravelD
       "id": 1,
       "nometeam": "eew",
       "descrizione": "qqq",
-     "numeroutent": "test",
+      "numeroutent": "test",
       "numeroteam": "2",
-      "timedeparture": { 
+      "timedeparture": {
         'hours': 18,
         'minutes': 30
 
       },
-      "timearrival": { 
+      "timearrival": {
         'hours': 18,
         'minutes': 30
-      }, 
-      "truckDTO" : null
-    
-    /*  "travel": {
-          "id": 1,
-          "date": "2020-06-11",
-          "truck": null
-      }, */
-      
+      },
+      "truckDTO": null
+
+      /*  "travel": {
+            "id": 1,
+            "date": "2020-06-11",
+            "truck": null
+        }, */
+
     }
   }
   clear() {
