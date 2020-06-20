@@ -1,0 +1,5 @@
+target/classes/META-INF/MANIFEST.MF
+target/classes/META-INF/maven/SAMPLE/Project/pom.properties
+target/classes/it/contrader/dto/LoginDTO.class
+target/classes/it/contrader/dto/UserDTO.class
+target/classes/it/contrader/model/User.class

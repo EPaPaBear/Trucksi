@@ -3,9 +3,11 @@ package it.contrader.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import it.contrader.dto.LoginDTO;
 import it.contrader.dto.UserDTO;
@@ -43,5 +45,6 @@ public class UserController extends AbstractController<UserDTO>{
 	@PostMapping(value = "/login")
 	public UserDTO login( @RequestBody LoginDTO loginDTO ) {
 		return userService.findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
-	}
+  	}
+	
 }

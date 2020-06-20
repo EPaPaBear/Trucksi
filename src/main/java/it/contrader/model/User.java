@@ -1,22 +1,26 @@
 package it.contrader.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import it.contrader.dto.DriverDTO;
-import it.contrader.dto.PassengerDTO;
+import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-
+@ToString(exclude = {"driver","passenger"})
 public class User {
 	
 	public enum Usertype {

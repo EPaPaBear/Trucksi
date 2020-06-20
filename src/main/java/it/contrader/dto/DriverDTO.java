@@ -27,9 +27,9 @@ public class DriverDTO {
 	
 	private int age; 
 	
-	//private List<TruckDTO> truckList;
+	private List<TruckDTO> truckList;  
 	
-	//private UserDTO user;
+	private UserDTO user;
 	
 
 }

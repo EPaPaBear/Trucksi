@@ -1,14 +1,18 @@
 package it.contrader.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 import it.contrader.dto.TruckDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
@@ -33,9 +37,9 @@ public class Driver {
 	
 	private int age; 
 	
-	/*
+	
 	@OneToMany(mappedBy = "driver", cascade = CascadeType.REFRESH)	 
-	private List<TruckD truckList;*/
+	private List<Truck> truckList; 
 
 	//cascade -> propaga tutte le operazione dal padre a tutti i figli(tutte le tabbelle collegate)
 	//joinColumn -> va definito dove si vuole la chiave esterna
