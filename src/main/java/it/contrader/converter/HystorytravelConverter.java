@@ -4,7 +4,9 @@ package it.contrader.converter;
 import org.springframework.stereotype.Component;
 
 import it.contrader.dto.HystorytravelDTO;
+import it.contrader.dto.TruckDTO;
 import it.contrader.model.Hystorytravel;
+import it.contrader.model.Truck;
 
 
 @Component
@@ -68,16 +70,55 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 
 
 	@Override
-	public Hystorytravel toEntityS(HystorytravelDTO dto) { 
+	public Hystorytravel toEntityS(HystorytravelDTO dto) {
 		// TODO Auto-generated method stub
-		return null;
+		Hystorytravel ht = null;
+		if (dto != null) {
+			ht = new Hystorytravel();
+			ht.setIdt(dto.getIdt());
+			ht.setTimearrival(dto.getTimearrival());
+			ht.setTimedeparture(dto.getTimedeparture());
+		}
+		return ht;
 	}
 
 
 	@Override
 	public HystorytravelDTO toDTOS(Hystorytravel entity) {
-		// TODO Auto-generated method stub
-		return null;
+		HystorytravelDTO htdto = null;
+		if(entity!= null) {
+			htdto = new HystorytravelDTO();
+			htdto.setIdt(entity.getIdt());
+			htdto.setNometeam(entity.getNometeam());
+			htdto.setDescrizione(entity.getDescrizione());
+			htdto.setNumeroutenti(entity.getNumeroutenti());
+			htdto.setTimearrival(entity.getTimearrival());
+			htdto.setTimedeparture(entity.getTimedeparture());
+			
+		}
+		return htdto;
 	}
+	/*
+	Truck truck = null;
+	if(truckDTO != null) {
+		truck = new Truck();
+		truck.setId(truckDTO.getId());
+		truck.setLicensePlate(truckDTO.getLicensePlate());	
+		truck.setModel(truckDTO.getModel());
+	}
+	return truck;
+	
+		TruckDTO truckDTO = null;
+		if(truck!= null) {
+			truckDTO = new TruckDTO();
+			truckDTO.setId(truck.getId());
+			truckDTO.setLicensePlate(truck.getLicensePlate());		
+			truckDTO.setModel(truck.getModel());		
+ 		}
+		return truckDTO;
+	
+	*/
+
+
 }
 

@@ -24,14 +24,16 @@ public class HystorytravelController  extends AbstractController<HystorytravelDT
 	
 	@Autowired
 	private HystorytravelService htService;
+	
 //	@GetMapping("/{id}")
 //	HystorytravelDTO getByID (@PathVariable Long id ){
 //		return htService.read(id);
 //	}
-//	@GetMapping("/test")
-//	Iterable<HystorytravelDTO> getall ( ){
-//		return htService.getAll();
-//	}
+	@GetMapping("/test")
+	Iterable<HystorytravelDTO> getall ( ){
+		return htService.getAll();
+	}
+	
 //	
 //	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
 //	public HystorytravelDTO addHystorytravel(@RequestBody HystorytravelDTO htdto) {
