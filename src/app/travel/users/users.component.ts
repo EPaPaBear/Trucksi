@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
 import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
-import { Usertype } from 'src/dto/usertype';
 
 /**
  * Come ogni componente di CRUD, questa estende la classe AbstractCrudComponent, ereditando tutti i metodi 
@@ -20,9 +19,6 @@ import { Usertype } from 'src/dto/usertype';
 })
 export class UsersComponent extends AbstractCrudComponent<UserDTO> implements OnInit {
 
-  private userType = Usertype;
-  public userTypeOptions = [];
-
   constructor(service: UserService) {
     super(service);
   }
@@ -30,13 +26,10 @@ export class UsersComponent extends AbstractCrudComponent<UserDTO> implements On
   ngOnInit() {
     this.clear();
     this.getAll();
-    // Below line extracts all the keys from the enum 
-    this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
 
   clear() {
     this.dto = new UserDTO();
-
   }
 
   close() {

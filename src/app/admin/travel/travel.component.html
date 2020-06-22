@@ -4,13 +4,10 @@
       <table>
         <tr>
           <th>
-            Username
+            Date
           </th>
           <th>
-            Password
-          </th>
-          <th>
-            Usertype
+            Truck
           </th>
           <th>
             Edit
@@ -24,55 +21,51 @@
         </tr>
         <tr>
           <td>
-            <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
-            viene modificato l'attributo di dto in tempo reale-->
-            <input placeholder="username" [(ngModel)]="dto.username">
+            <input placeholder="date" name ="date" type = "Date" [(ngModel)]="travelinsert.date">
           </td>
           <td>
-            <input placeholder="password" [(ngModel)]="dto.password">
+            <select [(ngModel)]="travelinsert.truck">
+               <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
+             </select>
           </td>
-          <td>
-            <select placeholder="usertype" [(ngModel)]="dto.usertype">
-              <option value="ADMIN">ADMIN</option>
-              <option value="USER">USER</option>
-            </select>
-          </td>
-          <td>
-            <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
-          </td>
+           <td>
+            <button (click)="insert(travelinsert)">Insert</button>
+            </td>
           <td>
             <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
           </td>
+
           <td>
             <button (click)="close()">Close Details</button>
           </td>
         </tr>
-        <tr *ngFor="let dto of dtolist">
+
+       <!-- SHow details -->
+        <tr *ngFor="let travel of travels">
           <td>
-            <input [(ngModel)]="dto.username">
+            <input type = "date" [(ngModel)]= "travel.date" >
+          </td>
+
+          <td>
+            <select [(ngModel)]="travelinsert.truck">
+               <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
+             </select>
+          </td>
+
+          <td>
+            <button (click)=update(travel)><i class="fas fa-edit"></i>Edit</button>
           </td>
           <td>
-            <input [(ngModel)]="dto.password">
+            <button (click)="delete(travel.id)"><i class="fas fa-trash"></i>Delete</button>
           </td>
           <td>
-            <select [(ngModel)]="dto.usertype">
-              <option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
-              <option [selected]="dto.usertype===USER" value="USER">USER</option>
-            </select>
-          </td>
-          <td>
-            <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
-          </td>
-          <td>
-            <button (click)="delete(dto.id)"><i class="fas fa-trash"></i>Delete</button>
-          </td>
-          <td>
-            <button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button>
+            <button (click)="getTravels(travel)"><i class="fas fa-binoculars"></i>Details</button>
           </td>
         </tr>
       </table>
     </div>
   </div>
+
   <div class="row mt-5">
     <div class="col-md-1">
       <!-- colonna vuota per centrare i dettagli-->
@@ -86,4 +79,5 @@
       <!-- colonna vuota per centrare i dettagli-->
     </div>
   </div>
+  
 </div>

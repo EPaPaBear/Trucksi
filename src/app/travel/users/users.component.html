@@ -33,9 +33,8 @@
           </td>
           <td>
             <select placeholder="usertype" [(ngModel)]="dto.usertype">
-              <!--<option value="ADMIN">ADMIN</option>
-              <option value="USER">USER</option>-->
-              <option *ngFor="let types of userTypeOptions" [value]="types" [label]="types">{{types}}</option>
+              <option value="ADMIN">ADMIN</option>
+              <option value="USER">USER</option>
             </select>
           </td>
           <td>
@@ -57,11 +56,8 @@
           </td>
           <td>
             <select [(ngModel)]="dto.usertype">
-              <!--<option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
-              <option [selected]="dto.usertype===USER" value="USER">USER</option>-->
-
-              <option *ngFor="let types of userTypeOptions" [selected]="dto.usertype===types" [value]="types"
-                [label]="types">{{types}}</option>
+              <option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
+              <option [selected]="dto.usertype===USER" value="USER">USER</option>
             </select>
           </td>
           <td>
