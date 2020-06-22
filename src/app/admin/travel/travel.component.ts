@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TruckService } from 'src/service/truck.service';
+ import { TruckService } from 'src/service/truck.service';
 import { TravelService } from 'src/service/travel.service';
 import { TravelDTO } from 'src/dto/traveldto';
 import { TruckDTO } from 'src/dto/truckdto';
@@ -23,42 +23,34 @@ export class TravelComponent implements OnInit {
   constructor(private truckService: TruckService, private travelService: TravelService, private router: Router) { }
 
   ngOnInit() {
-    this.getTravels();
     this.getTrucks();
-   
+    this.getTravels();
   }
 
   getTravels(){
-   this.travelService.getAll().subscribe(events => this.travels = this.travels);
+   this.travelService.getAll().subscribe(travels => this.travels = travels);
   }
-
   getTrucks(){
     this.truckService.getAll().subscribe(trucks => this.trucks = trucks);
   }
-
-//UNderstand the implementation of this parameter very well
-
   insert(travel: TravelDTO){
-    this.truck= this.travelinsert.truck;
+    this.truck = this.travelinsert.truck;
     travel.truck = this.truck;
     this.travelService.insert(travel).subscribe(() => this.getTravels());
     this.clear();
   }
 
-
  delete(travel:TravelDTO){
-
     this.travelService.delete(travel.id).subscribe(() => this.getTravels());
   }
   
-  getEvent(travel: TravelDTO){
+  getTravel(travel: TravelDTO){
     localStorage.setItem('Travel', JSON.stringify(travel));
     this.router.navigate(['/admin-dashboard/notifications']);
   }
-  
-
   clear(){
     this.travelinsert = new TravelDTO();
   }
 
 }
+

@@ -12,7 +12,7 @@ export class TravelService extends AbstractService<TravelDTO>{
 
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'event';
+    this.type = 'travel';
    }
 
    getAllById(truckDTO: TruckDTO): Observable<TravelDTO[]>{

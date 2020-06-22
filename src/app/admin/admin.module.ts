@@ -16,7 +16,7 @@ import { TravelComponent } from './travel/travel.component';
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent,TravelComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
