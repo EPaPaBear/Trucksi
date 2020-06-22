@@ -28,11 +28,9 @@
                <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
              </select>
           </td>
-
            <td>
             <button (click)="insert(travelinsert)">Insert</button>
             </td>
-
           <td>
             <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
           </td>
