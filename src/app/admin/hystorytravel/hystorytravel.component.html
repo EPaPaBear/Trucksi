@@ -4,12 +4,12 @@
       <table>
         <tr>
           <th>
-            Username
+            timearrival
           </th>
           <th>
-            Password
+            timedeparture
           </th>
-          <th>
+       <!--  <th>
             Usertype
           </th>
           <th>
@@ -20,24 +20,23 @@
           </th>
           <th>
             Details
-          </th>
+          </th> -->
         </tr>
         <tr>
           <td>
             <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
             viene modificato l'attributo di dto in tempo reale-->
-            <input placeholder="username" [(ngModel)]="dto.username">
+            <input placeholder="timearrival" [(ngModel)]="dto.timearrival.hours">
           </td>
           <td>
-            <input placeholder="password" [(ngModel)]="dto.password">
+            <input placeholder="timedeparture" [(ngModel)]="dto.descrizione">
           </td>
-          <td>
+      <!--    <td>
             <select placeholder="usertype" [(ngModel)]="dto.usertype">
-              <!--<option value="ADMIN">ADMIN</option>
-              <option value="USER">USER</option>-->
-              <option *ngFor="let types of userTypeOptions" [value]="types" [label]="types">{{types}}</option>
+              <option value="ADMIN">ADMIN</option>
+              <option value="USER">USER</option>
             </select>
-          </td>
+          </td> -->
           <td>
             <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
           </td>
@@ -57,11 +56,8 @@
           </td>
           <td>
             <select [(ngModel)]="dto.usertype">
-              <!--<option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
-              <option [selected]="dto.usertype===USER" value="USER">USER</option>-->
-
-              <option *ngFor="let types of userTypeOptions" [selected]="dto.usertype===types" [value]="types"
-                [label]="types">{{types}}</option>
+              <option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
+              <option [selected]="dto.usertype===USER" value="USER">USER</option>
             </select>
           </td>
           <td>
