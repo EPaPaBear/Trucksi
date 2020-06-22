@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: '', component: AdminDashboardComponent },
       { path: 'users', component: UsersComponent },
       { path: 'work-in-progress', component: WorkInProgressComponent },
-     // {path: 'travel', component:TravelComponent}
+      {path: 'travel', component:TravelComponent},
      {path: 'hystorytravel', component: HystorytravelComponent}
     ]
   }

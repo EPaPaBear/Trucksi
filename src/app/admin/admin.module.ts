@@ -16,8 +16,9 @@ import { HystorytravelComponent } from './hystorytravel/hystorytravel.component'
  * 
  * @see AdminRoutingModule
  */
+
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent, HystorytravelComponent,TravelComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent,TravelComponent, HystorytravelComponent],
 
   imports: [
     CommonModule,
@@ -26,3 +27,4 @@ import { HystorytravelComponent } from './hystorytravel/hystorytravel.component'
   ]
 })
 export class AdminModule { }
+
