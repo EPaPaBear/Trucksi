@@ -47,7 +47,6 @@ public class Driver {
 		//referencedColumnName -> colonna dalla quale prendere il valore di user, per metterla in name
 	
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "idUser", referencedColumnName = "id")  
 	private User user;
 	
 	 

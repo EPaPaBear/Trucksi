@@ -54,7 +54,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 			user = new User();
 			user.setId(userDTO.getId());
 			user.setUsername(userDTO.getUsername());
-			userDTO.setPassword(user.getPassword());
+			user.setPassword(userDTO.getPassword()); 
 			user.setUsertype(userDTO.getUsertype());
 			user.setActive(userDTO.isActive());
 			

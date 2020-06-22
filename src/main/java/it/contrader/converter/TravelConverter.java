@@ -42,15 +42,25 @@ public class TravelConverter extends AbstractConverter<Travel, TravelDTO>{
 	}
 
 	@Override 
-	public Travel toEntityS(TravelDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public Travel toEntityS(TravelDTO travelDTO) {
+		Travel travel = null;
+		if(travelDTO != null) {
+			travel = new Travel();
+			travel.setId(travelDTO.getId());
+			travel.setDate(travelDTO.getDate());	 
+		}
+		return travel;
 	}
 
 	@Override
-	public TravelDTO toDTOS(Travel entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public TravelDTO toDTOS(Travel travel) {
+		TravelDTO travelDTO = null;
+		if(travel!= null) {
+			travelDTO = new TravelDTO();
+			travelDTO.setId(travel.getId());
+			travelDTO.setDate(travel.getDate());
+		}
+		return travelDTO;
 	}
 
 }

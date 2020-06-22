@@ -1,6 +1,7 @@
 
 package it.contrader.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.contrader.dto.HystorytravelDTO;
@@ -11,6 +12,12 @@ import it.contrader.model.Truck;
 
 @Component
 public class HystorytravelConverter extends AbstractConverter<Hystorytravel, HystorytravelDTO> {
+	
+	@Autowired
+	private TruckConverter truckConverter;
+	
+	@Autowired
+	private TravelConverter travelConverter;
 	
 	@Override
 	public Hystorytravel toEntity(HystorytravelDTO HystorytravelDTO) {
@@ -32,8 +39,8 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 					HystorytravelDTO.getNumeroteam(), 
 					HystorytravelDTO.getTimedeparture(), 
 					HystorytravelDTO.getTimearrival(),
-					HystorytravelDTO.getTravel(),
-					HystorytravelDTO.getTruck()
+					travelConverter.toEntityS(HystorytravelDTO.getTravel()),
+					truckConverter.toEntityS(HystorytravelDTO.getTruck())
 					);
 		//	Hystorytravel = new Hystorytravel(HystorytravelDTO.getIdt(), HystorytravelDTO.getNometeam(), HystorytravelDTO.getDescrizione(), HystorytravelDTO.getNumeroutenti(), HystorytravelDTO.getNumeroteam());
 			
@@ -60,8 +67,8 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 					ht.getNumeroteam(), 
 					ht.getTimedeparture(),
 					ht.getTimearrival(),
-					ht.getTravel(),
-					ht.getTruck()
+					travelConverter.toDTOS(ht.getTravel()),
+					truckConverter.toDTOS(ht.getTruck())
 					);
 		}
 		return htDTO;
@@ -71,7 +78,6 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 
 	@Override
 	public Hystorytravel toEntityS(HystorytravelDTO dto) {
-		// TODO Auto-generated method stub
 		Hystorytravel ht = null;
 		if (dto != null) {
 			ht = new Hystorytravel();
@@ -84,7 +90,7 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 
 
 	@Override
-	public HystorytravelDTO toDTOS(Hystorytravel entity) {
+	public HystorytravelDTO toDTOS(Hystorytravel entity) { 
 		HystorytravelDTO htdto = null;
 		if(entity!= null) {
 			htdto = new HystorytravelDTO();

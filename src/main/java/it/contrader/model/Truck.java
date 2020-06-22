@@ -41,8 +41,7 @@ public class Truck{
 	private String model;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH) 
-	@JoinColumn(name = "idriver", referencedColumnName = "id") 
-	private Driver driver ;
+	private Driver driver ; 
 	
 	
 	
