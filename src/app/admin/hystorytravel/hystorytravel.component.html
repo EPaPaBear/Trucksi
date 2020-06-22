@@ -9,27 +9,24 @@
           <th>
             timedeparture
           </th>
-       <!--  <th>
-            Usertype
+         <th>
+            Insert
           </th>
           <th>
-            Edit
-          </th>
-          <th>
-            Delete
+            delete
           </th>
           <th>
             Details
-          </th> -->
+          </th> 
         </tr>
         <tr>
           <td>
             <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
             viene modificato l'attributo di dto in tempo reale-->
-            <input placeholder="timearrival" [(ngModel)]="dto.timearrival.hours">
+            <input type="time" placeholder="timearrival" value="{{timearrival}}">
           </td>
           <td>
-            <input placeholder="timedeparture" [(ngModel)]="dto.descrizione">
+            <input type="time" placeholder="timedeparture" value="{{timedeparture}}">
           </td>
       <!--    <td>
             <select placeholder="usertype" [(ngModel)]="dto.usertype">
@@ -70,6 +67,102 @@
             <button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button>
           </td>
         </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-1">
+      <!-- colonna vuota per centrare i dettagli-->
+    </div>
+    <div class="col-md-10">
+      <!-- Se "selected" non è nullo, viene passato il suo valore sotto la chiave dto alla compoment
+        figlia. Questo è un esempio di binding unidirezionale tra ts e ts-->
+      <app-user-details *ngIf="selected" [dto]="selected"></app-user-details>
+    </div>
+    <div class="col-md-1">
+      <!-- colonna vuota per centrare i dettagli-->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table>
+        <tr>
+          <th>
+            nometeam
+          </th>
+          <th>
+            descrizione
+          </th>
+          <th>
+            numero utenti
+          </th>
+          <th>
+            numero team
+          </th>
+          <th>
+            time departure
+          </th>
+          <th>
+            time arrival
+          </th>
+          <th>
+            truck dto
+          </th>
+          <th>
+            insert
+          </th>
+          <th>
+            delete
+          </th>
+          <th>
+            close
+          </th>
+        </tr>
+        
+        <tr *ngFor="let dto of dummyhtdata">
+          <td>
+            <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
+            viene modificato l'attributo di dto in tempo reale-->
+            <input placeholder="username" [(ngModel)]="dto.nometeam">
+          </td>
+          <td>
+            <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
+            viene modificato l'attributo di dto in tempo reale-->
+            <input placeholder="nometeam" [(ngModel)]="dto.descrizione">
+          </td>
+          <td>
+            <input placeholder="password" [(ngModel)]="dto.numeroutenti">
+          </td>
+          <td>
+            <input placeholder="numeroteam" [(ngModel)]="dto.numeroteam">
+              <!--<option value="ADMIN">ADMIN</option>
+              <option value="USER">USER</option>-->
+              <!--<option *ngFor="let types of userTypeOptions" [value]="types" [label]="types">{{types}}</option>
+            </select> -->
+          </td>
+          <td>
+            <input placeholder="timearrival" [(ngModel)]="dto.timearrival_s">
+          </td>
+          <td>
+            <input placeholder="timedeaprture" [(ngModel)]="dto.timedeparture_s">
+          </td>
+          <td>
+            <input placeholder="trcukDTO" [(ngModel)]="dto.trcukDTO">
+          </td>
+          <td>
+            <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
+          </td>
+          <td>
+            <button (click)="close()">Close Details</button>
+          </td>
+        </tr>
+       
       </table>
     </div>
   </div>
