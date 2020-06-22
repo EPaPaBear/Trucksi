@@ -65,5 +65,19 @@ public class HystorytravelConverter extends AbstractConverter<Hystorytravel, Hys
 		return htDTO;
 		
 	}
+
+
+	@Override
+	public Hystorytravel toEntityS(HystorytravelDTO dto) { 
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public HystorytravelDTO toDTOS(Hystorytravel entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

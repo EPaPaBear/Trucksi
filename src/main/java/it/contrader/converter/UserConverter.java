@@ -24,23 +24,14 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 			user.setPassword(userDTO.getPassword());	
 			user.setUsertype(userDTO.getUsertype());	
 			user.setActive(userDTO.isActive());
-		/*
-			if(userDTO.getPassenger() != null ) {
-				user.setPassenger(passengerConverter.toEntity(userDTO.getPassenger()));
-			}
-			if(userDTO.getDriver() != null ) {
-				user.setDriver(driverConverter.toEntity(userDTO.getDriver()));
-			}
-		*/
-	
-		
-			
+			user.setPassenger(passengerConverter.toEntityS(userDTO.getPassenger()));  
+			user.setDriver(driverConverter.toEntityS(userDTO.getDriver()));
 		}
 		return user;
 	}
 
 	@Override
-	public UserDTO toDTO(User user) {
+	public UserDTO toDTO(User user) { 
 		UserDTO userDTO = null;
 		if(user!= null) {
 			userDTO = new UserDTO();
@@ -49,17 +40,41 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 			userDTO.setPassword(user.getPassword());		
 			userDTO.setUsertype(user.getUsertype());
 			userDTO.setActive(user.isActive());
-		
-			if(user.getPassenger()!=null) {
-				userDTO.setPassenger(passengerConverter.toDTO(user.getPassenger()));
-			}
-			if(user.getDriver()!=null) {
-			//	userDTO.setDriver(driverConverter.toDTO(user.getDriver()));
-			}
-
+			userDTO.setPassenger(passengerConverter.toDTOS(user.getPassenger())); 
+			userDTO.setDriver(driverConverter.toDTOS(user.getDriver()));
 			
 		}
 		return userDTO;
 	}
+	
+	@Override
+	public User toEntityS(UserDTO userDTO) {
+		User user = null;
+		if (userDTO != null) {
+			user = new User();
+			user.setId(userDTO.getId());
+			user.setUsername(userDTO.getUsername());
+			userDTO.setPassword(user.getPassword());
+			user.setUsertype(userDTO.getUsertype());
+			user.setActive(userDTO.isActive());
+			
+		}
+		return user;
+	}
+
+	@Override
+	public UserDTO toDTOS(User user) { 
+		UserDTO userDTO = null;
+		if (user != null) {
+			userDTO = new UserDTO();
+			userDTO.setId(user.getId());
+			userDTO.setUsername(user.getUsername());
+			userDTO.setPassword(user.getPassword());	
+			userDTO.setActive(user.isActive());
+			userDTO.setUsertype(user.getUsertype());
+		}
+		return userDTO;
+	}
+	
 
 }

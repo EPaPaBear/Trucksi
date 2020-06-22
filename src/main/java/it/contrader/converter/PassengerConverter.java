@@ -24,12 +24,8 @@ public class PassengerConverter extends AbstractConverter<Passenger, PassengerDT
 		if (passengerDTO != null) {
 			passenger = new Passenger();
 			passenger.setId(passengerDTO.getId());
-			if(passengerDTO.getUser() != null) {
-				passenger.setUser(userConverter.toEntity(passengerDTO.getUser()));
-			}
-			if(passengerDTO.getTruck() != null) {
-				passenger.setTruck(truckConverter.toEntity(passengerDTO.getTruck()));
-			}
+			passenger.setUser(userConverter.toEntityS( passengerDTO.getUser()));
+			passenger.setTruck(truckConverter.toEntityS(passengerDTO.getTruck()));
 			passenger.setName(passengerDTO.getName());
 			passenger.setSurname(passengerDTO.getSurname());
 			passenger.setAge(passengerDTO.getAge());
@@ -44,20 +40,42 @@ public class PassengerConverter extends AbstractConverter<Passenger, PassengerDT
 		if(passenger!= null) {
 			passengerDTO = new PassengerDTO();
 			passengerDTO.setId(passenger.getId());
-			if(passenger.getUser()!=null) {
-				passengerDTO.setUser(userConverter.toDTO(passenger.getUser()));
-			}
-			if(passenger.getTruck()!=null) {
-				passengerDTO.setTruck(truckConverter.toDTO(passenger.getTruck()));
-			}
+			passengerDTO.setUser(userConverter.toDTOS( passenger.getUser()));
+			passengerDTO.setTruck(truckConverter.toDTOS(passenger.getTruck()));
 			passengerDTO.setName(passenger.getName());
 			passengerDTO.setSurname(passenger.getSurname());
 			passengerDTO.setAge(passenger.getAge());
 			passengerDTO.setPhone(passenger.getPhone());
 		}
 		return passengerDTO;
+	}
 
-		
+	@Override
+	public Passenger toEntityS(PassengerDTO passengerDTO) { 
+		Passenger passenger = null;
+		if (passengerDTO != null) {
+			passenger = new Passenger();
+			passenger.setId(passengerDTO.getId());
+			passenger.setName(passengerDTO.getName());
+			passenger.setSurname(passengerDTO.getSurname());
+			passenger.setAge(passengerDTO.getAge());
+			passenger.setPhone(passengerDTO.getPhone());
+		}
+		return passenger;
+	}
+
+	@Override
+	public PassengerDTO toDTOS(Passenger passenger) {
+		PassengerDTO passengerDTO = null;
+		if(passenger!= null) {
+			passengerDTO = new PassengerDTO();
+			passengerDTO.setId(passenger.getId()); 
+			passengerDTO.setName(passenger.getName());
+			passengerDTO.setSurname(passenger.getSurname());
+			passengerDTO.setAge(passenger.getAge());
+			passengerDTO.setPhone(passenger.getPhone());
+		}
+		return passengerDTO;
 	}
 	
 }

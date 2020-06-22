@@ -9,8 +9,6 @@ public class TruckConverter extends AbstractConverter<Truck, TruckDTO>{
 
 	@Autowired
 	private DriverConverter driverConverter;
-
-	
 	
 	@Override
 	public Truck toEntity(TruckDTO truckDTO) {
@@ -18,9 +16,7 @@ public class TruckConverter extends AbstractConverter<Truck, TruckDTO>{
 		if(truckDTO != null) {
 			truck = new Truck();
 			truck.setId(truckDTO.getId());
-			if(truckDTO.getDriver()!=null) {
-				truck.setDriver(driverConverter.toEntity(truckDTO.getDriver()));
-			}
+			truck.setDriver(driverConverter.toEntityS(truckDTO.getDriver()));
 			truck.setLicensePlate(truckDTO.getLicensePlate());	
 			truck.setModel(truckDTO.getModel());
 		}
@@ -33,13 +29,35 @@ public class TruckConverter extends AbstractConverter<Truck, TruckDTO>{
 		if(truck!= null) {
 			truckDTO = new TruckDTO();
 			truckDTO.setId(truck.getId());
-			if(truck.getDriver()!=null) {
-				truckDTO.setDriver(driverConverter.toDTO(truck.getDriver()));
-			}
+			truckDTO.setDriver(driverConverter.toDTOS(truck.getDriver()));
 			truckDTO.setLicensePlate(truck.getLicensePlate());		
 			truckDTO.setModel(truck.getModel());		
 
 		}
+		return truckDTO;
+	}
+
+	@Override
+	public Truck toEntityS(TruckDTO truckDTO) { 
+		Truck truck = null;
+		if(truckDTO != null) {
+			truck = new Truck();
+			truck.setId(truckDTO.getId());
+			truck.setLicensePlate(truckDTO.getLicensePlate());	
+			truck.setModel(truckDTO.getModel());
+		}
+		return truck;
+	}
+
+	@Override
+	public TruckDTO toDTOS(Truck truck) {
+		TruckDTO truckDTO = null;
+		if(truck!= null) {
+			truckDTO = new TruckDTO();
+			truckDTO.setId(truck.getId());
+			truckDTO.setLicensePlate(truck.getLicensePlate());		
+			truckDTO.setModel(truck.getModel());		
+ 		}
 		return truckDTO;
 	}
 

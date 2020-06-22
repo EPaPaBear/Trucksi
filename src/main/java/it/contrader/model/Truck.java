@@ -1,5 +1,7 @@
 package it.contrader.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,16 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import it.contrader.dto.DriverDTO;
+import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @ToString(exclude = {"driver"})
 public class Truck{
 
@@ -30,12 +39,6 @@ public class Truck{
 	private String licensePlate;
 	
 	private String model;
-	
-	/*
-	@ManyToOne(cascade = CascadeType.REFRESH) 
-	@JoinColumn(name = "idriver", referencedColumnName = "id") 
-	private DriverDTO driver ;
-	*/
 	
 	@ManyToOne(cascade = CascadeType.REFRESH) 
 	@JoinColumn(name = "idriver", referencedColumnName = "id") 
