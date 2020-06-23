@@ -23,7 +23,7 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 
 		if(listDTO != null) {
 			for (DTO dto:listDTO) {
-				Entity entity = toEntityS(dto);
+				Entity entity = toEntity(dto);
 				list.add(entity);
 			}
 		}
@@ -31,11 +31,10 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 	}
 	
 	public List<DTO> toDTOList (Iterable<Entity> listEntity) {
-		List<DTO> list = new ArrayList<DTO>();
-
+		List<DTO> list = new ArrayList<DTO>(); 
 		if(listEntity != null) {
 			for (Entity entity:listEntity) {
-				DTO dto = toDTOS(entity);
+				DTO dto = toDTO(entity);
 				list.add(dto);
 			}
 		}
