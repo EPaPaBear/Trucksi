@@ -1,89 +1,66 @@
+
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-12">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
       <table>
         <tr>
-          <th>
-            Username
-          </th>
-          <th>
-            Password
-          </th>
-          <th>
-            Usertype
-          </th>
+          <th>Date</th>
+          <th>Truck</th>
+        
           <th>
             Edit
           </th>
           <th>
-            Delete
-          </th>
-          <th>
-            Details
+            Truck
           </th>
         </tr>
         <tr>
+
           <td>
-            <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
-            viene modificato l'attributo di dto in tempo reale-->
-            <input placeholder="username" [(ngModel)]="dto.username">
+            <input placeholder="date" type="date" [(ngModel)]="travelinsert.date">
+          </td>
+  
+        
+          <td>
+         <select [(ngModel)]="travelinsert.truck">
+            <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
+          </select>
+          </td>
+          
+          <td>
+            <button (click)="insert(travelinsert)">Insert</button>
           </td>
           <td>
-            <input placeholder="password" [(ngModel)]="dto.password">
-          </td>
-          <td>
-            <select placeholder="usertype" [(ngModel)]="dto.usertype">
-              <option value="ADMIN">ADMIN</option>
-              <option value="USER">USER</option>
-            </select>
-          </td>
-          <td>
-            <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
-          </td>
-          <td>
-            <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
-          </td>
-          <td>
-            <button (click)="close()">Close Details</button>
+            <button (click)="clear()">Clear</button>
           </td>
         </tr>
-        <tr *ngFor="let dto of dtolist">
-          <td>
-            <input [(ngModel)]="dto.username">
-          </td>
-          <td>
-            <input [(ngModel)]="dto.password">
-          </td>
-          <td>
-            <select [(ngModel)]="dto.usertype">
-              <option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
-              <option [selected]="dto.usertype===USER" value="USER">USER</option>
-            </select>
-          </td>
-          <td>
-            <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
-          </td>
-          <td>
-            <button (click)="delete(dto.id)"><i class="fas fa-trash"></i>Delete</button>
-          </td>
-          <td>
-            <button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button>
-          </td>
-        </tr>
-      </table>
+        
+
+          
+          <tr *ngFor="let travel of travels">
+
+            <td>
+              <input [(ngModel)]="travel.date">
+            </td>
+          
+           <td>
+             <label >{{travel.truck.model}}</label>
+            </td>
+            <td><button (click)="getTravel(travel)" > Notifications </button></td>
+            <td>
+              <button (click)="delete(travel)"> Delete </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-md-1">
-      <!-- colonna vuota per centrare i dettagli-->
-    </div>
-    <div class="col-md-10">
-      <!-- Se "selected" non è nullo, viene passato il suo valore sotto la chiave dto alla compoment
-        figlia. Questo è un esempio di binding unidirezionale tra ts e ts-->
-      <app-user-details *ngIf="selected" [dto]="selected"></app-user-details>
-    </div>
-    <div class="col-md-1">
-      <!-- colonna vuota per centrare i dettagli-->
-    </div>
-  </div>
-</div>
+  
+         
+         
+
+         

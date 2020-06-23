@@ -29,17 +29,16 @@ export class TravelComponent implements OnInit {
   }
 
   getTravels(){
-   this.travelService.getAll().subscribe(events => this.travels = this.travels);
+   this.travelService.getAll().subscribe(travels => this.travels = travels);
   }
 
   getTrucks(){
     this.truckService.getAll().subscribe(trucks => this.trucks = trucks);
   }
 
-//UNderstand the implementation of this parameter very well
 
   insert(travel: TravelDTO){
-    this.truck= this.travelinsert.truck;
+    this.truck = this.travelinsert.truck;
     travel.truck = this.truck;
     this.travelService.insert(travel).subscribe(() => this.getTravels());
     this.clear();
@@ -51,12 +50,12 @@ export class TravelComponent implements OnInit {
     this.travelService.delete(travel.id).subscribe(() => this.getTravels());
   }
   
-  getEvent(travel: TravelDTO){
+  getTravel(travel: TravelDTO){
     localStorage.setItem('Travel', JSON.stringify(travel));
-    this.router.navigate(['/admin-dashboard/notifications']);
+  //  this.router.navigate(['/admin-dashboard/notifications']);
   }
   
-
+  
   clear(){
     this.travelinsert = new TravelDTO();
   }
