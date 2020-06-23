@@ -1,83 +1,66 @@
+
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-12">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
       <table>
         <tr>
-          <th>
-            Date
-          </th>
-          <th>
-            Truck
-          </th>
+          <th>Date</th>
+          <th>Truck</th>
+        
           <th>
             Edit
           </th>
           <th>
-            Delete
-          </th>
-          <th>
-            Details
+            Truck
           </th>
         </tr>
         <tr>
+
           <td>
-            <input placeholder="date" name ="date" type = "Date" [(ngModel)]="travelinsert.date">
+            <input placeholder="date" type="date" [(ngModel)]="travelinsert.date">
           </td>
+  
+        
           <td>
-            <select [(ngModel)]="travelinsert.truck">
-               <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
-             </select>
+         <select [(ngModel)]="travelinsert.truck">
+            <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
+          </select>
           </td>
-           <td>
+          
+          <td>
             <button (click)="insert(travelinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        
+
+          
+          <tr *ngFor="let travel of travels">
+
+            <td>
+              <input [(ngModel)]="travel.date">
             </td>
-          <td>
-            <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
-          </td>
-
-          <td>
-            <button (click)="close()">Close Details</button>
-          </td>
-        </tr>
-
-       <!-- SHow details -->
-        <tr *ngFor="let travel of travels">
-          <td>
-            <input type = "date" [(ngModel)]= "travel.date" >
-          </td>
-
-          <td>
-            <select [(ngModel)]="travelinsert.truck">
-               <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
-             </select>
-          </td>
-
-          <td>
-            <button (click)=update(travel)><i class="fas fa-edit"></i>Edit</button>
-          </td>
-          <td>
-            <button (click)="delete(travel.id)"><i class="fas fa-trash"></i>Delete</button>
-          </td>
-          <td>
-            <button (click)="getTravels(travel)"><i class="fas fa-binoculars"></i>Details</button>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-md-1">
-      <!-- colonna vuota per centrare i dettagli-->
-    </div>
-    <div class="col-md-10">
-      <!-- Se "selected" non è nullo, viene passato il suo valore sotto la chiave dto alla compoment
-        figlia. Questo è un esempio di binding unidirezionale tra ts e ts-->
-      <app-user-details *ngIf="selected" [dto]="selected"></app-user-details>
-    </div>
-    <div class="col-md-1">
-      <!-- colonna vuota per centrare i dettagli-->
+          
+           <td>
+             <label >{{travel.truck.model}}</label>
+            </td>
+            <td><button (click)="getTravel(travel)" > Notifications </button></td>
+            <td>
+              <button (click)="delete(travel)"> Delete </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
     </div>
   </div>
   
-</div>
+         
+         
+
+         
