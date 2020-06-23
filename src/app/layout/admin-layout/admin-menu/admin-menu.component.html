@@ -35,6 +35,18 @@ custom e sono definite nel CSS-->
             </a>
         </button>
     </div>
+
+    <button class="menubtn" (click)="truckcollapse()">
+        <i class="fas fa-truck"></i>Trucks
+    </button>
+    <div *ngIf="idTruckCollapsed">
+        <button class="collapsebtn">
+            <a [routerLink]="['/admin-dashboard/truck']">
+                <i class="fas fa-edit"></i> Manage Trucks
+            </a>
+        </button>
+    </div>
+
     <button class="menubtn" (click)="logout()">
         <i class="fas fa-sign-out-alt"></i>Logout
     </button>

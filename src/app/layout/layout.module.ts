@@ -5,9 +5,11 @@ import { AdminMenuComponent } from './admin-layout/admin-menu/admin-menu.compone
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { HystorytravelMenuComponent } from './admin-layout/hystorytravel-menu/hystorytravel-menu.component';
+import { DriverLayoutComponent } from './driver-layout/driver-layout.component';
+import { DriverMenuComponent } from './driver-layout/driver-menu/driver-menu.component';
 
 /**
- * Modulo di layout. Viene caricato nel rputer outlet padre e poi 
+ * Modulo di layout. Viene caricato nel rputer outlet padre e poi
  * non viene più ricaricato. Quando clicchiamo su un link ricarichiamo solo l'outlet
  * che sta dentro AdminLayoutComponent
  * 
@@ -16,7 +18,7 @@ import { HystorytravelMenuComponent } from './admin-layout/hystorytravel-menu/hy
  * @see AdminLayoutComponent
  */
 @NgModule({
-  declarations: [AdminLayoutComponent, AdminMenuComponent, HeaderComponent, HystorytravelMenuComponent],
+  declarations: [AdminLayoutComponent, AdminMenuComponent, HeaderComponent, HystorytravelMenuComponent, DriverLayoutComponent, DriverMenuComponent],
   imports: [
     CommonModule,
     RouterModule

@@ -34,6 +34,12 @@ export class AuthGuard implements CanActivate {
       if (JSON.parse(localStorage.getItem('currentUser')).usertype.toString() === 'ADMIN') {
         return true;
       }
+      if (JSON.parse(localStorage.getItem('currentUser')).usertype.toString() === 'DRIVER') {
+        return true;
+      }
+      if (JSON.parse(localStorage.getItem('currentUser')).usertype.toString() === 'PASSENGER') {
+        return true;
+      }
     } else {
       console.log('You do not have the authorization to this route')
       return false;

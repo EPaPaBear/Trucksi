@@ -1,0 +1,73 @@
+<!-- Il grid layout di Bootstrap prevede che il contentuto sia inserito dentro un div di classe 
+  "container", poi le row e infine le col (in tutto devono essere ESATTAMENTE 12 colonne per 
+  ogni riga) -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+      <img src="../../assets/logo.svg" alt="logo" />
+    </div>
+    <div class="col-md-5">
+      <form #f="ngForm">
+        <p> Sign Up</p>
+        <div class="form-group">
+          <input class="form-control" type="text" id="user" name="username" placeholder="Username" ngModel />
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" id="pass" name="password" placeholder="Password" ngModel />
+        </div>
+        <div class="form-group">
+          <select placeholder="usertype" name="usertype" id="usertype" (change)="cambia(f)" ngModel>
+            <option value="DRIVER">DRIVER</option>
+            <option value="PASSENGER">PASSENGER</option>
+          </select>
+        </div>
+
+        <div id="hideDriver">
+          <div class="form-group">
+            <input type="text" class="form-control" name="nameD" id="nameD" placeholder="Name"
+              [(ngModel)]="user.driver.name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="surnameD" id="surnameD" placeholder="Surname" ngModel>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="phoneD" id="phoneD" placeholder="Phone" ngModel>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="driverLicense" id="driverLicense" placeholder="Driver License"
+              ngModel>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" name="ageD" id="ageD" placeholder="Age" min="0" ngModel>
+          </div>
+          <!--<div class="form-group">
+            <input type="text" class="form-control" name="model" id="model" placeholder="Model" ngModel>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="licensePlate" id="licensePlate" placeholder="License Plate"
+              ngModel>
+          </div>-->
+        </div>
+
+        <div id="hidePassenger">
+          <label for="nameP">Name</label>
+          <input type="text" name="nameP" id="nameP" placeholder="Name">
+
+          <label for="surnameP">Surname</label>
+          <input type="text" name="surnameP" id="surnameP" placeholder="Surname">
+
+          <label for="phoneP">Phone</label>
+          <input type="text" name="phoneP" id="phoneP" placeholder="Phone">
+
+          <label for="ageP">Age</label>
+          <input type="number" name="ageP" id="ageP" placeholder="Age" min="0">
+        </div>
+
+
+        <button type="submit" (click)="register(f)">Sing up</button>
+
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+      </form>
+    </div>
+  </div>
+</div>

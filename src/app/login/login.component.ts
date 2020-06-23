@@ -36,15 +36,16 @@ export class LoginComponent implements OnInit {
             break;
           }
           case 'PASSENGER':
-          {
+            {
               this.router.navigate(['/passenger-dashboard']);
               break;
-          }
+            }
           case 'DRIVER':
-          {
-            this.router.navigate(['/driver-dashboard']);
-            break;
-          }
+            {
+              console.log("/driver-dashboard");
+              this.router.navigate(['/driver-dashboard']);
+              break;
+            }
           default:
             this.router.navigate(['/login']);
         }

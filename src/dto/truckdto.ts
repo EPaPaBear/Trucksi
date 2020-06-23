@@ -1,10 +1,9 @@
-// import { Usertype } from './usertype'; import 
-//import truck here 
+import { DriverDTO } from './driverdto';
 
 export class TruckDTO {
-  
-   id :number;
-   licensePlate: String;
-   model:String;
-  // driver: DriverDTO;
+
+  id: number;
+  licensePlate: string;
+  model: string;
+  driver: DriverDTO;
 }
