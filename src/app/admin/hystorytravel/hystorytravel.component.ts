@@ -7,6 +7,7 @@ import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-hystorytravel',
+  
   templateUrl: './hystorytravel.component.html',
   styleUrls: ['../users/users.component.css']
 })
@@ -24,6 +25,7 @@ export class HystorytravelComponent extends AbstractCrudComponent<HystorytravelD
     this.clear();
     //this.getHystorytravels();
     this.getAll();
+    console.log(this.dtolist);
   }
   clear(){
     this.dto = new HystorytravelDTO();
@@ -48,6 +50,8 @@ export class HystorytravelComponent extends AbstractCrudComponent<HystorytravelD
     }
     return time;
   }
+  
+
 
   ngOnInit_() {
     this.clear();
@@ -57,17 +61,9 @@ export class HystorytravelComponent extends AbstractCrudComponent<HystorytravelD
       descrizione: 'qqq',
       numeroutent: 'test',
       numeroteam: '2',
-      timedeparture: {
-        hours: 18,
-        minutes: 30
-
-      },
-      timearrival: {
-        hours: 19,
-        minutes: 30
-      },
+      timedeparture: '18',
+      timearrival: '19',
       truckDTO: null
-
       /*  "travel": {
             "id": 1,
             "date": "2020-06-11",
@@ -83,8 +79,6 @@ export class HystorytravelComponent extends AbstractCrudComponent<HystorytravelD
     }
   }
   toInputTime(dto) {
-    dto.timearrival_s = this.dto.timearrival.hours + ':' + this.dto.timearrival.minutes;
-    dto.timedeparture_s = this.dto.timedeparture.hours + ':' + this.dto.timedeparture.minutes;
   }
 
 }
