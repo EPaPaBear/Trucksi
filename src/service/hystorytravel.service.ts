@@ -3,6 +3,7 @@ import { AbstractService } from './abstractservice';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HystorytravelDTO } from 'src/dto/hystorytraveldto';
+import { TruckDTO } from 'src/dto/truckdto';
 
 /**
  * I service sono decorati da @Injectable. 
@@ -16,7 +17,7 @@ import { HystorytravelDTO } from 'src/dto/hystorytraveldto';
 @Injectable({
   providedIn: 'root'
 })
-export class HystorytravelService extends AbstractService<HystorytravelDTO>{
+export class HystorytravelService extends AbstractService<HystorytravelDTO> {
 
   constructor(http: HttpClient) {
     super(http);
@@ -26,6 +27,9 @@ export class HystorytravelService extends AbstractService<HystorytravelDTO>{
   getAllById(hystorytravelDTO: HystorytravelDTO): Observable<HystorytravelDTO[]> {
     return this.http.get<HystorytravelDTO[]>('http://localhost:8080/' + this.type + '/getall');
 
+  }
+  getAllTruck(): Observable<TruckDTO[]> {
+    return this.http.get<TruckDTO[]>('http://localhost:8080/truck/getall');
   }
 
 }

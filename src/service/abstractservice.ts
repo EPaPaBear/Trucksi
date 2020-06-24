@@ -21,6 +21,7 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
 
     getAll(): Observable<DTO[]> {
         console.log('http://localhost:' + this.port + '/' + this.type + '/getall');
+        console.log(this.http.get<DTO[]>('http://localhost:' + this.port + '/' + this.type + '/getall'));
         return this.http.get<DTO[]>('http://localhost:' + this.port + '/' + this.type + '/getall');
     }
 
