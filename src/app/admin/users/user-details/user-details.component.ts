@@ -3,6 +3,10 @@ import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
 import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
 import { Usertype } from 'src/dto/usertype';
+import { PassengerDTO } from 'src/dto/passengerdto';
+import { PassengerService } from 'src/service/passenger.service';
+import { DriverDTO } from 'src/dto/driverdto';
+import { DriverService } from 'src/service/driver.service';
 
 /**
  * Questa component si occupa di mostrare i dettagli di un utente (in questo caso aggiunge solo l'ID
@@ -20,7 +24,7 @@ import { Usertype } from 'src/dto/usertype';
   templateUrl: './user-details.component.html',
   styleUrls: ['../users.component.css']
 })
-export class UserDetailsComponent extends AbstractCrudComponent<UserDTO> implements OnInit {
+export class UserDetailsComponent implements OnInit {
 
   private userType = Usertype;
   public userTypeOptions = [];
@@ -30,12 +34,40 @@ export class UserDetailsComponent extends AbstractCrudComponent<UserDTO> impleme
    */
   @Input() dto: UserDTO;
 
-  constructor(service: UserService) {
-    super(service);
-  }
+  constructor(private service: UserService, private driverService: DriverService, private passengerService: PassengerService) { }
 
   ngOnInit() {
+    console.log(this.dto);
+    if (this.dto.driver == null) {
+      this.dto.driver = new DriverDTO();
+    }
+    if (this.dto.passenger == null) {
+      this.dto.passenger = new PassengerDTO();
+    }
     this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
+  }
+
+  delete(id: number) {
+    this.service.delete(id).subscribe(() => this.service.getAll());
+  }
+
+  update(user: UserDTO) {
+    const userDTOMoment = new UserDTO();
+    userDTOMoment.id = user.id;
+
+    if (user.usertype.toString() === 'DRIVER') {
+      user.driver.user = userDTOMoment;
+      this.driverService.update(user.driver).subscribe(() => this.close());
+    } else if (user.usertype.toString() === 'PASSENGER') {
+      user.passenger.user = userDTOMoment;
+      this.passengerService.update(user.passenger).subscribe(() => this.close());
+    }
+  }
+
+  close() {
+    const clickEvent = new CustomEvent('click');
+    const btnElement = document.querySelector('#closeButton');
+    btnElement.dispatchEvent(clickEvent);
   }
 
 }
