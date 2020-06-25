@@ -8,6 +8,14 @@ custom e sono definite nel CSS-->
             <i class="fas fa-home"></i> Dashboard
         </a>
     </button>
+
+    <button class="menubtn">
+        <!-- Per navigare tra le component usiamo il routerLink, specificando il persorso da seguire-->
+        <a [routerLink]="['/admin-dashboard/city']">
+            <i class="fas fa-city"></i> City
+        </a>
+    </button>
+
     <!-- quando si clicca sul bottone la variabile "isAccountCollapsed" cambia valore booleano-->
     <button class="menubtn" (click)="accountcollapse()">
         <i class="fas fa-user"></i> Account

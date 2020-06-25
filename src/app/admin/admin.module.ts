@@ -9,6 +9,7 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { TravelComponent } from './travel/travel.component';
 import { HystorytravelComponent } from './hystorytravel/hystorytravel.component';
 import { HystorytravelDetailsComponent } from './hystorytravel/hystorytravel-details/hystorytravel-details.component';
+import { CityComponent } from './city/city.component';
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
  * l'admin. Questo modulo importa AdminRoutingModule.
@@ -19,7 +20,7 @@ import { HystorytravelDetailsComponent } from './hystorytravel/hystorytravel-det
  */
 
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent,TravelComponent, HystorytravelComponent, HystorytravelDetailsComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, UserDetailsComponent,TravelComponent, HystorytravelComponent, HystorytravelDetailsComponent, CityComponent],
 
   imports: [
     CommonModule,
