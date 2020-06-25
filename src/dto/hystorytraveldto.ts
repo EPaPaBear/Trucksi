@@ -8,8 +8,8 @@ export class HystorytravelDTO {
     descrizione: string;
     numeroutent: string;
     numeroteam: string;
-    timedeparture: Time;
-    timearrival: Time;
+    timedeparture: string;
+    timearrival: string;
     truckDTO: TruckDTO;
     // mancano travel e city;
 }
