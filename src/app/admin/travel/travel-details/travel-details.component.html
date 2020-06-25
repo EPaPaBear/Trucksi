@@ -1,0 +1,44 @@
+<h3>
+  <!-- | uppercase è un pipe, trasforma la stringa mettendo tutte le lettere maiuscole-->
+  {{dto.username | uppercase }}'S DETAILS
+</h3>
+<table>
+  <tr>
+    <th>
+      Date
+    </th>
+    <th>
+      Truck
+    </th>
+    <th>
+      Edit
+    </th>
+    <th>
+      Truck
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <span>
+        {{dto.id}}
+      </span>
+    </td>
+    <td>
+      <input [(ngModel)]="dto.date">
+    </td>
+    <td>
+      <select [(ngModel)]="dto.truckDTO">
+        <!--<option [selected]="dto.usertype===ADMIN" value="ADMIN">ADMIN</option>
+        <option [selected]="dto.usertype===USER" value="USER">USER</option>-->
+        <option *ngFor="let trucks of truckDTO" [selected]="dto.truckDTO===trucks" [value]="trucks" [label]="trucks">
+          {{trucks.model}}</option>
+      </select>
+    </td>
+    <td>
+      <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
+    </td>
+    <td>
+      <button (click)="delete(dto.id)"><i class="fas fa-trash"></i>Delete</button>
+    </td>
+  </tr>
+</table>
