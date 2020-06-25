@@ -53,3 +53,22 @@ p {
     font-size: 14px;
     color: white;
 }
+.button {
+    color:  rgb(74, 74, 74);
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    background-color: -internal-light-dark-color(rgb(239, 239, 239), rgb(74, 74, 74));
+    box-sizing: border-box;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195)); 
+    border-image: initial;
+    margin-left: 10px;
+}
+
+a:link, a:visited, a:hover, a:active {
+   text-decoration:none;
+}

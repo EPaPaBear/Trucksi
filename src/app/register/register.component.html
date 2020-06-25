@@ -6,17 +6,17 @@
     <div class="col-md-7">
       <img src="../../assets/logo.svg" alt="logo" />
     </div>
-    <div class="col-md-5">
-      <form #f="ngForm">
+    <div class="col-md-5 ">
+      <div class="form-styled">
         <p> Sign Up</p>
         <div class="form-group">
-          <input class="form-control" type="text" id="user" name="username" placeholder="Username" ngModel />
+          <input class="form-control" placeholder="Username" [(ngModel)]="dto.username" />
         </div>
         <div class="form-group">
-          <input class="form-control" type="password" id="pass" name="password" placeholder="Password" ngModel />
+          <input class="form-control" placeholder="Password" [(ngModel)]="dto.password" />
         </div>
         <div class="form-group">
-          <select placeholder="usertype" name="usertype" id="usertype" (change)="cambia(f)" ngModel>
+          <select placeholder="Usertype" (change)="cambia(dto.usertype)" [(ngModel)]="dto.usertype">
             <option value="DRIVER">DRIVER</option>
             <option value="PASSENGER">PASSENGER</option>
           </select>
@@ -24,21 +24,19 @@
 
         <div id="hideDriver">
           <div class="form-group">
-            <input type="text" class="form-control" name="nameD" id="nameD" placeholder="Name"
-              [(ngModel)]="user.driver.name">
+            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="driver.name">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="surnameD" id="surnameD" placeholder="Surname" ngModel>
+            <input type="text" class="form-control" placeholder="Surname" [(ngModel)]="driver.surname">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="phoneD" id="phoneD" placeholder="Phone" ngModel>
+            <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="driver.phone">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="driverLicense" id="driverLicense" placeholder="Driver License"
-              ngModel>
+            <input type="text" class="form-control" placeholder="Driver License" [(ngModel)]="driver.driverLicense">
           </div>
           <div class="form-group">
-            <input type="number" class="form-control" name="ageD" id="ageD" placeholder="Age" min="0" ngModel>
+            <input class="form-control" type="number" placeholder="Age" min="0" [(ngModel)]="driver.age">
           </div>
           <!--<div class="form-group">
             <input type="text" class="form-control" name="model" id="model" placeholder="Model" ngModel>
@@ -50,24 +48,25 @@
         </div>
 
         <div id="hidePassenger">
-          <label for="nameP">Name</label>
-          <input type="text" name="nameP" id="nameP" placeholder="Name">
-
-          <label for="surnameP">Surname</label>
-          <input type="text" name="surnameP" id="surnameP" placeholder="Surname">
-
-          <label for="phoneP">Phone</label>
-          <input type="text" name="phoneP" id="phoneP" placeholder="Phone">
-
-          <label for="ageP">Age</label>
-          <input type="number" name="ageP" id="ageP" placeholder="Age" min="0">
+          <div class="form-group">
+            <input type="text" placeholder="Name" [(ngModel)]="passenger.name">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Surname" [(ngModel)]="passenger.surname">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Phone" [(ngModel)]="passenger.phone">
+          </div>
+          <div class="form-group">
+            <input type="number" placeholder="Age" min="0" [(ngModel)]="passenger.age">
+          </div>
         </div>
 
 
-        <button type="submit" (click)="register(f)">Sing up</button>
+        <button type="submit" (click)="register()">Sign in</button>
 
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-      </form>
+        <a class="button" href="/login">Login</a>
+      </div>
     </div>
   </div>
 </div>

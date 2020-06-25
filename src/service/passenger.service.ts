@@ -4,22 +4,22 @@ import { AbstractService } from './abstractservice';
 import { DriverDTO } from 'src/dto/driverdto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TruckDTO } from 'src/dto/truckdto'; 
+import { PassengerDTO } from 'src/dto/passengerdto';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class TruckService extends AbstractService<TruckDTO>{
+export class PassengerService extends AbstractService<PassengerDTO>{
 
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'truck';
-   }
+    this.type = 'passenger';
+  }
 
-   getAllById(driverDTO: DriverDTO): Observable<TruckDTO[]>{
-     return this.http.post<TruckDTO[]>('http://localhost:8080/'+ this.type + '/getallbydriver', driverDTO);
-   }
+  getAllById(passengerDTO: PassengerDTO): Observable<PassengerDTO[]> {
+    return this.http.post<PassengerDTO[]>('http://localhost:8080/' + this.type + '/getallbydriver', passengerDTO);
+  }
 }
 
 

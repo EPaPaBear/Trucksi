@@ -34,6 +34,13 @@ export class UsersComponent extends AbstractCrudComponent<UserDTO> implements On
     this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
 
+  toggleActive(dto) {
+    dto.active = !dto.active;
+    dto.passenger = null;
+    dto.driver = null;
+    this.update(dto);
+  }
+
   clear() {
     this.dto = new UserDTO();
 

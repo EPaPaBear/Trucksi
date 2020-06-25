@@ -8,6 +8,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { AuthGuard } from '../../guard/auth/auth.guard';
 import { HystorytravelComponent } from './hystorytravel/hystorytravel.component';
 import { TruckComponent } from '../driver/truck/truck.component';
+import { CityComponent } from './city/city.component';
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
  * appena fa il login viene caricato nel <router-outlet> di app-component il layout e nel 
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'work-in-progress', component: WorkInProgressComponent },
       { path: 'travel', component: TravelComponent },
       { path: 'hystorytravel', component: HystorytravelComponent },
+      { path: 'city', component: CityComponent },
       { path: 'truck', component: TruckComponent }
     ]
   }

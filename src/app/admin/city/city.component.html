@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table>
+        <tr>
+          <th>
+            City Name
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Delete
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
+            viene modificato l'attributo di dto in tempo reale-->
+            <input placeholder="City Name" [(ngModel)]="dto.cityname">
+          </td>
+          <td>
+            <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let dto of dtolist">
+          <td>
+            <input [(ngModel)]="dto.cityname">
+          </td>
+          <td>
+            <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
+          </td>
+          <td>
+            <button (click)="delete(dto.id)"> Delete </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
