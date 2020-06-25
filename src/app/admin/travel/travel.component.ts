@@ -4,6 +4,8 @@ import { TruckService } from 'src/service/truck.service';
 import { TravelDTO } from 'src/dto/traveldto';
 import { TruckDTO } from 'src/dto/truckdto';
 import { Router } from '@angular/router';
+import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
+
 
 @Component({
   selector: 'app-travel',
@@ -12,14 +14,17 @@ import { Router } from '@angular/router';
   providers: [TravelService, TruckService]
 })
 
-export class TravelComponent implements OnInit {
-
+export class TravelComponent  extends  AbstractCrudComponent<TravelDTO> implements OnInit {
+  
   travels: TravelDTO[];
   trucks: TruckDTO[];
   travelinsert: TravelDTO = new TravelDTO();
   truck : TruckDTO;
 
-  constructor(private travelService: TravelService, private truckService: TruckService, private router: Router) { }
+
+  constructor(private travelService: TravelService, private truckService: TruckService, private router: Router) {
+    super(travelService);
+   }
 
   ngOnInit() {
 
@@ -35,7 +40,6 @@ export class TravelComponent implements OnInit {
     this.truckService.getAll().subscribe(trucks => this.trucks = trucks);
   }
 
-
   insert(travel: TravelDTO){
     this.truck = this.travelinsert.truckDTO;
     travel.truckDTO = this.truck;
@@ -43,10 +47,11 @@ export class TravelComponent implements OnInit {
     this.clear();
   }
 
-
- delete(travel:TravelDTO){
+/*
+  delete(travel:TravelDTO){
     this.travelService.delete(travel.id).subscribe(() => this.getTravels());
   }
+*/
   
   getTravel(travel: TravelDTO){
     localStorage.setItem('Travel', JSON.stringify(travel));

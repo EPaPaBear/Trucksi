@@ -7,17 +7,17 @@ import { Usertype } from 'src/dto/usertype';
 /**
  * Come ogni componente di CRUD, questa estende la classe AbstractCrudComponent, ereditando tutti i metodi 
  * per le CRUD. Questo ci permette di non riscrivere ogni volta gli stessi metodi e avere meno errori.
- * 
  * @author Vittorio Valent
  * 
  * @see AbstractCrudComponent
- * 
  */
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
 export class UsersComponent extends AbstractCrudComponent<UserDTO> implements OnInit {
 
   private userType = Usertype;
