@@ -27,10 +27,12 @@ export abstract class AbstractCrudComponent<DTO>{
   }
 
   update(user: DTO) {
+    console.log(user);
     this.service.update(user).subscribe(() => this.getAll());
   }
 
   insert(dto: DTO) {
+    console.log(dto);
     this.service.insert(dto).subscribe(() => this.getAll());
   }
 

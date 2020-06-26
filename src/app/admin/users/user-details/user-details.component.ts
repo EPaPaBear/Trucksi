@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
+import { Component, OnInit, Input, OnChanges, DoCheck, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
 import { Usertype } from 'src/dto/usertype';
@@ -22,12 +21,14 @@ import { DriverService } from 'src/service/driver.service';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['../users.component.css']
+  styleUrls: ['../users.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent implements OnInit, OnChanges {
 
   private userType = Usertype;
-  public userTypeOptions = [];
+  private userTypeOptions = [];
+  private dtoUsertype: string;
 
   /**
    * Qui prende in input il valore di dto
@@ -37,14 +38,21 @@ export class UserDetailsComponent implements OnInit {
   constructor(private service: UserService, private driverService: DriverService, private passengerService: PassengerService) { }
 
   ngOnInit() {
-    console.log(this.dto);
+    this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
+  }
+
+  // faccio questa funzione cosi ogni volta che cambia il dto che passo mi chiama questa funzione
+  ngOnChanges() {
+    // Mi creo una variabile che contiene se il dto passato è un driver o un passenger
+    this.dtoUsertype = this.dto.usertype.toString();
+    // creo l'istanza di driver o di passenger ,se non c'è, perchè quando vado a prendermi il valore mi da errore 
+    // che non posso prendere n valore di un oggetto null
     if (this.dto.driver == null) {
       this.dto.driver = new DriverDTO();
     }
     if (this.dto.passenger == null) {
       this.dto.passenger = new PassengerDTO();
     }
-    this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
 
   delete(id: number) {
@@ -65,6 +73,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   close() {
+    this.service.getAll();// Chiamo il get all cosi da fare un refresh di tutti gli elementi di dtolist
     const clickEvent = new CustomEvent('click');
     const btnElement = document.querySelector('#closeButton');
     btnElement.dispatchEvent(clickEvent);

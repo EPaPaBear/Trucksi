@@ -23,7 +23,6 @@ import { TruckService } from 'src/service/truck.service';
 })
 export class TravelDetailsComponent extends AbstractCrudComponent<TravelDTO> implements OnInit {
 
-  private userType = Usertype;
   public userTypeOptions = [];
 
   /**
@@ -36,7 +35,6 @@ export class TravelDetailsComponent extends AbstractCrudComponent<TravelDTO> imp
   }
 
   ngOnInit() {
-    this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
 
 }
