@@ -22,6 +22,7 @@ import { CardExampleComponent } from './admin-layout/card-example/card-example.c
 import { PendingRequestComponent } from './admin-layout/pending-request/pending-request.component';
 import { AreaChartComponent } from './admin-layout/area-chart/area-chart.component';
 import { RowPrjIllustrationComponent } from './admin-layout/row-prj-illustration/row-prj-illustration.component';
+import { LogoutmodalComponent } from './admin-layout/logoutmodal/logoutmodal.component';
 
 /**
  * Modulo di layout. Viene caricato nel rputer outlet padre e poi
@@ -54,7 +55,8 @@ import { RowPrjIllustrationComponent } from './admin-layout/row-prj-illustration
  CardExampleComponent,
  PendingRequestComponent,
  AreaChartComponent,
- RowPrjIllustrationComponent
+ RowPrjIllustrationComponent,
+ LogoutmodalComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -72,6 +74,7 @@ import { RowPrjIllustrationComponent } from './admin-layout/row-prj-illustration
     CardExampleComponent,
     PendingRequestComponent,
     AreaChartComponent,
-    RowPrjIllustrationComponent],
+    RowPrjIllustrationComponent,
+    LogoutmodalComponent],
 })
 export class LayoutModule {}
