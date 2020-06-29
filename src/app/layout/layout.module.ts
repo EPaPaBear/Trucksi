@@ -17,6 +17,10 @@ import { TrevelmenuComponent } from './admin-layout/admin-menu/trevelmenu/trevel
 import { HystorytravelmenuComponent } from './admin-layout/admin-menu/hystorytravelmenu/hystorytravelmenu.component';
 import { OtherslayoutcomponentComponent } from './admin-layout/otherslayoutcomponent/otherslayoutcomponent.component';
 import { ToolbarComponent } from './admin-layout/toolbar/toolbar.component';
+import { PageHedingComponent } from './admin-layout/page-heding/page-heding.component';
+import { CardExampleComponent } from './admin-layout/card-example/card-example.component';
+import { PendingRequestComponent } from './admin-layout/pending-request/pending-request.component';
+import { AreaChartComponent } from './admin-layout/area-chart/area-chart.component';
 
 /**
  * Modulo di layout. Viene caricato nel rputer outlet padre e poi
@@ -44,7 +48,11 @@ import { ToolbarComponent } from './admin-layout/toolbar/toolbar.component';
  TrevelmenuComponent,
  HystorytravelmenuComponent,
  OtherslayoutcomponentComponent,
- ToolbarComponent
+ ToolbarComponent,
+ PageHedingComponent,
+ CardExampleComponent,
+ PendingRequestComponent,
+ AreaChartComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -57,6 +65,10 @@ import { ToolbarComponent } from './admin-layout/toolbar/toolbar.component';
     TrevelmenuComponent,
     HystorytravelmenuComponent,
     OtherslayoutcomponentComponent,
-    ToolbarComponent],
+    ToolbarComponent,
+    PageHedingComponent,
+    CardExampleComponent,
+    PendingRequestComponent,
+    AreaChartComponent],
 })
 export class LayoutModule {}
