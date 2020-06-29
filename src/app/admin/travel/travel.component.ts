@@ -20,7 +20,7 @@ export class TravelComponent  extends  AbstractCrudComponent<TravelDTO> implemen
   trucks: TruckDTO[];
   travelinsert: TravelDTO = new TravelDTO();
   truck : TruckDTO;
-  id  :number;
+
 
 
   constructor(private travelService: TravelService, private truckService: TruckService, private router: Router) {
@@ -40,14 +40,15 @@ export class TravelComponent  extends  AbstractCrudComponent<TravelDTO> implemen
   getTrucks(){
     this.truckService.getAll().subscribe(trucks => this.trucks = trucks);
   }
-/*
+
   insert(travel: TravelDTO){
+    travel.id = null;
     this.truck = this.travelinsert.truckDTO;
     travel.truckDTO = this.truck;
     this.travelService.insert(travel).subscribe(() => this.getTravels());
     this.clear();
   }
-*/
+
 
 /*
   delete(travel:TravelDTO){
