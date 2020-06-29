@@ -21,6 +21,7 @@ import { PageHedingComponent } from './admin-layout/page-heding/page-heding.comp
 import { CardExampleComponent } from './admin-layout/card-example/card-example.component';
 import { PendingRequestComponent } from './admin-layout/pending-request/pending-request.component';
 import { AreaChartComponent } from './admin-layout/area-chart/area-chart.component';
+import { RowPrjIllustrationComponent } from './admin-layout/row-prj-illustration/row-prj-illustration.component';
 
 /**
  * Modulo di layout. Viene caricato nel rputer outlet padre e poi
@@ -52,7 +53,8 @@ import { AreaChartComponent } from './admin-layout/area-chart/area-chart.compone
  PageHedingComponent,
  CardExampleComponent,
  PendingRequestComponent,
- AreaChartComponent
+ AreaChartComponent,
+ RowPrjIllustrationComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -69,6 +71,7 @@ import { AreaChartComponent } from './admin-layout/area-chart/area-chart.compone
     PageHedingComponent,
     CardExampleComponent,
     PendingRequestComponent,
-    AreaChartComponent],
+    AreaChartComponent,
+    RowPrjIllustrationComponent],
 })
 export class LayoutModule {}
