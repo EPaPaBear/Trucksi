@@ -9,6 +9,9 @@
           <th>
             License Plate
           </th>
+          <th *ngIf="currentUsertype === 'ADMIN' ">
+            Driver
+          </th>
           <th>
             Edit
           </th>
@@ -28,6 +31,13 @@
           <td>
             <input placeholder="License Plate" [(ngModel)]="dto.licensePlate">
           </td>
+          <td *ngIf="currentUsertype === 'ADMIN' ">
+            <select [(ngModel)]="dto.driver">
+              <option *ngFor="let driver of driverlist" [ngValue]="driver">
+                {{driver.name}}
+                {{driver.surname}}</option>
+            </select>
+          </td>
           <td>
             <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
           </td>
@@ -45,6 +55,14 @@
           </td>
           <td>
             <input [(ngModel)]="dto.licensePlate">
+          </td>
+          <td *ngIf="currentUsertype === 'ADMIN' ">
+            <select [(ngModel)]="dto.driver" [compareWith]="compareFn">
+              <option *ngFor="let driver of driverlist" [ngValue]="driver">
+                {{driver.name}}
+                {{driver.surname}}</option>
+            </select>
+            <!--<label>{{dto.driver.name}} {{dto.driver.surname}}</label>-->
           </td>
           <td>
             <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>

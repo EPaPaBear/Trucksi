@@ -20,8 +20,6 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
     }
 
     getAll(): Observable<DTO[]> {
-        console.log('http://localhost:' + this.port + '/' + this.type + '/getall');
-        console.log(this.http.get<DTO[]>('http://localhost:' + this.port + '/' + this.type + '/getall'));
         return this.http.get<DTO[]>('http://localhost:' + this.port + '/' + this.type + '/getall');
     }
 
@@ -34,15 +32,11 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
     }
 
     insert(dto: DTO): Observable<any> {
-        console.log(dto);
         return this.http.post('http://localhost:' + this.port + '/' + this.type + '/insert', dto);
     }
 
     update(dto: DTO): Observable<DTO> {
-        console.log('http://localhost:' + this.port + '/' + this.type + '/update');
-        console.log(dto);
         return this.http.put<DTO>('http://localhost:' + this.port + '/' + this.type + '/update', dto);
-
     }
 
 }

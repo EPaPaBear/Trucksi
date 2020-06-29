@@ -76,7 +76,11 @@
             </ng-template>
           </td>
           <td>
-            <button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button>
+            <button (click)="select(dto)" *ngIf="dto.usertype.toString() != 'ADMIN'; else elseDetail "><i
+                class="fas fa-binoculars"></i>Details</button>
+            <ng-template #elseDetail>
+              <button><i class="fas fa-binoculars"></i>No Details</button>
+            </ng-template>
           </td>
         </tr>
       </table>

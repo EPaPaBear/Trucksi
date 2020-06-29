@@ -30,6 +30,7 @@ export class UsersComponent extends AbstractCrudComponent<UserDTO> implements On
   ngOnInit() {
     this.clear();
     this.getAll();
+
     // Below line extracts all the keys from the enum 
     this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
@@ -40,6 +41,7 @@ export class UsersComponent extends AbstractCrudComponent<UserDTO> implements On
     dto.driver = null;
     this.update(dto);
   }
+
 
   clear() {
     this.dto = new UserDTO();

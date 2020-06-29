@@ -1,14 +1,21 @@
-<h3>
+<h3 *ngIf="dtoUsertype === 'DRIVER'; else elseTitle">
   <!-- | uppercase è un pipe, trasforma la stringa mettendo tutte le lettere maiuscole-->
-  {{dto.nometeam | uppercase }}'S DETAILS
+  {{dto.driver.name | uppercase }} {{dto.driver.surname | uppercase }}'S DETAILS
 </h3>
+<ng-template #elseTitle>
+  <h3>
+    <!-- | uppercase è un pipe, trasforma la stringa mettendo tutte le lettere maiuscole-->
+    {{dto.passenger.name | uppercase }} {{dto.passenger.surname | uppercase }}'S DETAILS
+  </h3>
+</ng-template>
+
 <table>
   <tr>
     <th>Name</th>
     <th>Surnname</th>
     <th>Phone</th>
     <th>Age</th>
-    <th *ngIf="dto.driver != null">
+    <th *ngIf="dtoUsertype === 'DRIVER'">
       Driver License
     </th>
 
@@ -16,11 +23,11 @@
     <!--<th>Delete</th>-->
   </tr>
   <tr>
-    <td *ngIf="dto.driver != null ; else elseBlock"> <input [(ngModel)]="dto.driver.name"> </td>
-    <td *ngIf="dto.driver != null"> <input [(ngModel)]="dto.driver.surname"> </td>
-    <td *ngIf="dto.driver != null"> <input [(ngModel)]="dto.driver.phone"> </td>
-    <td *ngIf="dto.driver != null"> <input type="number" min="0" [(ngModel)]="dto.driver.age"> </td>
-    <td *ngIf="dto.driver != null"> <input [(ngModel)]="dto.driver.driverLicense"> <input type="hidden"
+    <td *ngIf="dtoUsertype === 'DRIVER' ; else elseBlock"> <input [(ngModel)]="dto.driver.name"> </td>
+    <td *ngIf="dtoUsertype === 'DRIVER'"> <input [(ngModel)]="dto.driver.surname"> </td>
+    <td *ngIf="dtoUsertype === 'DRIVER'"> <input [(ngModel)]="dto.driver.phone"> </td>
+    <td *ngIf="dtoUsertype === 'DRIVER'"> <input type="number" min="0" [(ngModel)]="dto.driver.age"> </td>
+    <td *ngIf="dtoUsertype === 'DRIVER'"> <input [(ngModel)]="dto.driver.driverLicense"> <input type="hidden"
         [(ngModel)]="dto.driver.id"></td>
     <ng-template #elseBlock>
       <td> <input [(ngModel)]="dto.passenger.name"> </td>
