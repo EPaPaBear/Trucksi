@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+/*mport { Component, OnInit, Input } from '@angular/core';
 import { AbstractCrudComponent } from 'src/app/utils/abstractcomponent';
 import { TravelService } from 'src/service/travel.service';
 import { TravelDTO } from 'src/dto/traveldto';
@@ -16,19 +16,26 @@ import { TruckService } from 'src/service/truck.service';
  * 
  * @see UsersComponent
  */
+/*
 @Component({
   selector: 'app-travel-details',
   templateUrl: './travel-details.component.html',
   styleUrls: ['../travel.component.css']
 })
+
+/*
 export class TravelDetailsComponent extends AbstractCrudComponent<TravelDTO> implements OnInit {
 
-  private userType = Usertype;
-  public userTypeOptions = [];
+  travels: TravelDTO[];
+  trucks: TruckDTO[];
+  travelinsert: TravelDTO = new TravelDTO();
+  truck : TruckDTO;
 
   /**
    * Qui prende in input il valore di dto
    */
+
+  /*
   @Input() dto: TravelDTO;
 
   constructor(travelService: TravelService) {
@@ -36,7 +43,8 @@ export class TravelDetailsComponent extends AbstractCrudComponent<TravelDTO> imp
   }
 
   ngOnInit() {
-    this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
+  //  this.travels = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
   }
 
 }
+*/
