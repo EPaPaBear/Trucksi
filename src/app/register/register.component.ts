@@ -1,6 +1,5 @@
 import { UserDTO } from './../../dto/userdto';
 import { Component, OnInit } from '@angular/core';
-import { UserDTO } from 'src/dto/userdto';
 import { DriverDTO } from 'src/dto/driverdto';
 import { PassengerDTO } from 'src/dto/passengerdto';
 import { UserService } from 'src/service/user.service';
