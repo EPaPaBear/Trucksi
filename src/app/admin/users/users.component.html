@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table>
+        <tr>
+          <th>
+            Username
+          </th>
+          <th>
+            Password
+          </th>
+          <th>
+            Usertype
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Delete
+          </th>
+          <th>
+            Details
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
+            viene modificato l'attributo di dto in tempo reale-->
+            <input placeholder="username" [(ngModel)]="dto.username">
+          </td>
+          <td>
+            <input placeholder="password" [(ngModel)]="dto.password">
+          </td>
+          <td>
+            <select placeholder="usertype" [(ngModel)]="dto.usertype">
+              <!--<option value="ADMIN">ADMIN</option>
+              <option value="USER">USER</option>-->
+              <option *ngFor="let types of userTypeOptions" [value]="types" [label]="types">{{types}}</option>
+            </select>
+          </td>
+          <td>
+            <button (click)="insert(dto)"><i class="fas fa-plus"></i>Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
+          </td>
+          <td>
+            <button (click)="close()" id="closeButton">Close Details</button>
+          </td>
+        </tr>
+        <tr *ngFor="let dto of dtolist">
+          <td>
+            <input [(ngModel)]="dto.username">
+          </td>
+          <td>
+            <input [(ngModel)]="dto.password">
+          </td>
+          <td>
+            <!--<select [(ngModel)]="dto.usertype">
+              <option *ngFor="let types of userTypeOptions" [selected]="dto.usertype===types" [value]="types"
+                [label]="types">{{types}}</option>
+            </select>-->
+            <label>{{dto.usertype.toString()}}</label>
+          </td>
+          <td>
+            <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
+          </td>
+          <td>
+            <button (click)="toggleActive(dto)" *ngIf="dto.active; else deactiveBlock">
+              <i class="far fa-lightbulb"></i>Deactivate
+            </button>
+            <ng-template #deactiveBlock>
+              <button (click)="toggleActive(dto)">
+                <i class="fas fa-lightbulb"></i>Activate
+              </button>
+            </ng-template>
+          </td>
+          <td>
+            <button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <!-- Se "selected" non è nullo, viene passato il suo valore sotto la chiave dto alla compoment
+        figlia. Questo è un esempio di binding unidirezionale tra ts e ts-->
+      <app-user-details *ngIf="selected" [dto]="selected"></app-user-details>
+    </div>
+  </div>
+</div>

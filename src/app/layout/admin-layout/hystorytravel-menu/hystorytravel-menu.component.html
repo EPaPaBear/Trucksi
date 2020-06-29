@@ -1,0 +1,24 @@
+<button class="menubtn" (click)="htcollapse()">
+  <i class="fas fa-suitcase"></i>Hystorytravel
+</button>
+<ng-container [ngSwitch]="dashboard">
+  <section *ngSwitchCase="'driver'">
+    <div *ngIf="isHtCollapsed">
+      <button class="collapsebtn">
+          <a [routerLink]="['/driver/hystorytravel']">
+              <i class="fas fa-edit"></i> Manage Hystorytravel
+          </a>
+      </button>
+      </div>
+    </section>
+    <section *ngSwitchCase="'admin'">
+    <div *ngIf="isHtCollapsed">
+  <button class="collapsebtn">
+      <a [routerLink]="['/admin-dashboard/hystorytravel']">
+          <i class="fas fa-edit"></i> Manage Hystorytravel
+      </a>
+  </button>
+  </div>
+</section>
+</ng-container>
+

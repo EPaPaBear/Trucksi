@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table>
+        <tr>
+<!--          <th>nometeam</th> -->
+          <th>time departure</th>
+          <th>time arrival</th>
+          <th>edit</th>
+          <th>delete</th>
+          <th>detail</th>
+        </tr>
+        <tr *ngFor="let dto of dtolist">
+<!--          <td><input placeholder="nometeam" [(ngModel)]="dto.nometeam"></td> -->
+          <td><input type="time" placeholder="timedeaprture" [(ngModel)]="dto.timedeparture"></td>
+          <td><input type="time" placeholder="timearrival" [(ngModel)]="dto.timearrival"></td>
+          <td><button (click)=update_(dto)><i class="fas fa-edit"></i>Edit</button></td>
+          <td><button (click)="delete(dto.id)"><i class="fas fa-trash"></i>Delete</button></td>
+          <td><button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-1"></div>
+    <div class="col-md-10"><app-hystorytravel-details *ngIf="selected" [dto]="selected"></app-hystorytravel-details></div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

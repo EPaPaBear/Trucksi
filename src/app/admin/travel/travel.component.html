@@ -1,0 +1,66 @@
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Truck</th>
+        
+          <th>
+            Edit
+          </th>
+          <th>
+            Truck
+          </th>
+        </tr>
+        <tr>
+
+          <td>
+            <input placeholder="date" type="date" [(ngModel)]="travelinsert.date">
+          </td>
+  
+        
+          <td>
+         <select [(ngModel)]="travelinsert.truck">
+            <option *ngFor="let truck of trucks" [ngValue]="truck" >{{truck.model}}</option>
+          </select>
+          </td>
+          
+          <td>
+            <button (click)="insert(travelinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        
+
+          
+          <tr *ngFor="let travel of travels">
+
+            <td>
+              <input [(ngModel)]="travel.date">
+            </td>
+          
+           <td>
+             <label >{{travel.truck.model}}</label>
+            </td>
+            <td><button (click)="getTravel(travel)" > Notifications </button></td>
+            <td>
+              <button (click)="delete(travel)"> Delete </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+  
+         
+         
+
+         

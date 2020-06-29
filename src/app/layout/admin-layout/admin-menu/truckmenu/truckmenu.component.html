@@ -1,0 +1,16 @@
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#truck_target" aria-expanded="true" aria-controls="collapseTwo">
+    <i class="fas fa-truck"></i>
+    <span>Truck</span>
+  </a>
+  <div id="truck_target" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <h6 class="collapse-header">Custom Components:</h6>
+    <!--  <a
+      class="collapse-item"
+       > <i class="fas fa-truck"></i> TruckList</a>
+    -->
+      <a class="collapse-item" [routerLink]="['/admin-dashboard/truck']"> <i class="fas fa-edit"></i>TruckEdit</a>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,95 @@
+<!-- Il grid layout di Bootstrap prevede che il contentuto sia inserito dentro un div di classe
+  "container", poi le row e infine le col (in tutto devono essere ESATTAMENTE 12 colonne per
+  ogni riga) -->
+<!--
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+      <img src="../../assets/logo.svg" alt="logo">
+    </div>
+    <div class="col-md-5">
+      <form #f="ngForm">
+        <p>Please insert username and password to Login or Sign Up</p>
+        <div class="form-group">
+          <input class="form-control" type="text" id="user" name="username" placeholder="Username" ngModel>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" id="pass" name="password" placeholder="Password" ngModel>
+        </div>
+        <!-- "(click)"" è un tipo di binding unidirezionale (dal template al ts): quando l'utente clicca
+        sul bottone viene eseguito il metodo login(f) del ts. f non è altro che la form con tutti i valori
+      inseriti (verranno poi spacchettati dal ts) -->
+      <!--- <button type="submit" (click)="login(f)">Login</button>
+        <a routerLink="/register" class="button" routerLinkActive="active">Register</a>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">
+                    {{typewriter_display}}
+                  <div *ngIf="display_">{{typewriter_text}}</div>
+
+                  </h1>
+                </div>
+                <form #f="ngForm" class="user">
+                  <div class="form-group">
+                    <input type="email" class="form-control form-control-user" id="user" name="username"   [(ngModel)]="loginDTO.username" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-user" id="password" name="password" [(ngModel)]="loginDTO.password" placeholder="Password">
+                  </div>
+                  <!--
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                      <input type="checkbox" class="custom-control-input" id="customCheck">
+                      <label class="custom-control-label" for="customCheck">Remember Me</label>
+                    </div>
+                  </div>
+                -->
+                  <a (click)="login(f)" class="btn btn-primary btn-user btn-block">
+                    Login
+                  </a>
+                  <hr>
+                  <a routerLink="/register" class="btn btn-google btn-user btn-block">
+                     Register
+                  </a>
+                <!--  <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                  </a> -->
+                </form>
+                <hr>
+                <!--
+                <div class="text-center">
+                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                </div> -->
+                <div class="text-center">
+                  <a class="small" routerLink="/register">Create an Account!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+

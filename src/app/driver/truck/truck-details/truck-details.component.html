@@ -1,0 +1,43 @@
+<h3>
+  <!-- | uppercase è un pipe, trasforma la stringa mettendo tutte le lettere maiuscole-->
+  {{dto.licensePlate | uppercase }}'S DETAILS
+</h3>
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+    <th>
+      Model
+    </th>
+    <th>
+      License Plate
+    </th>
+    <th>
+      Edit
+    </th>
+    <th>
+      User
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <span>
+        {{dto.id}}
+      </span>
+    </td>
+    <td>
+      <input [(ngModel)]="dto.model">
+      <input type="hidden" [(ngModel)]="dto.driver" />
+    </td>
+    <td>
+      <input [(ngModel)]="dto.licensePlate">
+    </td>
+    <td>
+      <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
+    </td>
+    <td>
+      <button (click)="delete(dto.id)"><i class="fas fa-trash"></i>Delete</button>
+    </td>
+  </tr>
+</table>
