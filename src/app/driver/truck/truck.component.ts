@@ -26,8 +26,8 @@ export class TruckComponent extends AbstractCrudComponent<TruckDTO> implements O
     this.driverService.getAll().subscribe(driverlist => {
       console.log(driverlist);
       driverlist.map(element => {
-        // delete element.user;
-        // delete element.truckList;
+        delete element.user;
+        delete element.truckList;
         return element;
       });// tolgo il campo user e trucklist che sono di troppo
       this.driverlist = driverlist;
