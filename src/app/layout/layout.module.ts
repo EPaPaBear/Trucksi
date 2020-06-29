@@ -16,6 +16,7 @@ import { TruckmenuComponent } from './admin-layout/admin-menu/truckmenu/truckmen
 import { TrevelmenuComponent } from './admin-layout/admin-menu/trevelmenu/trevelmenu.component';
 import { HystorytravelmenuComponent } from './admin-layout/admin-menu/hystorytravelmenu/hystorytravelmenu.component';
 import { OtherslayoutcomponentComponent } from './admin-layout/otherslayoutcomponent/otherslayoutcomponent.component';
+import { ToolbarComponent } from './admin-layout/toolbar/toolbar.component';
 
 /**
  * Modulo di layout. Viene caricato nel rputer outlet padre e poi
@@ -42,7 +43,8 @@ import { OtherslayoutcomponentComponent } from './admin-layout/otherslayoutcompo
  TruckmenuComponent,
  TrevelmenuComponent,
  HystorytravelmenuComponent,
- OtherslayoutcomponentComponent
+ OtherslayoutcomponentComponent,
+ ToolbarComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -54,6 +56,7 @@ import { OtherslayoutcomponentComponent } from './admin-layout/otherslayoutcompo
     TruckmenuComponent,
     TrevelmenuComponent,
     HystorytravelmenuComponent,
-    OtherslayoutcomponentComponent],
+    OtherslayoutcomponentComponent,
+    ToolbarComponent],
 })
 export class LayoutModule {}
