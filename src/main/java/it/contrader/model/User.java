@@ -4,7 +4,9 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import it.contrader.model.User.Usertype;
@@ -19,7 +21,7 @@ import lombok.ToString;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(scope = User.class, generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @ToString(exclude = {"driver","passenger"})
 public class User {
 	
@@ -40,12 +42,12 @@ public class User {
 	
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
-	@OneToOne(mappedBy = "user")   
+	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)   
 	private Driver driver;  
 	
 	
 	//mappedBy -> creo una connessione bidirezionale tra user e driver
-	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH)  
+	@OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH) 
 	private Passenger passenger;   
 	
 	

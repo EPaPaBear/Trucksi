@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import it.contrader.dto.TruckDTO;
@@ -21,7 +22,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(scope = Passenger.class, generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @ToString(exclude = {"user","truck"}) 
 public class Passenger {
 

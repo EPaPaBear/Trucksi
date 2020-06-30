@@ -1,24 +1,25 @@
 package it.contrader.model;
 
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.*;
 
-import it.contrader.dto.TruckDTO;
-import it.contrader.dto.UserDTO;
-import it.contrader.model.User.Usertype;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.NoArgsConstructor; 
 import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+@Entity 
+@JsonIdentityInfo(scope = Driver.class, generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @ToString(exclude = {"truckList","user"})
 public class Driver {
 

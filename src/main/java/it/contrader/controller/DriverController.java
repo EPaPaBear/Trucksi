@@ -20,7 +20,8 @@ import it.contrader.dto.DriverDTO;
  *
  */
 @RestController
-@RequestMapping("/driver")
+@RequestMapping("/driver") 
+
 @CrossOrigin(origins = "http://localhost:4200")
 public class DriverController extends AbstractController<DriverDTO>{
 	

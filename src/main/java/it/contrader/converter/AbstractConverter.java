@@ -16,7 +16,7 @@ import java.util.Set;
  * 
  * @see Converter
  */
-public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO> {
+public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,DTO> { 
 
 	public List<Entity> toEntityList (Iterable<DTO> listDTO) {
 		List<Entity> list = new ArrayList<Entity>();
@@ -33,9 +33,9 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 	public List<DTO> toDTOList (Iterable<Entity> listEntity) {
 		List<DTO> list = new ArrayList<DTO>(); 
 		if(listEntity != null) {
-			for (Entity entity:listEntity) {
-				DTO dto = toDTO(entity);
-				list.add(dto);
+			for (Entity entity:listEntity) {  
+				DTO dto = toDTO(entity); 
+  				list.add(dto); 
 			}
 		}
 		return list;
