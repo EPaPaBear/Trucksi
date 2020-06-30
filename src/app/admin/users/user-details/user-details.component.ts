@@ -79,4 +79,5 @@ export class UserDetailsComponent implements OnInit, OnChanges {
     btnElement.dispatchEvent(clickEvent);
   }
 
+
 }

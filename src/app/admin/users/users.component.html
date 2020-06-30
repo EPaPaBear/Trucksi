@@ -15,14 +15,14 @@
           <th>
             Edit
           </th>
-          <th>
+          <th *ngIf="currentUsertype !=='DRIVER' ">
             Delete
           </th>
           <th>
             Details
           </th>
         </tr>
-        <tr>
+        <tr [hidden]="hideInsert">
           <td>
             <!-- con il binding bidirezionale [(ngModel)] mentre scriviamo nell'input
             viene modificato l'attributo di dto in tempo reale-->
@@ -65,7 +65,7 @@
           <td>
             <button (click)=update(dto)><i class="fas fa-edit"></i>Edit</button>
           </td>
-          <td>
+          <td *ngIf="currentUsertype !=='DRIVER' ">
             <button (click)="toggleActive(dto)" *ngIf="dto.active; else deactiveBlock">
               <i class="far fa-lightbulb"></i>Deactivate
             </button>

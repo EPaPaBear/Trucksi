@@ -14,6 +14,7 @@ export class TruckComponent extends AbstractCrudComponent<TruckDTO> implements O
 
   private currentUsertype: string;
   private driverlist: DriverDTO[];
+  private driverId: number;
 
   constructor(service: TruckService, private driverService: DriverService) {
     super(service);
@@ -22,9 +23,16 @@ export class TruckComponent extends AbstractCrudComponent<TruckDTO> implements O
   ngOnInit() {
     this.currentUsertype = JSON.parse(localStorage.getItem('currentUser')).usertype.toString();
     this.clear();
-    this.getAll();
+
+    if (this.currentUsertype === 'DRIVER') {
+      this.driverId = JSON.parse(localStorage.getItem('currentUser')).driver.id;
+      this.getAllByDriver(this.driverId);
+    } else {
+      this.getAll();
+    }
+
     this.driverService.getAll().subscribe(driverlist => {
-      console.log(driverlist);
+
       driverlist.map(element => {
         delete element.user;
         delete element.truckList;
@@ -32,6 +40,31 @@ export class TruckComponent extends AbstractCrudComponent<TruckDTO> implements O
       });// tolgo il campo user e trucklist che sono di troppo
       this.driverlist = driverlist;
     });
+
+  }
+
+  insert(dto: TruckDTO) {
+    if (this.currentUsertype === 'DRIVER') {
+      this.service.insert(dto).subscribe(() => this.getAllByDriver(this.driverId));
+    } else {
+      this.service.insert(dto).subscribe(() => this.getAll());
+    }
+  }
+
+  delete(id: number) {
+    if (this.currentUsertype === 'DRIVER') {
+      this.service.delete(id).subscribe(() => this.getAllByDriver(this.driverId));
+    } else {
+      this.service.delete(id).subscribe(() => this.getAll());
+    }
+  }
+
+  update(user: TruckDTO) {
+    if (this.currentUsertype === 'DRIVER') {
+      this.service.update(user).subscribe(() => this.getAllByDriver(this.driverId));
+    } else {
+      this.service.update(user).subscribe(() => this.getAll());
+    }
   }
 
   clear() {

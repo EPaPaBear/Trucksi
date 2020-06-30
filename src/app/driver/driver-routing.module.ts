@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DriverLayoutComponent } from '../layout/driver-layout/driver-layout.component';
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { TruckComponent } from './truck/truck.component';
+import { UsersComponent } from '../admin/users/users.component';
 
 import { AuthGuard } from '../../guard/auth/auth.guard';
 
@@ -23,7 +24,8 @@ const routes: Routes = [
    {
       path: 'driver-dashboard', component: DriverLayoutComponent, canActivate: [AuthGuard], children: [
          { path: '', component: DriverDashboardComponent },
-         { path: 'truck', component: TruckComponent }
+         { path: 'truck', component: TruckComponent },
+         { path: 'edit-profile', component: UsersComponent }
       ]
    }
 ];

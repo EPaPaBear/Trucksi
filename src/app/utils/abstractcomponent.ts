@@ -22,17 +22,19 @@ export abstract class AbstractCrudComponent<DTO>{
     this.service.getAll().subscribe(dtolist => this.dtolist = dtolist);
   }
 
+  getAllByDriver(id: number) {
+    this.service.getAllByDriver(id).subscribe(dtolist => this.dtolist = dtolist);
+  }
+
   delete(id: number) {
     this.service.delete(id).subscribe(() => this.getAll());
   }
 
   update(user: DTO) {
-    console.log(user);
     this.service.update(user).subscribe(() => this.getAll());
   }
 
   insert(dto: DTO) {
-    console.log(dto);
     this.service.insert(dto).subscribe(() => this.getAll());
   }
 

@@ -23,6 +23,10 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
         return this.http.get<DTO[]>('http://localhost:' + this.port + '/' + this.type + '/getall');
     }
 
+    getAllByDriver(id: number): Observable<DTO[]> {
+        return this.http.get<DTO[]>('http://localhost:' + this.port + '/' + this.type + '/getallbydriver?id=' + id);
+    }
+
     read(id: number): Observable<DTO> {
         return this.http.get<DTO>('http://localhost:' + this.port + '/' + this.type + '/read?id=' + id);
     }

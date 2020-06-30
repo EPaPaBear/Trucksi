@@ -18,9 +18,9 @@
           <th>
             Delete
           </th>
-          <th>
+          <!--<th>
             Details
-          </th>
+          </th>-->
         </tr>
         <tr>
           <td>
@@ -44,9 +44,9 @@
           <td>
             <button (click)="clear()"><i class="fas fa-times"></i>Clear</button>
           </td>
-          <td>
+          <!-- <td>
             <button (click)="close()">Close Details</button>
-          </td>
+          </td>-->
         </tr>
         <tr *ngFor="let dto of dtolist">
 
@@ -70,9 +70,9 @@
           <td>
             <button (click)="delete(dto.id)"><i class="fas fa-trash"></i>Delete</button>
           </td>
-          <td>
+          <!-- <td>
             <button (click)="select(dto)"><i class="fas fa-binoculars"></i>Details</button>
-          </td>
+          </td>-->
         </tr>
       </table>
     </div>

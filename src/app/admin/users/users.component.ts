@@ -22,14 +22,37 @@ export class UsersComponent extends AbstractCrudComponent<UserDTO> implements On
 
   private userType = Usertype;
   public userTypeOptions = [];
+  private currentUsertype: string;
+  private driverId: number;
+  private hideInsert: boolean;
 
   constructor(service: UserService) {
     super(service);
   }
 
   ngOnInit() {
+    this.currentUsertype = JSON.parse(localStorage.getItem('currentUser')).usertype.toString();
     this.clear();
-    this.getAll();
+
+    if (this.currentUsertype === 'DRIVER') {
+      this.hideInsert = true;
+      this.driverId = JSON.parse(localStorage.getItem('currentUser')).driver.id;
+      this.service.read(this.driverId).subscribe(user => {
+        this.dtolist = new Array();
+        delete user.passenger;
+        delete user.driver;
+        this.dtolist.push(user);
+      });
+    } else {
+      this.hideInsert = false;
+      this.service.getAll().subscribe(dtolist => {
+        dtolist.map(element => {
+          delete element.passenger;
+          delete element.driver;
+        })
+        this.dtolist = dtolist;
+      });
+    }
 
     // Below line extracts all the keys from the enum 
     this.userTypeOptions = Object.keys(this.userType).map(key => this.userType[key]).filter(value => typeof value === 'string');
@@ -42,13 +65,41 @@ export class UsersComponent extends AbstractCrudComponent<UserDTO> implements On
     this.update(dto);
   }
 
-
   clear() {
     this.dto = new UserDTO();
+
+  }
+
+  select(dto: UserDTO) {
+    this.service.read(dto.id).subscribe(user => this.selected = user);
+  }
+
+  update(user: UserDTO) {
+    if (this.currentUsertype === 'DRIVER') {
+      this.service.update(user).subscribe(() => {
+        this.service.read(this.driverId).subscribe(userI => {
+          this.dtolist = new Array();
+          delete userI.passenger;
+          delete userI.driver;
+          this.dtolist.push(userI);
+        });
+      });
+    } else {
+      this.service.update(user).subscribe(() => {
+        this.service.getAll().subscribe(dtolist => {
+          dtolist.map(element => {
+            delete element.passenger;
+            delete element.driver;
+          })
+          this.dtolist = dtolist;
+        });
+      });
+    }
 
   }
 
   close() {
     this.selected = null;
   }
+
 }
